@@ -386,7 +386,6 @@ Kamu sudah baca semua 4 bagian! 🎉
 **Langkah selanjutnya:**
 - 🌐 **Lihat visualisasi interaktif di [website](../website/index.html)**
 - 🎞️ **Lihat [slide deck](../slides.html) untuk presentasi**
-- 🎬 **Atau rekam [video](../video/) untuk konten LinkedIn**
 
 ---
 

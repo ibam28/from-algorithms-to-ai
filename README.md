@@ -38,7 +38,7 @@ This project fixes that — with **honest explanations, visual diagrams, and liv
 |---|---|
 | 🌐 **[Interactive Website](website/index.html)** | 4 sections with algorithm visualizer, decision tree demo, and a real ML model running in your browser |
 | 🎞️ **[Slide Deck](slides.html)** | 12-slide presentation (Reveal.js) — ready for interviews, internal sharing, or LinkedIn carousel |
-| 🎬 **[Video Script](video/script.md)** | Narration script ready to record — for LinkedIn/YouTube content |
+
 | ✅ **[Phase 7 Checklist](PHASE-7-CHECKLIST.md)** | Manual QA guide — Lighthouse, browsers, responsive, publish |
 | 💼 **[LinkedIn Post](launch/linkedin-post.md)** | 3 post drafts + hooks, hashtags, timing, 24h engagement plan |
 | 🎠 **[Carousel](launch/carousel.md)** | 8-slide carousel content + design notes + alt text |

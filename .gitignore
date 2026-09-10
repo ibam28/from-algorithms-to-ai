@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # Build outputs
 *.tsbuildinfo
+
+# Video content — disembunyikan sampai videonya selesai dibuat (2026-09)
+video/

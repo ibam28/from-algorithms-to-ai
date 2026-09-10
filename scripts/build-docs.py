@@ -45,17 +45,6 @@ SECTIONS = {
         "hub_label": "← Kembali ke beranda",
         "css": "docs.css",
     },
-    "video": {
-        "icon": "🎬",
-        "heading": "Video Content",
-        "intro": (
-            "Naskah dan storyboard siap rekam untuk konten LinkedIn / YouTube — "
-            "tiga durasi: 100 detik, 45 detik, dan 3 menit."
-        ),
-        "home": "../index.html",
-        "hub_label": "← Kembali ke beranda",
-        "css": "../docs/docs.css",
-    },
 }
 
 PAGE_ICON = {
