@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -8,19 +8,19 @@
   <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="MNIST Demo — Latih CNN di Browser-mu" />
-  <meta property="og:description" content="Train a digit recognizer with TensorFlow.js — sepenuhnya di browser, tanpa server. Gambar angka, lihat prediksinya." />
+  <meta property="og:title" content="MNIST Demo — Train a CNN in Your Browser" />
+  <meta property="og:description" content="Train a digit recognizer with TensorFlow.js — entirely in your browser, no server. Draw a digit, watch it predict." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ibam28.github.io/from-algorithms-to-ai/website/js/ml-demo/mnist.html" />
   <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="id_ID" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MNIST Demo — Latih CNN di Browser-mu" />
-  <meta name="twitter:description" content="Train a digit recognizer with TensorFlow.js, sepenuhnya di browser." />
+  <meta name="twitter:title" content="MNIST Demo — Train a CNN in Your Browser" />
+  <meta name="twitter:description" content="Train a digit recognizer with TensorFlow.js, entirely in your browser." />
   <meta name="twitter:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
 
   <link rel="stylesheet" href="../../css/style.css" />
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="./mnist.css" />
 </head>
 <body class="website mnist-page">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link" data-i18n="st.skip">Skip to main content</a>
 
   <nav class="website-nav" aria-label="Main navigation">
     <div class="website-nav-inner">
@@ -36,26 +36,30 @@
         🧠 From Algorithms to AI
       </a>
       <ul class="website-nav-links">
-        <li><a href="#section-train">🏋️ Train</a></li>
-        <li><a href="#section-draw">✏️ Draw</a></li>
-        <li><a href="#section-predict">🎯 Predict</a></li>
+        <li><a href="#section-train" data-i18n="mn.nav.train">🏋️ Train</a></li>
+        <li><a href="#section-draw" data-i18n="mn.nav.draw">✏️ Draw</a></li>
+        <li><a href="#section-predict" data-i18n="mn.nav.predict">🎯 Predict</a></li>
       </ul>
-      <a href="../../website/index.html" class="website-nav-back" aria-label="Kembali ke website utama">← Website</a>
+      <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+        <button data-lang-btn="en" class="active" aria-pressed="true">EN</button>
+        <button data-lang-btn="id" aria-pressed="false">ID</button>
+      </div>
+      <a href="../../website/index.html" class="website-nav-back" data-i18n-aria="mn.nav.backAria" aria-label="Back to main website" data-i18n="mn.nav.back">← Website</a>
     </div>
   </nav>
 
   <main id="main-content" class="website-main mnist-main">
 
     <header class="hero">
-      <p class="landing-eyebrow">Live ML Demo · TensorFlow.js</p>
-      <h1>MNIST Digit Recognizer</h1>
-      <p>
-        Real CNN (Convolutional Neural Network) yang <strong>berjalan sepenuhnya di browser-mu</strong>.
-        Tidak ada server, tidak ada API call — semua machine learning terjadi di perangkat-mu.
+      <p class="landing-eyebrow" data-i18n="mn.hero.eyebrow">Live ML Demo · TensorFlow.js</p>
+      <h1 data-i18n="mn.hero.title">MNIST Digit Recognizer</h1>
+      <p data-i18n="mn.hero.text" data-i18n-html>
+        A real CNN (Convolutional Neural Network) that <strong>runs entirely in your browser</strong>.
+        No server, no API calls — all the machine learning happens on your device.
       </p>
-      <p class="hero-note">
-        ⏱️ Estimasi: training ~30 detik di laptop modern, ~1-2 menit di HP.
-        Setelah training, gambar angka apapun di kanvas dan lihat prediksi model.
+      <p class="hero-note" data-i18n="mn.hero.note">
+        ⏱️ Estimate: ~30 seconds of training on a modern laptop, ~1-2 minutes on a phone.
+        After training, draw any digit on the canvas and watch the model predict.
       </p>
     </header>
 
@@ -65,23 +69,23 @@
         <span class="section-number">01</span>
         <h2>🏋️ Train Model</h2>
       </header>
-      <p class="section-subtitle">
-        Model dilatih dari dataset MNIST (subset 5.000 gambar) langsung di browser.
+      <p class="section-subtitle" data-i18n="mn.s1.subtitle">
+        The model is trained from the MNIST dataset (subset of 5,000 images) right in your browser.
       </p>
 
       <div class="model-summary">
-        <h4>Arsitektur Model</h4>
+        <h4 data-i18n="mn.s1.model.title">Model Architecture</h4>
         <ul>
-          <li><code>Conv2D</code> 16 filter (3×3) → <code>MaxPool</code> 2×2</li>
-          <li><code>Conv2D</code> 32 filter (3×3) → <code>MaxPool</code> 2×2</li>
+          <li><code>Conv2D</code> 16 filters (3×3) → <code>MaxPool</code> 2×2</li>
+          <li><code>Conv2D</code> 32 filters (3×3) → <code>MaxPool</code> 2×2</li>
           <li><code>Flatten</code> → <code>Dense</code> 128 → <code>Dense</code> 10</li>
-          <li>Total: ~108K parameter</li>
+          <li data-i18n="mn.s1.model.total">Total: ~108K parameters</li>
         </ul>
       </div>
 
       <div class="training-controls">
-        <button id="train-btn" class="btn btn-primary">▶ Mulai Training</button>
-        <span class="training-status" id="training-status">Model belum dilatih</span>
+        <button id="train-btn" class="btn btn-primary" data-i18n="mn.s1.train.btn">▶ Start Training</button>
+        <span class="training-status" id="training-status" data-i18n="mn.s1.train.status">Model not trained yet</span>
       </div>
 
       <div class="training-progress-wrapper" id="training-progress-wrapper" hidden>
@@ -93,19 +97,19 @@
 
       <div class="training-stats" id="training-stats" hidden>
         <div class="stat-card">
-          <div class="stat-label">Epoch</div>
+          <div class="stat-label" data-i18n="mn.s1.stat.epoch">Epoch</div>
           <div class="stat-value"><span id="epoch-current">0</span>/<span id="epoch-total">3</span></div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Loss</div>
+          <div class="stat-label" data-i18n="mn.s1.stat.loss">Loss</div>
           <div class="stat-value" id="stat-loss">-</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Accuracy</div>
+          <div class="stat-label" data-i18n="mn.s1.stat.acc">Accuracy</div>
           <div class="stat-value" id="stat-acc">-</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Sample/sec</div>
+          <div class="stat-label" data-i18n="mn.s1.stat.speed">Sample/sec</div>
           <div class="stat-value" id="stat-speed">-</div>
         </div>
       </div>
@@ -119,10 +123,10 @@
     <section id="section-draw" class="section section-anchor mnist-section">
       <header class="section-header">
         <span class="section-number">02</span>
-        <h2>✏️ Gambar Angka</h2>
+        <h2>✏️ Draw a Digit</h2>
       </header>
-      <p class="section-subtitle">
-        Gambar digit 0-9 di kanvas. Pakai mouse, jari, atau stylus — semua didukung.
+      <p class="section-subtitle" data-i18n="mn.s2.subtitle">
+        Draw a digit 0-9 on the canvas. Mouse, finger, or stylus — all supported.
       </p>
 
       <div class="drawing-area">
@@ -130,25 +134,26 @@
           id="draw-canvas"
           width="280"
           height="280"
-          aria-label="Area menggambar digit. Pakai mouse, jari, atau stylus untuk menggambar."
+          data-i18n-aria="mn.s2.canvasAria"
+          aria-label="Digit drawing area. Use mouse, finger, or stylus to draw."
           role="img">
         </canvas>
 
         <div class="drawing-controls">
-          <button id="clear-btn" class="btn btn-secondary">🗑️ Clear</button>
+          <button id="clear-btn" class="btn btn-secondary" data-i18n="mn.s2.clear">🗑️ Clear</button>
           <div class="brush-control">
-            <label for="brush-size">Brush:</label>
+            <label for="brush-size" data-i18n="mn.s2.brush">Brush:</label>
             <input type="range" id="brush-size" min="4" max="32" value="14" />
             <span id="brush-size-val">14</span>px
           </div>
         </div>
 
-        <p class="drawing-hint">
-          💡 Tips: gambar angka di tengah, jangan terlalu kecil atau terlalu besar.
+        <p class="drawing-hint" data-i18n="mn.s2.hint">
+          💡 Tip: draw the digit in the middle, not too small and not too big.
         </p>
 
         <details class="preset-section">
-          <summary>Atau pilih preset digit (untuk testing cepat)</summary>
+          <summary data-i18n="mn.s2.preset.summary">Or pick a preset digit (for quick testing)</summary>
           <div class="preset-grid">
             <button class="preset-btn" data-digit="0">0</button>
             <button class="preset-btn" data-digit="1">1</button>
@@ -161,9 +166,9 @@
             <button class="preset-btn" data-digit="8">8</button>
             <button class="preset-btn" data-digit="9">9</button>
           </div>
-          <p class="preset-note">
-            <small>Preset ini mengambil sample dari test set MNIST — jadi "cheat" sedikit,
-            menunjukkan kemampuan model pada data yang mirip training.</small>
+          <p class="preset-note" data-i18n="mn.s2.preset.note">
+            <small>Presets take a sample from the MNIST test set — a slight "cheat" that shows
+            how the model performs on data similar to its training.</small>
           </p>
         </details>
       </div>
@@ -173,39 +178,39 @@
     <section id="section-predict" class="section section-anchor mnist-section">
       <header class="section-header">
         <span class="section-number">03</span>
-        <h2>🎯 Lihat Prediksi</h2>
+        <h2>🎯 See the Prediction</h2>
       </header>
-      <p class="section-subtitle">
-        Model menganalisis gambar dan menebak digit mana yang kamu gambar.
+      <p class="section-subtitle" data-i18n="mn.s3.subtitle">
+        The model analyzes the image and guesses which digit you drew.
       </p>
 
       <div class="prediction-controls">
-        <button id="predict-btn" class="btn btn-primary" disabled>🎯 Prediksi</button>
-        <span class="prediction-status" id="prediction-status">
-          Latih model dulu di section 1
+        <button id="predict-btn" class="btn btn-primary" disabled data-i18n="mn.s3.predict">🎯 Predict</button>
+        <span class="prediction-status" id="prediction-status" data-i18n="mn.s3.status.notrained">
+          Train the model first in section 1
         </span>
       </div>
 
       <div class="prediction-result" id="prediction-result" hidden>
         <div class="top-prediction">
-          <div class="predicted-digit-label">Prediksi Model:</div>
+          <div class="predicted-digit-label" data-i18n="mn.s3.result.label">Model Prediction:</div>
           <div class="predicted-digit" id="predicted-digit">-</div>
           <div class="predicted-confidence" id="predicted-confidence">-</div>
         </div>
 
-        <h4>Top 3 Kemungkinan:</h4>
+        <h4 data-i18n="mn.s3.top.title">Top 3 Likelihoods:</h4>
         <div class="top-3" id="top-3">
           <!-- Filled by JS -->
         </div>
 
         <details class="model-insight">
-          <summary>Apa yang model "lihat"?</summary>
+          <summary data-i18n="mn.s3.insight.summary">What does the model "see"?</summary>
           <div class="insight-content">
-            <p>Ini adalah versi 28×28 dari gambar-mu (input model):</p>
-            <canvas id="preview-canvas" width="112" height="112" aria-label="Preview input model 28x28 pixel"></canvas>
-            <p class="insight-note">
-              Catatan: Model dilatih dengan digit putih di latar hitam — kebalikan dari kanvas-mu.
-              Kami invert otomatis sebelum prediksi.
+            <p data-i18n="mn.s3.insight.text">This is the 28×28 version of your drawing (the model input):</p>
+            <canvas id="preview-canvas" width="112" height="112" aria-label="Model input preview 28x28 pixels"></canvas>
+            <p class="insight-note" data-i18n="mn.s3.insight.note">
+              Note: the model was trained with white digits on a black background — the opposite of your canvas.
+              We invert automatically before predicting.
             </p>
           </div>
         </details>
@@ -214,34 +219,36 @@
 
     <!-- ============ INFO BOX ============ -->
     <aside class="mnist-info-box">
-      <h3>ℹ️ Tentang Demo Ini</h3>
+      <h3 data-i18n="mn.info.title">ℹ️ About This Demo</h3>
       <ul>
-        <li><strong>Training terjadi di browser</strong> — bukan di server. Data tidak meninggalkan perangkat-mu.</li>
-        <li><strong>Subset 5.000 dari 60.000</strong> gambar training dipakai untuk mempercepat demo.</li>
-        <li><strong>Akurasi tipikal:</strong> 90-95% pada subset (full MNIST: 98%+ dengan epochs lebih banyak).</li>
-        <li><strong>Limitasi:</strong> download TF.js ~1.2MB pertama kali, training ~30 detik.</li>
+        <li data-i18n="mn.info.li1" data-i18n-html><strong>Training happens in the browser</strong> — not on a server. Your data never leaves your device.</li>
+        <li data-i18n="mn.info.li2" data-i18n-html><strong>Subset of 5,000 of 60,000</strong> training images is used to keep the demo fast.</li>
+        <li data-i18n="mn.info.li3" data-i18n-html><strong>Typical accuracy:</strong> 90-95% on the subset (full MNIST: 98%+ with more epochs).</li>
+        <li data-i18n="mn.info.li4" data-i18n-html><strong>Limitation:</strong> first visit downloads TF.js (~1.2 MB), training ~30 seconds.</li>
       </ul>
       <p class="back-to-main">
-        <a href="../../website/index.html#section-ml" class="btn btn-secondary">← Kembali ke penjelasan ML</a>
+        <a href="../../website/index.html#section-ml" class="btn btn-secondary" data-i18n="mn.info.back">← Back to the ML explanation</a>
       </p>
     </aside>
 
   </main>
 
   <footer class="website-footer">
-    <p>
-      Dibuat oleh <a href="https://github.com/ibam28"><strong>@ibam28</strong></a> ·
-      Demo TensorFlow.js tanpa server · <a href="../../website/index.html">← Halaman utama</a>
+    <p data-i18n="mn.footer" data-i18n-html>
+      Built by <a href="https://github.com/ibam28"><strong>@ibam28</strong></a> ·
+      Serverless TensorFlow.js demo · <a href="../../website/index.html">← Main page</a>
     </p>
   </footer>
 
   <!-- Loading indicator -->
   <div class="tfjs-loading-overlay" id="tfjs-loading-overlay" hidden>
     <div class="loading-spinner"></div>
-    <p id="loading-message">Memuat TensorFlow.js...</p>
-    <p class="loading-submessage">~1.2 MB · butuh koneksi internet pertama kali</p>
+    <p id="loading-message" data-i18n="mn.loading.message">Loading TensorFlow.js…</p>
+    <p class="loading-submessage" data-i18n="mn.loading.sub">~1.2 MB · requires an internet connection on first visit</p>
   </div>
 
+  <!-- i18n engine -->
+  <script src="../../js/i18n.js"></script>
   <script type="module" src="./mnist.js"></script>
 </body>
 </html>

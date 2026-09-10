@@ -8,29 +8,36 @@
 const CIRCLE_DATA = {
   algoritma: {
     label: 'Algoritma',
+    labelKey: 'rel.algo.title',
     color: '#4f9eff',
-    title: '📐 Algoritma',
-    desc: 'Langkah-langkah pasti untuk menyelesaikan masalah. Algoritma adalah alat fundamental yang dipakai banyak hal — termasuk di luar AI. Contoh: sortir array, cari rute, hash table.',
+    titleKey: 'rel.algo.title',
+    descKey: 'rel.algo.desc',
   },
   ml: {
     label: 'Machine Learning',
+    labelKey: 'rel.ml.title',
     color: '#ffb84d',
-    title: '🤖 Machine Learning',
-    desc: 'Subset AI di mana mesin belajar dari data, bukan dari aturan yang ditulis tangan. ML = banyak algoritma yang bekerja sama untuk menemukan pola. Contoh: filter spam, rekomendasi Netflix, prediksi harga.',
+    titleKey: 'rel.ml.title',
+    descKey: 'rel.ml.desc',
   },
   ai: {
     label: 'AI',
+    labelKey: 'rel.ai.title',
     color: '#b56cff',
-    title: '✨ Artificial Intelligence',
-    desc: 'Bidang riset untuk membuat mesin bertindak "cerdas". AI = ML + Symbolic AI + NLP + Computer Vision + Robotics + Planning. Contoh: self-driving car, ChatGPT, medical diagnosis.',
+    titleKey: 'rel.ai.title',
+    descKey: 'rel.ai.desc',
   },
   symbolic: {
     label: 'Symbolic AI',
+    labelKey: 'rel.symbolic.title',
     color: '#4ade80',
-    title: '📋 Symbolic AI (di luar ML)',
-    desc: 'AI berbasis aturan if-then yang ditulis tangan — bukan belajar dari data. Ini AI tanpa ML. Contoh: expert system MYCIN untuk diagnosis medis, sistem pakar pajak, logic programming.',
+    titleKey: 'rel.symbolic.title',
+    descKey: 'rel.symbolic.desc',
   },
 };
+
+// i18n helper (falls back to raw key if engine not loaded yet)
+const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : key);
 
 export function initRelationship(container) {
   const svg = container.querySelector('#rel-svg');
@@ -101,9 +108,12 @@ export function initRelationship(container) {
       text.style.fill = label.color || 'white';
       const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
       tspan.setAttribute('x', cxx);
-      tspan.textContent = label.text;
+      tspan.textContent = label.key ? t(label.key) : label.text;
       text.appendChild(tspan);
       g.appendChild(text);
+      // Simpan referensi untuk update bahasa
+      g.dataset.labelKey = label.key || '';
+      g._labelTspan = tspan;
     }
 
     svg.appendChild(g);
@@ -120,7 +130,7 @@ export function initRelationship(container) {
     fill: 'url(#grad-ai)',
     stroke: '#b56cff',
     strokeWidth: 2,
-    label: { text: 'AI', size: '22px' },
+    label: { text: 'AI', size: '22px', key: 'rel.ai.title' },
     clickable: true,
     infoKey: 'ai',
   });
@@ -133,7 +143,7 @@ export function initRelationship(container) {
     fill: 'url(#grad-ml)',
     stroke: '#ffb84d',
     strokeWidth: 2,
-    label: { text: 'ML', size: '18px' },
+    label: { text: 'Machine Learning', size: '13px', key: 'rel.ml.title' },
     clickable: true,
     infoKey: 'ml',
   });
@@ -146,7 +156,7 @@ export function initRelationship(container) {
     fill: 'url(#grad-algo)',
     stroke: '#4f9eff',
     strokeWidth: 2,
-    label: { text: 'Algoritma', size: '11px' },
+    label: { text: 'Algorithms', size: '11px', key: 'rel.algo.title' },
     clickable: true,
     infoKey: 'algoritma',
   });
@@ -160,7 +170,7 @@ export function initRelationship(container) {
     fill: 'url(#grad-symbolic)',
     stroke: '#4ade80',
     strokeWidth: 1.5,
-    label: { text: 'Symbolic AI', size: '9px' },
+    label: { text: 'Symbolic AI', size: '9px', key: 'rel.symbolic.title' },
     clickable: true,
     infoKey: 'symbolic',
   });
@@ -179,7 +189,7 @@ export function initRelationship(container) {
     circle.setAttribute('tabindex', '0');
     circle.setAttribute('role', 'button');
     const initialKey = getKey();
-    circle.setAttribute('aria-label', CIRCLE_DATA[initialKey]?.title || initialKey || '');
+    circle.setAttribute('aria-label', t(CIRCLE_DATA[initialKey]?.titleKey || initialKey) || initialKey || '');
     circle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -192,14 +202,27 @@ export function initRelationship(container) {
     const data = CIRCLE_DATA[key];
     if (!data) return;
     if (infoTitle) {
-      infoTitle.textContent = data.title;
+      infoTitle.textContent = t(data.titleKey);
       infoTitle.style.color = data.color;
     }
-    if (infoDesc) infoDesc.textContent = data.desc;
+    if (infoDesc) infoDesc.textContent = t(data.descKey);
   }
 
   // Initial info
   updateInfo('ai');
+
+  // Re-render labels + panel when language changes
+  window.addEventListener('i18n:change', () => {
+    svg.querySelectorAll('g[data-label-key]').forEach((g) => {
+      const key = g.dataset.labelKey;
+      const tspan = g._labelTspan;
+      if (key && tspan) tspan.textContent = t(key);
+    });
+    // Re-apply current info (title/desc follow language)
+    const active = document.querySelector('.rel-circle:focus') || null;
+    const currentKey = active ? (active.parentElement && active.parentElement.dataset.infoKey) : null;
+    updateInfo(currentKey || 'ai');
+  });
 
   console.info('[relationship] initialized');
 }

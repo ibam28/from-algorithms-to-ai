@@ -9,7 +9,7 @@
 const DATASETS = {
   iris: {
     name: 'Iris',
-    description: 'Klasifikasi jenis bunga iris berdasarkan petal length',
+    descKey: 'dt.dataset.iris.desc',
     tree: {
       type: 'split',
       feature: 'petal ≤ 2.45 cm',
@@ -45,7 +45,7 @@ const DATASETS = {
   },
   play: {
     name: 'Play Tennis',
-    description: 'Klasifikasi apakah layak main tennis berdasarkan kondisi cuaca',
+    descKey: 'dt.dataset.play.desc',
     tree: {
       type: 'split',
       feature: 'Outlook?',
@@ -82,6 +82,9 @@ const CLASS_COLORS = {
   No: '#ff6b6b',
 };
 
+// i18n helper (falls back to raw key if engine not loaded yet)
+const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : key);
+
 export function initDecisionTree(container) {
   const placeholder = container.querySelector('#dt-placeholder');
   const canvasWrapper = container.querySelector('#dt-canvas-wrapper');
@@ -114,7 +117,7 @@ export function initDecisionTree(container) {
     renderEmpty();
     if (trainBtn) trainBtn.disabled = false;
     if (stepBtn) stepBtn.disabled = false;
-    if (statusEl) statusEl.textContent = 'Reset. Klik Train atau Step untuk membangun tree.';
+    if (statusEl) statusEl.textContent = t('dt.status.reset');
   }
 
   function _legacyFlattenTree(tree) {
@@ -166,8 +169,8 @@ export function initDecisionTree(container) {
           const rightRange = [mid, xRange[1]];
           const leftChild = visit(node.left, id, depth + 1, leftRange);
           const rightChild = visit(node.right, id, depth + 1, rightRange);
-          edges.push({ from: id, to: leftChild.id, label: 'Ya' });
-          edges.push({ from: id, to: rightChild.id, label: 'Tidak' });
+          edges.push({ from: id, to: leftChild.id, label: t('dt.edge.yes') });
+          edges.push({ from: id, to: rightChild.id, label: t('dt.edge.no') });
         }
       }
       return record;
@@ -284,9 +287,9 @@ export function initDecisionTree(container) {
         return;
       }
       if (lastShown.node.type === 'split') {
-        statusEl.textContent = `Node ${stepIndex + 1}: split berdasarkan "${lastShown.node.feature}"`;
+        statusEl.textContent = t('dt.status.nodeSplit', { n: stepIndex + 1, feat: lastShown.node.feature });
       } else {
-        statusEl.textContent = `Leaf ${stepIndex + 1}: prediksi "${lastShown.node.class}" (${lastShown.node.samples} samples)`;
+        statusEl.textContent = t('dt.status.leaf', { n: stepIndex + 1, cls: lastShown.node.class, samples: lastShown.node.samples });
       }
     }
   }
@@ -300,7 +303,7 @@ export function initDecisionTree(container) {
     text.setAttribute('y', 50);
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('fill', '#9aa3b8');
-    text.textContent = 'Tree akan muncul di sini setelah training...';
+    text.textContent = t('dt.status.empty');
     treeSvg.appendChild(text);
   }
 
@@ -308,7 +311,7 @@ export function initDecisionTree(container) {
     const dataset = DATASETS[datasetSelect.value];
     const totalNodes = countNodes(dataset.tree);
     if (stepIndex >= totalNodes - 1) {
-      if (statusEl) statusEl.textContent = 'Tree lengkap! Model sudah dilatih.';
+      if (statusEl) statusEl.textContent = t('dt.status.full');
       return;
     }
     stepIndex++;
@@ -336,7 +339,7 @@ export function initDecisionTree(container) {
     }
     if (trainBtn) trainBtn.disabled = true;
     if (stepBtn) stepBtn.disabled = true;
-    if (statusEl) statusEl.textContent = 'Training dimulai...';
+    if (statusEl) statusEl.textContent = t('dt.status.start');
 
     // Kalau tree sudah lengkap, ulang dari akar supaya animasinya kelihatan
     const initialTotal = countNodes(DATASETS[datasetSelect.value].tree);
@@ -350,7 +353,7 @@ export function initDecisionTree(container) {
         trainingInterval = null;
         if (trainBtn) trainBtn.disabled = false;
         if (stepBtn) stepBtn.disabled = false;
-        if (statusEl) statusEl.textContent = 'Training selesai! Tree lengkap.';
+        if (statusEl) statusEl.textContent = t('dt.status.full');
         return;
       }
       stepIndex++;
@@ -366,14 +369,26 @@ export function initDecisionTree(container) {
     reset();
     if (statusEl) {
       const ds = DATASETS[datasetSelect.value];
-      statusEl.textContent = `Dataset: ${ds.name}. ${ds.description}. Klik Train.`;
+      statusEl.textContent = t('dt.status.dataset', { name: ds.name, desc: t(ds.descKey) });
+    }
+  });
+
+  // Re-render tree + status when language changes (labels are dynamic)
+  window.addEventListener('i18n:change', () => {
+    if (stepIndex >= 0) {
+      renderTree(); // redraw SVG edges/nodes + status in new language
+    } else if (trainingInterval) {
+      if (statusEl) statusEl.textContent = t('dt.status.start');
+    } else {
+      const ds = DATASETS[datasetSelect.value];
+      if (statusEl) statusEl.textContent = t('dt.status.init', { name: ds.name });
     }
   });
 
   // Init
   reset();
   if (statusEl) {
-    statusEl.textContent = `Dataset: ${DATASETS.iris.name}. Klik Train atau Step untuk membangun tree.`;
+    statusEl.textContent = t('dt.status.init', { name: DATASETS.iris.name });
   }
 
   console.info('[decision-tree] initialized');

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>From Algorithms to AI — Slide Deck</title>
-  <meta name="description" content="Slide deck 12 halaman: perjalanan visual dari Algoritma ke Machine Learning ke AI, untuk audiens non-teknis." />
+  <meta name="description" content="A 12-page slide deck: a visual journey from Algorithms to Machine Learning to AI, for non-technical audiences." />
   <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
 
-  <!-- Open Graph untuk preview LinkedIn -->
+  <!-- Open Graph for LinkedIn preview -->
   <meta property="og:title" content="From Algorithms to AI — Slide Deck" />
-  <meta property="og:description" content="Algoritma → Machine Learning → AI, dijelaskan tanpa jargon. 12 slide untuk orang awam." />
+  <meta property="og:description" content="Algorithms → Machine Learning → AI, explained without jargon. 12 slides for everyone." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ibam28.github.io/from-algorithms-to-ai/slides.html" />
   <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="From Algorithms to AI — slide deck 12 halaman" />
-  <meta property="og:locale" content="id_ID" />
+  <meta property="og:image:alt" content="From Algorithms to AI — 12-page slide deck" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="From Algorithms to AI — Slide Deck" />
-  <meta name="twitter:description" content="Algoritma → Machine Learning → AI, dijelaskan tanpa jargon. 12 slide untuk orang awam." />
+  <meta name="twitter:description" content="Algorithms → Machine Learning → AI, explained without jargon. 12 slides for everyone." />
   <meta name="twitter:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css" />
@@ -515,9 +515,44 @@
       .concentric { flex-direction: column; gap: 24px; }
       .reveal .slides section { padding: 0 20px; }
     }
+
+    /* ---------- Language toggle (EN | ID) ---------- */
+    .lang-toggle {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 300;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--c-bg-elevated);
+      font-family: var(--font-mono);
+    }
+    .lang-toggle button {
+      background: transparent;
+      border: none;
+      color: var(--c-muted);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-toggle button:hover { color: var(--c-text); }
+    .lang-toggle button.active {
+      background: var(--c-algorithm);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
+  <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+    <button data-lang-btn="en" class="active" aria-pressed="true">EN</button>
+    <button data-lang-btn="id" aria-pressed="false">ID</button>
+  </div>
   <div class="reveal">
     <div class="slides">
 
@@ -525,14 +560,14 @@
            SLIDE 1 — Title
            ============================================================ -->
       <section class="title-slide">
-        <p class="eyebrow">Portfolio Project · 2026</p>
+        <p class="eyebrow" data-i18n="sl.s1.eyebrow">Portfolio Project · 2026</p>
         <h1 class="gradient-title">From Algorithms to AI</h1>
-        <p class="journey">📐 Algoritma &nbsp;→&nbsp; 🤖 Machine Learning &nbsp;→&nbsp; ✨ AI</p>
-        <p class="tagline">
-          Penjelasan visual untuk orang awam — tanpa jargon, tanpa hype.<br />
-          Kita mulai dari yang paling familiar, lalu berjalan pelan-pelan ke AI.
+        <p class="journey" data-i18n="sl.s1.journey" data-i18n-html>📐 Algorithms &nbsp;→&nbsp; 🤖 Machine Learning &nbsp;→&nbsp; ✨ AI</p>
+        <p class="tagline" data-i18n="sl.s1.tagline" data-i18n-html>
+          Visual explanations for everyone — no jargon, no hype.<br />
+          We start from what you already know, then walk gently into AI.
         </p>
-        <p class="byline">oleh <strong>@ibam28</strong> · Full Stack + AI Engineer</p>
+        <p class="byline" data-i18n="sl.s1.byline" data-i18n-html>by <strong>@ibam28</strong> · Full Stack + AI Engineer</p>
 
         <aside class="notes">
           Buka dengan tenang. Jangan buru-buru. Tujuan slide ini: menurunkan ekspektasi
@@ -545,33 +580,33 @@
            SLIDE 2 — Hook
            ============================================================ -->
       <section>
-        <p class="eyebrow">Pertanyaan pembuka</p>
-        <h2>"AI", "Machine Learning", "Algoritma" — bedanya apa?</h2>
-        <p style="font-size: 0.72em; color: var(--c-muted); max-width: 900px;">
-          Tiga istilah ini sering dipakai bergantian, padahal artinya berbeda.
-          Akibatnya banyak orang bingung — dan sebagian jadi takut sama AI.
+        <p class="eyebrow" data-i18n="sl.s2.eyebrow">Opening question</p>
+        <h2 data-i18n="sl.s2.title">"AI", "Machine Learning", "Algorithms" — what's the difference?</h2>
+        <p style="font-size: 0.72em; color: var(--c-muted); max-width: 900px;" data-i18n="sl.s2.intro">
+          These three terms are used interchangeably, but they mean different things.
+          As a result, many people are confused — and some are even scared of AI.
         </p>
 
         <div class="cards-3">
           <div class="card algorithm">
             <div class="card-icon">📐</div>
-            <h3>Algoritma</h3>
-            <p>Langkah-langkah pasti untuk menyelesaikan masalah.</p>
+            <h3 data-i18n="sl.s2.c1.t">Algorithms</h3>
+            <p data-i18n="sl.s2.c1.d">Definite steps to solve a problem.</p>
           </div>
           <div class="card ml">
             <div class="card-icon">🤖</div>
-            <h3>Machine Learning</h3>
-            <p>Cara komputer <em>belajar dari data</em> alih-alih diberi aturan.</p>
+            <h3 data-i18n="sl.s2.c2.t">Machine Learning</h3>
+            <p data-i18n="sl.s2.c2.d" data-i18n-html>How computers <em>learn from data</em> instead of being given rules.</p>
           </div>
           <div class="card ai">
             <div class="card-icon">✨</div>
-            <h3>AI</h3>
-            <p>Payung paling luas: mesin yang bertindak "cerdas".</p>
+            <h3 data-i18n="sl.s2.c3.t">AI</h3>
+            <p data-i18n="sl.s2.c3.d">The widest umbrella: machines that act "intelligently".</p>
           </div>
         </div>
 
-        <p style="font-size: 0.65em; color: var(--c-muted); margin-top: 0.8em;">
-          Kita akan jelajahi satu per satu — mulai dari yang paling akrab.
+        <p style="font-size: 0.65em; color: var(--c-muted); margin-top: 0.8em;" data-i18n="sl.s2.outro">
+          We'll explore each one — starting with what's most familiar.
         </p>
 
         <aside class="notes">
@@ -581,34 +616,34 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 3 — Algoritma = Resep
+           SLIDE 3 — Algorithms = Recipe
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 1 · Algoritma</p>
-        <h2>Algoritma itu seperti resep masakan</h2>
+        <p class="eyebrow" data-i18n="sl.s3.eyebrow">Part 1 · Algorithms</p>
+        <h2 data-i18n="sl.s3.title">An algorithm is like a recipe</h2>
 
         <div class="analogy">
           <div>
             <div class="quote-box">
-              <p>
+              <p data-i18n="sl.s3.quote" data-i18n-html>
                 <span class="quote-mark">"</span>
-                Langkah-langkah pasti: <strong>aduk 5 menit</strong>,
-                <strong>panggang 180°C</strong>, <strong>tunggu 20 menit</strong>.
-                Ikuti urutannya, hasilnya bisa diprediksi.
+                Definite steps: <strong>stir 5 minutes</strong>,
+                <strong>bake at 180°C</strong>, <strong>wait 20 minutes</strong>.
+                Follow the order, and the result is predictable.
               </p>
             </div>
             <ul class="steps">
-              <li><span class="step-num">1</span><div class="step-body">Input: bahan-bahan</div></li>
-              <li><span class="step-num">2</span><div class="step-body">Proses: langkah yang jelas dan berurutan</div></li>
-              <li><span class="step-num">3</span><div class="step-body">Output: makanan yang bisa diprediksi</div></li>
+              <li><span class="step-num">1</span><div class="step-body" data-i18n="sl.s3.step1">Input: the ingredients</div></li>
+              <li><span class="step-num">2</span><div class="step-body" data-i18n="sl.s3.step2">Process: clear, ordered steps</div></li>
+              <li><span class="step-num">3</span><div class="step-body" data-i18n="sl.s3.step3">Output: a predictable meal</div></li>
             </ul>
           </div>
           <div class="analogy-visual">📐 ➜ 🍳</div>
         </div>
 
-        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
-          <strong>Poin kunci:</strong> algoritma bukan cuma untuk komputer. Resep, rute perjalanan,
-          cara menghitung kembalian — semuanya algoritma.
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;" data-i18n="sl.s3.point" data-i18n-html>
+          <strong>Key point:</strong> algorithms are not just for computers. Recipes, routes,
+          counting change — those are algorithms too.
         </p>
 
         <aside class="notes">
@@ -619,35 +654,35 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 4 — Algoritma di sekitar kita
+           SLIDE 4 — Algorithms around us
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 1 · Algoritma</p>
-        <h2>Kamu pakai algoritma setiap hari</h2>
-        <p style="font-size: 0.7em; color: var(--c-muted);">
-          Tanpa sadar, algoritma mengatur banyak hal di hidupmu.
+        <p class="eyebrow" data-i18n="sl.s4.eyebrow">Part 1 · Algorithms</p>
+        <h2 data-i18n="sl.s4.title">You use algorithms every day</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);" data-i18n="sl.s4.intro">
+          Without realizing it, algorithms run a lot of your life.
         </p>
 
         <div class="cards-2">
           <div class="card algorithm">
             <div class="card-icon">📱</div>
-            <h3>TikTok / Instagram</h3>
-            <p>Algoritma ranking memilih video apa yang muncul di feed-mu.</p>
+            <h3 data-i18n="sl.s4.c1.t">TikTok / Instagram</h3>
+            <p data-i18n="sl.s4.c1.d">A ranking algorithm picks which videos appear in your feed.</p>
           </div>
           <div class="card algorithm">
             <div class="card-icon">🗺️</div>
-            <h3>Google Maps</h3>
-            <p>Menghitung rute tercepat lewat ribuan kemungkinan jalan.</p>
+            <h3 data-i18n="sl.s4.c2.t">Google Maps</h3>
+            <p data-i18n="sl.s4.c2.d">Computes the fastest route across thousands of possible paths.</p>
           </div>
           <div class="card algorithm">
             <div class="card-icon">🎵</div>
-            <h3>Spotify</h3>
-            <p>Mengacak lagu (shuffle) dengan aturan yang adil.</p>
+            <h3 data-i18n="sl.s4.c3.t">Spotify</h3>
+            <p data-i18n="sl.s4.c3.d">Shuffles songs with a fair random rule.</p>
           </div>
           <div class="card algorithm">
             <div class="card-icon">🏦</div>
-            <h3>Bank</h3>
-            <p>Mengurutkan transaksi, menghitung bunga, mendeteksi anomali.</p>
+            <h3 data-i18n="sl.s4.c4.t">Banking</h3>
+            <p data-i18n="sl.s4.c4.d">Sorts transactions, calculates interest, flags anomalies.</p>
           </div>
         </div>
 
@@ -659,34 +694,34 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 5 — ML: koki yang belajar
+           SLIDE 5 — ML: the chef who learns
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 2 · Machine Learning</p>
-        <h2>ML itu koki yang belajar dari 10.000 percobaan</h2>
+        <p class="eyebrow" data-i18n="sl.s5.eyebrow">Part 2 · Machine Learning</p>
+        <h2 data-i18n="sl.s5.title">ML is a chef who learns from 10,000 tries</h2>
 
         <div class="quote-box" style="border-left-color: var(--c-ml);">
-          <p>
+          <p data-i18n="sl.s5.quote" data-i18n-html>
             <span class="quote-mark">"</span>
-            Koki ini <strong>tidak membaca resep</strong>. Dia memasak,
-            mencoba, gagal, memperbaiki — ribuan kali. Lama-lama dia tahu
-            sendiri: "kalau adonannya begini, harus dipanggang segini".
+            This chef <strong>doesn't read recipes</strong>. They cook,
+            try, fail, improve — thousands of times. Eventually they just know:
+            "if the batter is like this, bake it this long".
           </p>
         </div>
 
         <div class="cards-2" style="margin-top: 0.4em;">
           <div class="card">
-            <h3 style="color: var(--c-muted);">Algoritma biasa</h3>
-            <p>Diberi <strong>aturan</strong> → mengikuti aturan → hasil.</p>
+            <h3 style="color: var(--c-muted);" data-i18n="sl.s5.c1.t">A regular algorithm</h3>
+            <p data-i18n="sl.s5.c1.d" data-i18n-html>Given <strong>rules</strong> → follows them → result.</p>
           </div>
           <div class="card ml">
-            <h3 style="color: var(--c-ml);">Machine Learning</h3>
-            <p>Diberi <strong>data + jawaban</strong> → menemukan aturannya sendiri → hasil.</p>
+            <h3 style="color: var(--c-ml);" data-i18n="sl.s5.c2.t">Machine Learning</h3>
+            <p data-i18n="sl.s5.c2.d" data-i18n-html>Given <strong>data + answers</strong> → discovers its own rules → result.</p>
           </div>
         </div>
 
-        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
-          <strong>Inilah pembeda utamanya:</strong> aturan vs data.
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;" data-i18n="sl.s5.point" data-i18n-html>
+          <strong>This is the core difference:</strong> rules vs data.
         </p>
 
         <aside class="notes">
@@ -698,35 +733,35 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 6 — ML di kehidupan sehari-hari
+           SLIDE 6 — ML in everyday life
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 2 · Machine Learning</p>
-        <h2>Kamu juga sudah pakai ML setiap hari</h2>
-        <p style="font-size: 0.7em; color: var(--c-muted);">
-          Bedanya dengan algoritma biasa: ML <em>belajar</em> dari pola, bukan dari aturan tetap.
+        <p class="eyebrow" data-i18n="sl.s6.eyebrow">Part 2 · Machine Learning</p>
+        <h2 data-i18n="sl.s6.title">You already use ML every day</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);" data-i18n="sl.s6.intro" data-i18n-html>
+          Unlike regular algorithms, ML <em>learns</em> from patterns instead of fixed rules.
         </p>
 
         <div class="cards-2">
           <div class="card ml">
             <div class="card-icon">📧</div>
-            <h3>Filter spam email</h3>
-            <p>Belajar dari jutaan email: mana yang spam, mana yang bukan.</p>
+            <h3 data-i18n="sl.s6.c1.t">Spam filter</h3>
+            <p data-i18n="sl.s6.c1.d">Learns from millions of emails: which are spam, which are not.</p>
           </div>
           <div class="card ml">
             <div class="card-icon">🎬</div>
-            <h3>Rekomendasi film</h3>
-            <p>Belajar dari tontonanmu dan orang lain yang mirip kamu.</p>
+            <h3 data-i18n="sl.s6.c2.t">Movie recommendations</h3>
+            <p data-i18n="sl.s6.c2.d">Learns from what you watch and from people like you.</p>
           </div>
           <div class="card ml">
             <div class="card-icon">💳</div>
-            <h3>Deteksi fraud</h3>
-            <p>Belajar pola transaksi normal, lalu menandai yang mencurigakan.</p>
+            <h3 data-i18n="sl.s6.c3.t">Fraud detection</h3>
+            <p data-i18n="sl.s6.c3.d">Learns normal transaction patterns, then flags suspicious ones.</p>
           </div>
           <div class="card ml">
             <div class="card-icon">🏠</div>
-            <h3>Prediksi harga rumah</h3>
-            <p>Belajar dari ribuan transaksi: lokasi, luas, tahun, harga.</p>
+            <h3 data-i18n="sl.s6.c4.t">House price prediction</h3>
+            <p data-i18n="sl.s6.c4.d">Learns from thousands of sales: location, size, year, price.</p>
           </div>
         </div>
 
@@ -738,20 +773,20 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 7 — AI: restoran pintar
+           SLIDE 7 — AI: smart restaurant
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 3 · AI</p>
-        <h2>AI itu restoran pintar</h2>
+        <p class="eyebrow" data-i18n="sl.s7.eyebrow">Part 3 · AI</p>
+        <h2 data-i18n="sl.s7.title">AI is a smart restaurant</h2>
 
         <div class="analogy">
           <div>
             <div class="quote-box" style="border-left-color: var(--c-ai);">
-              <p>
+              <p data-i18n="sl.s7.quote" data-i18n-html>
                 <span class="quote-mark">"</span>
-                Kalau ML adalah <strong>koki</strong> yang belajar memasak,
-                AI adalah <strong>seluruh restoran</strong>: koki + pelayan yang paham
-                pesanan + kasir yang kenali wajah + manajer yang atur jadwal.
+                If ML is the <strong>chef</strong> who learns to cook,
+                AI is the <strong>whole restaurant</strong>: the chef + a waiter who understands
+                orders + a cashier who recognizes faces + a manager who schedules.
               </p>
             </div>
           </div>
@@ -760,21 +795,21 @@
 
         <div class="cards-3" style="margin-top: 0.4em;">
           <div class="card ml">
-            <h3>🤖 Koki</h3>
-            <p>ML — belajar dari data</p>
+            <h3 data-i18n="sl.s7.c1.t">🤖 Chef</h3>
+            <p data-i18n="sl.s7.c1.d">ML — learns from data</p>
           </div>
           <div class="card ai">
-            <h3>💬 Pelayan</h3>
-            <p>NLP — paham bahasa manusia</p>
+            <h3 data-i18n="sl.s7.c2.t">💬 Waiter</h3>
+            <p data-i18n="sl.s7.c2.d">NLP — understands human language</p>
           </div>
           <div class="card ai">
-            <h3>👁️ Kasir</h3>
-            <p>Computer Vision — kenali gambar</p>
+            <h3 data-i18n="sl.s7.c3.t">👁️ Cashier</h3>
+            <p data-i18n="sl.s7.c3.d">Computer Vision — recognizes images</p>
           </div>
         </div>
 
-        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
-          <strong>AI = payung paling luas.</strong> ML adalah salah satu cara untuk mencapai AI — bukan satu-satunya.
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;" data-i18n="sl.s7.point" data-i18n-html>
+          <strong>AI is the widest umbrella.</strong> ML is one path to AI — not the only one.
         </p>
 
         <aside class="notes">
@@ -785,30 +820,30 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 8 — Timeline AI
+           SLIDE 8 — AI timeline
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 3 · AI</p>
-        <h2>AI bukan hal baru — sudah 70+ tahun</h2>
+        <p class="eyebrow" data-i18n="sl.s8.eyebrow">Part 3 · AI</p>
+        <h2 data-i18n="sl.s8.title">AI isn't new — it's 70+ years old</h2>
 
         <ul class="timeline">
-          <li class="algo">
-            <span class="year">1950</span> Alan Turing mengusulkan "Turing Test" — bisakah mesin menipu manusia?
+          <li class="algo" data-i18n="sl.s8.i1" data-i18n-html>
+            <span class="year">1950</span> Alan Turing proposes the "Turing Test" — can a machine fool a human?
           </li>
-          <li class="algo">
-            <span class="year">1956</span> Konferensi Dartmouth — istilah "Artificial Intelligence" resmi lahir.
+          <li class="algo" data-i18n="sl.s8.i2" data-i18n-html>
+            <span class="year">1956</span> Dartmouth Conference — the term "Artificial Intelligence" is officially born.
           </li>
-          <li class="algo">
-            <span class="year">1997</span> Deep Blue (IBM) mengalahkan juara catur dunia Garry Kasparov.
+          <li class="algo" data-i18n="sl.s8.i3" data-i18n-html>
+            <span class="year">1997</span> Deep Blue (IBM) beats world chess champion Garry Kasparov.
           </li>
-          <li class="ml">
-            <span class="year">2012</span> AlexNet menang besar di kompetisi ImageNet — era <em>deep learning</em> dimulai.
+          <li class="ml" data-i18n="sl.s8.i4" data-i18n-html>
+            <span class="year">2012</span> AlexNet wins ImageNet in a landslide — the <em>deep learning</em> era begins.
           </li>
-          <li class="ml">
-            <span class="year">2017</span> Arsitektur <em>Transformer</em> diperkenalkan — fondasi model bahasa modern.
+          <li class="ml" data-i18n="sl.s8.i5" data-i18n-html>
+            <span class="year">2017</span> The <em>Transformer</em> architecture is introduced — the foundation of modern language models.
           </li>
-          <li class="highlight">
-            <span class="year">2022</span> ChatGPT membawa AI generatif ke jutaan orang awam dalam hitungan minggu.
+          <li class="highlight" data-i18n="sl.s8.i6" data-i18n-html>
+            <span class="year">2022</span> ChatGPT brings generative AI to millions of regular people in weeks.
           </li>
         </ul>
 
@@ -821,30 +856,30 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 9 — Hubungan ketiganya
+           SLIDE 9 — The relationship
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 4 · Hubungan</p>
-        <h2>Jadi, bagaimana ketiganya berhubungan?</h2>
+        <p class="eyebrow" data-i18n="sl.s9.eyebrow">Part 4 · Relationship</p>
+        <h2 data-i18n="sl.s9.title">So how do the three relate?</h2>
 
         <div class="concentric">
           <div class="diagram">
-            <div class="ring ring-ai">AI</div>
-            <div class="ring ring-ml">ML</div>
-            <div class="ring ring-algo">Algoritma</div>
+            <div class="ring ring-ai" data-i18n="sl.s9.ring.ai">AI</div>
+            <div class="ring ring-ml" data-i18n="sl.s9.ring.ml">ML</div>
+            <div class="ring ring-algo" data-i18n="sl.s9.ring.algo">Algorithms</div>
           </div>
           <div class="legend">
-            <div><span class="dot dot-ai"></span><strong>AI</strong> — paling luas: mesin bertindak "cerdas"</div>
-            <div><span class="dot dot-ml"></span><strong>Machine Learning</strong> — subset AI: belajar dari data</div>
-            <div><span class="dot dot-algo"></span><strong>Algoritma</strong> — alat yang dipakai ML untuk bekerja</div>
-            <div style="margin-top: 12px; color: var(--c-muted);">
-              <strong style="color: var(--c-success);">Symbolic AI</strong> — di dalam AI, tapi di luar ML (aturan if-then buatan manusia).
+            <div data-i18n="sl.s9.leg.ai" data-i18n-html><span class="dot dot-ai"></span><strong>AI</strong> — widest: machines acting "intelligently"</div>
+            <div data-i18n="sl.s9.leg.ml" data-i18n-html><span class="dot dot-ml"></span><strong>Machine Learning</strong> — subset of AI: learns from data</div>
+            <div data-i18n="sl.s9.leg.algo" data-i18n-html><span class="dot dot-algo"></span><strong>Algorithms</strong> — the tool ML uses to work</div>
+            <div style="margin-top: 12px; color: var(--c-muted);" data-i18n="sl.s9.leg.sym" data-i18n-html>
+              <strong style="color: var(--c-success);">Symbolic AI</strong> — inside AI, outside ML (human-written if-then rules).
             </div>
           </div>
         </div>
 
-        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
-          <strong>Bukan garis lurus — tapi hirarki:</strong> Algoritma ⊂ ML ⊂ AI.
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;" data-i18n="sl.s9.point" data-i18n-html>
+          <strong>Not a straight line — a hierarchy:</strong> Algorithms ⊂ ML ⊂ AI.
         </p>
 
         <aside class="notes">
@@ -858,37 +893,37 @@
            SLIDE 10 — Nuance / counter-examples
            ============================================================ -->
       <section>
-        <p class="eyebrow">Bagian 4 · Hubungan</p>
-        <h2>Supaya tidak salah paham</h2>
-        <p style="font-size: 0.7em; color: var(--c-muted);">
-          Tiga counter-example yang menunjukkan kita tidak menyederhanakan berlebihan.
+        <p class="eyebrow" data-i18n="sl.s10.eyebrow">Part 4 · Relationship</p>
+        <h2 data-i18n="sl.s10.title">To avoid misunderstanding</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);" data-i18n="sl.s10.intro">
+          Three counter-examples showing we aren't oversimplifying.
         </p>
 
         <table class="counter-table">
           <thead>
             <tr>
-              <th>Contoh</th>
-              <th>Membuktikan</th>
+              <th data-i18n="sl.s10.h1">Example</th>
+              <th data-i18n="sl.s10.h2">Proves</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Symbolic AI</strong> (expert system, rule-based)</td>
-              <td>AI <strong>bisa tanpa ML</strong> — aturan ditulis manusia, bukan dipelajari.</td>
+              <td data-i18n="sl.s10.r1c1" data-i18n-html><strong>Symbolic AI</strong> (expert system, rule-based)</td>
+              <td data-i18n="sl.s10.r1c2" data-i18n-html>AI <strong>can exist without ML</strong> — rules written by humans, not learned.</td>
             </tr>
             <tr>
-              <td><strong>Algoritma kuantum</strong> (Shor's algorithm)</td>
-              <td>Algoritma <strong>bisa tanpa AI</strong> — alat murni matematika.</td>
+              <td data-i18n="sl.s10.r2c1" data-i18n-html><strong>Quantum algorithm</strong> (Shor's algorithm)</td>
+              <td data-i18n="sl.s10.r2c2" data-i18n-html>Algorithms <strong>can exist without AI</strong> — pure math tools.</td>
             </tr>
             <tr>
-              <td><strong>Linear regression</strong> klasik</td>
-              <td>Algoritma statistik yang <strong>dipakai ML</strong>, tapi ML bukan cuma itu.</td>
+              <td data-i18n="sl.s10.r3c1" data-i18n-html><strong>Classic linear regression</strong></td>
+              <td data-i18n="sl.s10.r3c2" data-i18n-html>A statistical algorithm <strong>used by ML</strong>, but ML is much more than that.</td>
             </tr>
           </tbody>
         </table>
 
-        <p style="font-size: 0.6em; color: var(--c-muted); margin-top: 0.6em;">
-          Ini alasan kita pakai <strong>hirarki</strong>, bukan sekadar daftar.
+        <p style="font-size: 0.6em; color: var(--c-muted); margin-top: 0.6em;" data-i18n="sl.s10.point" data-i18n-html>
+          This is why we use a <strong>hierarchy</strong>, not just a list.
         </p>
 
         <aside class="notes">
@@ -903,15 +938,15 @@
            ============================================================ -->
       <section>
         <div class="cta-box">
-          <p class="eyebrow" style="margin-bottom: 0.6em;">Coba sendiri</p>
-          <h2 class="gradient-title">Semua ini berjalan di browser-mu</h2>
-          <p>
-            Tidak ada server. Tidak ada API rahasia. Kamu bisa latih model ML asli
-            langsung dari HP atau laptop — dan lihat sendiri hasilnya.
+          <p class="eyebrow" style="margin-bottom: 0.6em;" data-i18n="sl.s11.eyebrow">Try it yourself</p>
+          <h2 class="gradient-title" data-i18n="sl.s11.title">All of this runs in your browser</h2>
+          <p data-i18n="sl.s11.intro">
+            No server. No secret API. You can train a real ML model right from
+            your phone or laptop — and see the results yourself.
           </p>
-          <p style="margin-bottom: 1.2em;">
-            <strong style="color: var(--c-ml);">Demo MNIST:</strong> latih CNN pengenal angka,
-            lalu gambar angka apa pun dan lihat prediksinya.
+          <p style="margin-bottom: 1.2em;" data-i18n="sl.s11.demo" data-i18n-html>
+            <strong style="color: var(--c-ml);">MNIST demo:</strong> train a CNN that recognizes digits,
+            then draw any digit and watch it predict.
           </p>
           <span class="url">ibam28.github.io/from-algorithms-to-ai</span>
         </div>
@@ -925,24 +960,24 @@
       </section>
 
       <!-- ============================================================
-           SLIDE 12 — Penutup
+           SLIDE 12 — Closing
            ============================================================ -->
       <section>
-        <p class="eyebrow">Penutup</p>
-        <h2>Empat hal untuk dibawa pulang</h2>
+        <p class="eyebrow" data-i18n="sl.s12.eyebrow">Closing</p>
+        <h2 data-i18n="sl.s12.title">Four things to take home</h2>
 
         <ul class="insights">
-          <li><span class="check">✓</span><div><strong>AI = tujuan, ML = salah satu cara, Algoritma = alat.</strong></div></li>
-          <li><span class="check">✓</span><div><strong>ML belajar dari data</strong> — bukan dari aturan yang ditulis manusia.</div></li>
-          <li><span class="check">✓</span><div><strong>Algoritma bukan cuma untuk komputer</strong> — resep masakan pun algoritma.</div></li>
-          <li><span class="check">✓</span><div><strong>ML bukan magic</strong> — di baliknya ada matematika, statistik, dan data.</div></li>
+          <li><span class="check">✓</span><div data-i18n="sl.s12.i1" data-i18n-html><strong>AI = the goal, ML = one of the ways, Algorithms = the tool.</strong></div></li>
+          <li><span class="check">✓</span><div data-i18n="sl.s12.i2" data-i18n-html><strong>ML learns from data</strong> — not from rules written by humans.</div></li>
+          <li><span class="check">✓</span><div data-i18n="sl.s12.i3" data-i18n-html><strong>Algorithms aren't just for computers</strong> — a recipe is an algorithm too.</div></li>
+          <li><span class="check">✓</span><div data-i18n="sl.s12.i4" data-i18n-html><strong>ML isn't magic</strong> — behind it are math, statistics, and data.</div></li>
         </ul>
 
-        <p style="font-size: 0.7em; color: var(--c-muted); text-align: center; margin-top: 1.2em;">
-          Terima kasih.<br />
+        <p style="font-size: 0.7em; color: var(--c-muted); text-align: center; margin-top: 1.2em;" data-i18n="sl.s12.thanks" data-i18n-html>
+          Thank you.<br />
           <strong>Bambang Saputra Jaya</strong> · @ibam28 · Full Stack + AI Engineer
         </p>
-        <p style="font-size: 0.55em; color: var(--c-muted); text-align: center;">
+        <p style="font-size: 0.55em; color: var(--c-muted); text-align: center;" data-i18n="sl.s12.repo" data-i18n-html>
           Repo: <code>github.com/ibam28/from-algorithms-to-ai</code>
         </p>
 
@@ -958,6 +993,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script src="website/js/i18n.js"></script>
   <script>
     Reveal.initialize({
       hash: true,

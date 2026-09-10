@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>From Algorithms to AI — Website Interaktif</title>
-  <meta name="description" content="Penjelasan visual & interaktif hubungan Algoritma → Machine Learning → AI. Dengan demo algoritma sorting, decision tree, dan visualisasi yang berjalan di browser." />
+  <title>From Algorithms to AI — Interactive Website</title>
+  <meta name="description" content="Visual & interactive explanations of how Algorithms → Machine Learning → AI connect. With sorting animation, a decision tree trainer, and browser-based visualizations." />
   <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
 
-  <!-- Open Graph untuk LinkedIn preview -->
-  <meta property="og:title" content="From Algorithms to AI — Penjelasan Interaktif" />
-  <meta property="og:description" content="Visualisasi interaktif hubungan Algoritma, ML, dan AI. Sorting animasi, decision tree, dan penjelasan untuk semua kalangan." />
+  <!-- Open Graph for LinkedIn preview -->
+  <meta property="og:title" content="From Algorithms to AI — Interactive Explanations" />
+  <meta property="og:description" content="Interactive visualizations of how Algorithms, ML, and AI connect. Animated sorting, decision tree, and explanations for everyone." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ibam28.github.io/from-algorithms-to-ai/website/" />
   <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="From Algorithms to AI — website interaktif dengan visualisasi dan demo ML" />
-  <meta property="og:locale" content="id_ID" />
+  <meta property="og:image:alt" content="From Algorithms to AI — interactive website with visualizations and an ML demo" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="From Algorithms to AI — Website Interaktif" />
-  <meta name="twitter:description" content="Visualisasi interaktif hubungan Algoritma, ML, dan AI. Plus demo ML yang berjalan di browser." />
+  <meta name="twitter:title" content="From Algorithms to AI — Interactive Website" />
+  <meta name="twitter:description" content="Interactive visualizations of how Algorithms, ML, and AI connect. Plus a real ML demo that runs in your browser." />
   <meta name="twitter:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/sections.css" />
 </head>
 <body class="website">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link" data-i18n="st.skip">Skip to main content</a>
 
   <nav class="website-nav" aria-label="Main navigation">
     <div class="website-nav-inner">
@@ -36,83 +36,87 @@
         🧠 From Algorithms to AI
       </a>
       <ul class="website-nav-links">
-        <li><a href="#section-algorithms">📐 Algoritma</a></li>
-        <li><a href="#section-ml">🤖 ML</a></li>
-        <li><a href="#section-ai">✨ AI</a></li>
-        <li><a href="#section-hubungan">🔗 Hubungan</a></li>
+        <li><a href="#section-algorithms" data-i18n="st.nav.algo">📐 Algorithms</a></li>
+        <li><a href="#section-ml" data-i18n="st.nav.ml">🤖 ML</a></li>
+        <li><a href="#section-ai" data-i18n="st.nav.ai">✨ AI</a></li>
+        <li><a href="#section-hubungan" data-i18n="st.nav.relation">🔗 Relationship</a></li>
       </ul>
-      <a href="../index.html" class="website-nav-back" aria-label="Kembali ke landing page">← Landing</a>
+      <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+        <button data-lang-btn="en" class="active" aria-pressed="true">EN</button>
+        <button data-lang-btn="id" aria-pressed="false">ID</button>
+      </div>
+      <a href="../index.html" class="website-nav-back" data-i18n-aria="st.nav.backAria" aria-label="Back to landing page" data-i18n="st.nav.back">← Landing</a>
     </div>
   </nav>
 
   <main id="main-content" class="website-main">
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <p class="landing-eyebrow">Interactive Walkthrough · 2026</p>
+      <p class="landing-eyebrow" data-i18n="st.hero.eyebrow">Interactive Walkthrough · 2026</p>
       <h1>From Algorithms to AI</h1>
-      <p>
-        Perjalanan visual dari <strong>Algoritma</strong> (resep masakan) →
-        <strong>Machine Learning</strong> (koki yang belajar) →
-        <strong>AI</strong> (restoran pintar).
+      <p data-i18n="st.hero.tagline" data-i18n-html>
+        A visual journey from <strong>Algorithms</strong> (a recipe) →
+        <strong>Machine Learning</strong> (a chef who learns) →
+        <strong>AI</strong> (a smart restaurant).
       </p>
-      <p class="hero-note">
-        Scroll ke bawah untuk eksplorasi. Setiap section punya demo interaktif.
+      <p class="hero-note" data-i18n="st.hero.note">
+        Scroll down to explore. Every section has an interactive demo.
       </p>
     </section>
 
-    <!-- ============ SECTION 1: ALGORITMA ============ -->
+    <!-- ============ SECTION 1: ALGORITHMS ============ -->
     <section id="section-algorithms" class="section section-anchor" aria-labelledby="h-algorithms">
       <header class="section-header">
         <span class="section-number">01</span>
-        <h2 id="h-algorithms" class="section-title">📐 Algoritma</h2>
+        <h2 id="h-algorithms" class="section-title">📐 Algorithms</h2>
       </header>
-      <p class="section-subtitle">
-        Langkah-langkah pasti untuk menyelesaikan masalah. <em>Resep masakan</em> dunia komputasi.
+      <p class="section-subtitle" data-i18n="st.s1.subtitle" data-i18n-html>
+        Definite steps to solve a problem. The <em>recipe</em> of computing.
       </p>
 
       <div class="analogy-box analogy-box-algorithm">
-        <h4>🍳 Analogi Dapur</h4>
-        <p>
-          Algoritma itu seperti <strong>resep masakan</strong>: "Panaskan minyak 2 menit,
-          tumis bawang putih, masukkan nasi, aduk 3 menit." Setiap langkah jelas, pasti selesai,
-          dan bisa diulang dengan hasil yang konsisten.
+        <h4 data-i18n="st.s1.analogy.title">🍳 Kitchen Analogy</h4>
+        <p data-i18n="st.s1.analogy.text" data-i18n-html>
+          An algorithm is like a <strong>recipe</strong>: "Heat oil for 2 minutes, sauté the garlic,
+          add the rice, stir for 3 minutes." Every step is clear, it always finishes, and you can
+          repeat it with consistent results.
         </p>
       </div>
 
-      <h3>5 Sifat Algoritma yang Baik</h3>
+      <h3 data-i18n="st.s1.props.title">5 Properties of a Good Algorithm</h3>
       <div class="property-grid">
         <div class="property-card">
           <div class="property-num">1</div>
-          <h4>Input</h4>
-          <p>Ada data awal yang diberikan</p>
+          <h4 data-i18n="st.s1.props.1">Input</h4>
+          <p data-i18n="st.s1.props.1d">Some starting data is provided</p>
         </div>
         <div class="property-card">
           <div class="property-num">2</div>
-          <h4>Output</h4>
-          <p>Menghasilkan sesuatu</p>
+          <h4 data-i18n="st.s1.props.2">Output</h4>
+          <p data-i18n="st.s1.props.2d">Produces something</p>
         </div>
         <div class="property-card">
           <div class="property-num">3</div>
-          <h4>Definite</h4>
-          <p>Tidak ambigu, langkah jelas</p>
+          <h4 data-i18n="st.s1.props.3">Definite</h4>
+          <p data-i18n="st.s1.props.3d">Unambiguous, clear steps</p>
         </div>
         <div class="property-card">
           <div class="property-num">4</div>
-          <h4>Finite</h4>
-          <p>Pasti berhenti (bukan loop tanpa akhir)</p>
+          <h4 data-i18n="st.s1.props.4">Finite</h4>
+          <p data-i18n="st.s1.props.4d">Always stops (no infinite loop)</p>
         </div>
         <div class="property-card">
           <div class="property-num">5</div>
-          <h4>Effective</h4>
-          <p>Bisa dijalankan dengan sumber daya masuk akal</p>
+          <h4 data-i18n="st.s1.props.5">Effective</h4>
+          <p data-i18n="st.s1.props.5d">Runs with reasonable resources</p>
         </div>
       </div>
 
-      <h3>🎮 Demo: Sorting Visualizer</h3>
-      <p>
-        Lihat dua algoritma sorting populer berjalan step-by-step. Bandingkan
-        <strong>bubble sort</strong> (sederhana tapi lambat) dengan <strong>merge sort</strong>
-        (lebih kompleks tapi cepat).
+      <h3 data-i18n="st.s1.demo.title">🎮 Demo: Sorting Visualizer</h3>
+      <p data-i18n="st.s1.demo.intro" data-i18n-html>
+        Watch two popular sorting algorithms run step by step. Compare
+        <strong>bubble sort</strong> (simple but slow) with <strong>merge sort</strong>
+        (more complex but fast).
       </p>
 
       <figure class="viz-container" id="viz-sorting" data-viz="sorting" aria-labelledby="sorting-desc">
@@ -121,19 +125,19 @@
         </div>
         <div class="viz-controls" role="toolbar" aria-label="Sorting controls">
           <div class="control-group">
-            <label for="sorting-algo">Algoritma:</label>
+            <label for="sorting-algo" data-i18n="st.s1.algo">Algorithm:</label>
             <select id="sorting-algo" class="btn btn-secondary">
               <option value="bubble">Bubble Sort</option>
               <option value="merge">Merge Sort</option>
             </select>
           </div>
           <div class="control-group">
-            <label for="sorting-size">Ukuran:</label>
+            <label for="sorting-size" data-i18n="st.s1.size">Size:</label>
             <input type="range" id="sorting-size" min="10" max="100" value="40" />
             <span id="sorting-size-val" class="control-value">40</span>
           </div>
           <div class="control-group">
-            <label for="sorting-speed">Kecepatan:</label>
+            <label for="sorting-speed" data-i18n="st.s1.speed">Speed:</label>
             <input type="range" id="sorting-speed" min="1" max="100" value="50" />
             <span id="sorting-speed-val" class="control-value">50</span>
           </div>
@@ -144,23 +148,22 @@
             <button id="sorting-shuffle" class="btn btn-secondary">🔀 Shuffle</button>
           </div>
         </div>
-        <div class="viz-status" id="sorting-status" aria-live="polite">
-          Siap. Klik <strong>Start</strong> untuk memulai.
+        <div class="viz-status" id="sorting-status" aria-live="polite" data-i18n="st.s1.status.ready" data-i18n-html>
+          Ready. Click <strong>Start</strong> to begin.
         </div>
         <div class="viz-stats" aria-hidden="false">
-          <span>Perbandingan: <strong id="sorting-comparisons">0</strong></span>
-          <span>Pertukaran: <strong id="sorting-swaps">0</strong></span>
+          <span data-i18n="st.s1.stat.comp">Comparisons: <strong id="sorting-comparisons">0</strong></span>
+          <span data-i18n="st.s1.stat.swap">Swaps: <strong id="sorting-swaps">0</strong></span>
         </div>
-        <figcaption id="sorting-desc" class="viz-caption">
-          <strong>Apa yang terjadi:</strong> Visualisasi dua algoritma sorting. Bar berwarna
-          menunjukkan nilai yang sedang dibandingkan. Bubble sort bekerja dengan membandingkan
-          elemen bersebelahan, sedangkan merge sort membagi data jadi dua dan menggabungkan
-          secara terurut. Untuk dataset besar, merge sort jauh lebih cepat.
+        <figcaption id="sorting-desc" class="viz-caption" data-i18n="st.s1.caption" data-i18n-html>
+          <strong>What is happening:</strong> A visualization of two sorting algorithms. Colored bars
+          show the values being compared. Bubble sort compares adjacent elements, while merge sort
+          splits the data in two and merges it back in order. For large datasets, merge sort is much faster.
         </figcaption>
       </figure>
 
       <div class="learn-more">
-        <a href="../docs/01-algoritma.md" class="btn btn-secondary">📖 Baca penjelasan lengkap →</a>
+        <a href="../docs/01-algoritma.md" class="btn btn-secondary" data-i18n="st.s1.learn">📖 Read the full explanation →</a>
       </div>
     </section>
 
@@ -170,78 +173,78 @@
         <span class="section-number">02</span>
         <h2 id="h-ml" class="section-title">🤖 Machine Learning</h2>
       </header>
-      <p class="section-subtitle">
-        Mesin yang <em>belajar dari data</em>, bukan dari aturan yang ditulis tangan.
-        <em>Koki yang belajar dari 10.000 percobaan</em>.
+      <p class="section-subtitle" data-i18n="st.s2.subtitle" data-i18n-html>
+        Machines that <em>learn from data</em>, not from hand-written rules.
+        The <em>chef who learns from 10,000 tries</em>.
       </p>
 
       <div class="analogy-box analogy-box-ml">
-        <h4>🍳 Analogi Dapur</h4>
-        <p>
-          Kalau algoritma biasa = koki yang cuma bisa masak dari resep,
-          <strong>ML</strong> = koki yang <strong>belajar dari ribuan percobaan</strong>.
-          Dia diberikan contoh-contoh masakan + ratingnya, lalu dia sendiri menemukan
-          pola "resep enak" — dan bisa bikin variasi baru yang kemungkinan besar juga enak.
+        <h4 data-i18n="st.s2.analogy.title">🍳 Kitchen Analogy</h4>
+        <p data-i18n="st.s2.analogy.text" data-i18n-html>
+          If a regular algorithm is a chef who only cooks from recipes,
+          <strong>ML</strong> is a chef who <strong>learns from thousands of attempts</strong>.
+          Give them examples of dishes plus ratings, and they discover the "good recipe" pattern —
+          and can invent new variations that are likely to taste great too.
         </p>
       </div>
 
-      <h3>Bedanya dengan Programming Tradisional</h3>
+      <h3 data-i18n="st.s2.vs.title">Difference from Traditional Programming</h3>
       <div class="comparison-table-wrapper">
         <table class="comparison-table">
           <thead>
             <tr>
-              <th>Aspek</th>
-              <th>Programming Tradisional</th>
-              <th>Machine Learning</th>
+              <th data-i18n="st.s2.vs.h.aspect">Aspect</th>
+              <th data-i18n="st.s2.vs.h.trad">Traditional Programming</th>
+              <th data-i18n="st.s2.vs.h.ml">Machine Learning</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Input</td>
-              <td>Data + Aturan</td>
-              <td>Data + Jawaban benar</td>
+              <td><strong data-i18n="st.s2.vs.input">Input</strong></td>
+              <td data-i18n="st.s2.vs.input.t">Data + Rules</td>
+              <td data-i18n="st.s2.vs.input.m">Data + Correct answers</td>
             </tr>
             <tr>
-              <td>Output</td>
-              <td>Jawaban</td>
-              <td>Aturan (model)</td>
+              <td><strong data-i18n="st.s2.vs.output">Output</strong></td>
+              <td data-i18n="st.s2.vs.output.t">Answers</td>
+              <td data-i18n="st.s2.vs.output.m">Rules (a model)</td>
             </tr>
             <tr>
-              <td>Siapa cari pola?</td>
-              <td>Programmer</td>
-              <td>Algoritma ML</td>
+              <td data-i18n="st.s2.vs.who">Who finds the pattern?</td>
+              <td data-i18n="st.s2.vs.who.t">The programmer</td>
+              <td data-i18n="st.s2.vs.who.m">The ML algorithm</td>
             </tr>
             <tr>
-              <td>Update aturan</td>
-              <td>Edit kode manual</td>
-              <td>Training ulang dengan data baru</td>
+              <td data-i18n="st.s2.vs.update">Updating rules</td>
+              <td data-i18n="st.s2.vs.update.t">Edit code manually</td>
+              <td data-i18n="st.s2.vs.update.m">Retrain with new data</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3>🌳 Demo: Decision Tree Trainer</h3>
-      <p>
-        Decision tree adalah salah satu algoritma ML yang paling intuitif — dia membuat
-        keputusan dengan bertanya "kondisi A terpenuhi? Ya → cabang kiri, Tidak → cabang kanan".
-        Demo ini menunjukkan pohon keputusan yang <em>tumbuh</em> saat model belajar dari data.
+      <h3 data-i18n="st.s2.demo.title">🌳 Demo: Decision Tree Trainer</h3>
+      <p data-i18n="st.s2.demo.intro" data-i18n-html>
+        A decision tree is one of the most intuitive ML algorithms — it makes decisions by asking
+        "is condition A met? Yes → left branch, No → right branch". This demo shows a tree that
+        <em>grows</em> as the model learns from data.
       </p>
 
       <figure class="viz-container" id="viz-decision-tree" data-viz="decision-tree" aria-labelledby="dt-desc">
         <div class="viz-placeholder" id="dt-placeholder">
           <div class="viz-placeholder-icon">🌳</div>
           <p class="viz-placeholder-text">
-            Decision tree trainer siap. Scroll untuk memuat visualisasi...
+            Decision tree trainer ready. Scroll to load the visualization…
           </p>
-          <button class="btn viz-load-btn" id="dt-load-btn">Muat Visualisasi</button>
+          <button class="btn viz-load-btn" id="dt-load-btn">Load Visualization</button>
         </div>
         <div class="viz-canvas-wrapper" id="dt-canvas-wrapper" hidden>
           <div class="viz-controls" role="toolbar" aria-label="Decision tree controls">
             <div class="control-group">
-              <label for="dt-dataset">Dataset:</label>
+              <label for="dt-dataset" data-i18n="st.s2.dataset">Dataset:</label>
               <select id="dt-dataset" class="btn btn-secondary">
-                <option value="iris">Iris (klasifikasi bunga)</option>
-                <option value="play">Play Tennis (klasifikasi biner)</option>
+                <option value="iris" data-i18n="st.s2.dataset.iris">Iris (flower classification)</option>
+                <option value="play" data-i18n="st.s2.dataset.play">Play Tennis (binary classification)</option>
               </select>
             </div>
             <div class="control-group">
@@ -253,32 +256,32 @@
           <div class="dt-tree-wrapper">
             <svg id="dt-tree" class="dt-tree-svg" aria-hidden="true"></svg>
           </div>
-          <div class="viz-status" id="dt-status" aria-live="polite">
-            Pilih dataset lalu klik <strong>Train</strong>.
+          <div class="viz-status" id="dt-status" aria-live="polite" data-i18n="st.s2.status.ready" data-i18n-html>
+            Pick a dataset, then click <strong>Train</strong>.
           </div>
         </div>
-        <figcaption id="dt-desc" class="viz-caption">
-          <strong>Apa yang terjadi:</strong> Decision tree membagi data berdasarkan pertanyaan
-          ya/tidak. Setiap node adalah pertanyaan, setiap daun adalah prediksi. Pohon yang baik
-          memisahkan kelas berbeda secara efisien.
+        <figcaption id="dt-desc" class="viz-caption" data-i18n="st.s2.caption" data-i18n-html>
+          <strong>What is happening:</strong> A decision tree splits data by yes/no questions.
+          Each node is a question, each leaf is a prediction. A good tree separates different
+          classes efficiently.
         </figcaption>
       </figure>
 
       <div class="ml-demo-cta">
         <div class="cta-content">
-          <h3>🚀 Ingin Coba ML yang Berjalan di Browser?</h3>
-          <p>
-            Buka demo TensorFlow.js: <strong>train CNN digit recognizer</strong> dari nol,
-            lalu gambar angka-mu sendiri dan lihat prediksi model secara real-time.
+          <h3 data-i18n="st.s2.cta.title">🚀 Want to Try ML Running in Your Browser?</h3>
+          <p data-i18n="st.s2.cta.text" data-i18n-html>
+            Open the TensorFlow.js demo: <strong>train a CNN digit recognizer</strong> from scratch,
+            then draw your own digits and watch the model predict in real time.
           </p>
-          <a href="js/ml-demo/mnist.html" class="btn btn-primary">
-            🎯 Buka MNIST Demo →
+          <a href="js/ml-demo/mnist.html" class="btn btn-primary" data-i18n="st.s2.cta.btn">
+            🎯 Open MNIST Demo →
           </a>
         </div>
       </div>
 
       <div class="learn-more">
-        <a href="../docs/02-machine-learning.md" class="btn btn-secondary">📖 Baca penjelasan lengkap →</a>
+        <a href="../docs/02-machine-learning.md" class="btn btn-secondary" data-i18n="st.s2.learn">📖 Read the full explanation →</a>
       </div>
     </section>
 
@@ -288,25 +291,25 @@
         <span class="section-number">03</span>
         <h2 id="h-ai" class="section-title">✨ Artificial Intelligence</h2>
       </header>
-      <p class="section-subtitle">
-        Mesin yang bertindak "cerdas". <em>Restoran pintar</em> — koki, pelayan, kasir, manajer,
-        semuanya adalah sistem AI.
+      <p class="section-subtitle" data-i18n="st.s3.subtitle" data-i18n-html>
+        Machines that act "intelligently". The <em>smart restaurant</em> — chef, waiter, cashier,
+        manager, all AI systems.
       </p>
 
       <div class="analogy-box analogy-box-ai">
-        <h4>🍳 Analogi Dapur</h4>
-        <p>
-          AI bukan cuma satu hal — dia nama <strong>payung</strong> untuk banyak subsistem:
-          👨‍🍳 <strong>koki ML</strong> adaptif, 🗣️ <strong>pelayan NLP</strong> yang paham bahasa,
-          👁️ <strong>kasir CV</strong> yang kenali wajah, 📊 <strong>manajer planning</strong>
-          yang optimal. Semua bekerja sama.
+        <h4 data-i18n="st.s3.analogy.title">🍳 Kitchen Analogy</h4>
+        <p data-i18n="st.s3.analogy.text" data-i18n-html>
+          AI is not one thing — it is an <strong>umbrella</strong> name for many subsystems:
+          👨‍🍳 <strong>ML chef</strong> that adapts, 🗣️ <strong>NLP waiter</strong> that understands
+          language, 👁️ <strong>CV cashier</strong> that recognizes faces, 📊 <strong>planning manager</strong>
+          that optimizes. All working together.
         </p>
       </div>
 
-      <h3>📅 Timeline AI: 1950 → 2024</h3>
-      <p>
-        AI sudah ada sejak 1950-an. Bukan hal baru — yang berubah adalah
-        <strong>komputasi</strong> dan <strong>data</strong> yang memungkinkan ide lama akhirnya berjalan.
+      <h3 data-i18n="st.s3.timeline.title">📅 AI Timeline: 1950 → 2024</h3>
+      <p data-i18n="st.s3.timeline.intro" data-i18n-html>
+        AI has existed since the 1950s. It is nothing new — what changed is the
+        <strong>computing power</strong> and <strong>data</strong> that finally let old ideas run.
       </p>
 
       <figure class="viz-container" id="viz-timeline" data-viz="timeline" aria-labelledby="timeline-desc">
@@ -314,190 +317,192 @@
           <div class="timeline-event">
             <div class="timeline-year">1950</div>
             <div class="timeline-content">
-              <h4>Turing Test</h4>
-              <p>Alan Turing publishes paper yang mengusulkan cara menguji kecerdasan mesin.</p>
+              <h4 data-i18n="st.s3.tl.1950.t">Turing Test</h4>
+              <p data-i18n="st.s3.tl.1950.d">Alan Turing publishes a paper proposing a way to test machine intelligence.</p>
             </div>
           </div>
           <div class="timeline-event">
             <div class="timeline-year">1956</div>
             <div class="timeline-content">
-              <h4>Istilah "AI" Lahir</h4>
-              <p>Dartmouth Conference — istilah "Artificial Intelligence" diciptakan.</p>
+              <h4 data-i18n="st.s3.tl.1956.t">The Term "AI" Is Born</h4>
+              <p data-i18n="st.s3.tl.1956.d">Dartmouth Conference — the term "Artificial Intelligence" is coined.</p>
             </div>
           </div>
           <div class="timeline-event">
             <div class="timeline-year">1997</div>
             <div class="timeline-content">
-              <h4>Deep Blue Kalahkan Kasparov</h4>
-              <p>IBM's Deep Blue menang catur melawan juara dunia — AI publik.</p>
+              <h4 data-i18n="st.s3.tl.1997.t">Deep Blue Beats Kasparov</h4>
+              <p data-i18n="st.s3.tl.1997.d">IBM's Deep Blue wins chess against the world champion — AI goes public.</p>
             </div>
           </div>
           <div class="timeline-event">
             <div class="timeline-year">2012</div>
             <div class="timeline-content">
-              <h4>Deep Learning Naik</h4>
-              <p>AlexNet menang ImageNet — revolusi deep learning dimulai.</p>
+              <h4 data-i18n="st.s3.tl.2012.t">Deep Learning Rises</h4>
+              <p data-i18n="st.s3.tl.2012.d">AlexNet wins ImageNet — the deep learning revolution begins.</p>
             </div>
           </div>
           <div class="timeline-event">
             <div class="timeline-year">2017</div>
             <div class="timeline-content">
-              <h4>Transformer Lahir</h4>
-              <p>Paper "Attention is All You Need" — arsitektur untuk era LLM.</p>
+              <h4 data-i18n="st.s3.tl.2017.t">The Transformer Is Born</h4>
+              <p data-i18n="st.s3.tl.2017.d">The "Attention Is All You Need" paper — the architecture behind the LLM era.</p>
             </div>
           </div>
           <div class="timeline-event">
             <div class="timeline-year">2022</div>
             <div class="timeline-content">
-              <h4>ChatGPT Launched</h4>
-              <p>AI generatif masuk ke publik mainstream. Era baru dimulai.</p>
+              <h4 data-i18n="st.s3.tl.2022.t">ChatGPT Launches</h4>
+              <p data-i18n="st.s3.tl.2022.d">Generative AI reaches the mainstream public. A new era begins.</p>
             </div>
           </div>
         </div>
-        <figcaption id="timeline-desc" class="viz-caption">
-          <strong>Timeline:</strong> Bukan linier naik — ada beberapa "AI Winter" di mana
-          ekspektasi tidak terpenuhi dan funding turun. Tapi secara umum, kemampuan AI
-          meningkat dengan ketersediaan data & komputasi.
+        <figcaption id="timeline-desc" class="viz-caption" data-i18n="st.s3.tl.caption" data-i18n-html>
+          <strong>Timeline:</strong> Not a straight line upward — there were several "AI Winters" where
+          expectations were not met and funding dropped. But overall, AI capability kept rising with
+          more data and compute.
         </figcaption>
       </figure>
 
-      <h3>Cabang-cabang AI</h3>
+      <h3 data-i18n="st.s3.branches.title">Branches of AI</h3>
       <div class="branch-grid">
         <div class="branch-card">
           <div class="branch-icon">🧠</div>
-          <h4>Machine Learning</h4>
-          <p>Sistem yang belajar dari data</p>
+          <h4 data-i18n="st.s3.branch.ml">Machine Learning</h4>
+          <p data-i18n="st.s3.branch.ml.d">Systems that learn from data</p>
         </div>
         <div class="branch-card">
           <div class="branch-icon">🗣️</div>
-          <h4>NLP</h4>
-          <p>Memahami & menghasilkan bahasa manusia</p>
+          <h4 data-i18n="st.s3.branch.nlp">NLP</h4>
+          <p data-i18n="st.s3.branch.nlp.d">Understand and generate human language</p>
         </div>
         <div class="branch-card">
           <div class="branch-icon">👁️</div>
-          <h4>Computer Vision</h4>
-          <p>"Melihat" dan memahami gambar</p>
+          <h4 data-i18n="st.s3.branch.cv">Computer Vision</h4>
+          <p data-i18n="st.s3.branch.cv.d">"See" and understand images</p>
         </div>
         <div class="branch-card">
           <div class="branch-icon">🤖</div>
-          <h4>Robotics</h4>
-          <p>AI yang menggerakkan fisik</p>
+          <h4 data-i18n="st.s3.branch.robo">Robotics</h4>
+          <p data-i18n="st.s3.branch.robo.d">AI that moves physical machines</p>
         </div>
         <div class="branch-card">
           <div class="branch-icon">📊</div>
-          <h4>Planning</h4>
-          <p>Merencanakan urutan aksi</p>
+          <h4 data-i18n="st.s3.branch.plan">Planning</h4>
+          <p data-i18n="st.s3.branch.plan.d">Plan sequences of actions</p>
         </div>
         <div class="branch-card">
           <div class="branch-icon">📋</div>
-          <h4>Expert Systems</h4>
-          <p>AI berbasis aturan (rule-based)</p>
+          <h4 data-i18n="st.s3.branch.expert">Expert Systems</h4>
+          <p data-i18n="st.s3.branch.expert.d">Rule-based AI</p>
         </div>
       </div>
 
       <div class="learn-more">
-        <a href="../docs/03-artificial-intelligence.md" class="btn btn-secondary">📖 Baca penjelasan lengkap →</a>
+        <a href="../docs/03-artificial-intelligence.md" class="btn btn-secondary" data-i18n="st.s3.learn">📖 Read the full explanation →</a>
       </div>
     </section>
 
-    <!-- ============ SECTION 4: HUBUNGAN ============ -->
+    <!-- ============ SECTION 4: RELATIONSHIP ============ -->
     <section id="section-hubungan" class="section section-anchor" aria-labelledby="h-hubungan">
       <header class="section-header">
         <span class="section-number">04</span>
-        <h2 id="h-hubungan" class="section-title">🔗 Hubungan Ketiganya</h2>
+        <h2 id="h-hubungan" class="section-title">🔗 How the Three Relate</h2>
       </header>
-      <p class="section-subtitle">
-        Gimana Algoritma, ML, dan AI saling terkait — dan di mana mereka tidak sama.
+      <p class="section-subtitle" data-i18n="st.s4.subtitle">
+        How Algorithms, ML, and AI relate — and where they differ.
       </p>
 
-      <h3>🎯 Diagram Konsentris Interaktif</h3>
-      <p>
-        Klik salah satu lingkaran untuk melihat detailnya. AI adalah yang paling luas,
-        Machine Learning subset-nya, Algoritma alat yang dipakai keduanya.
+      <h3 data-i18n="st.s4.diagram.title">🎯 Interactive Concentric Diagram</h3>
+      <p data-i18n="st.s4.diagram.intro">
+        Click a circle to see the details. AI is the widest, Machine Learning is a subset,
+        Algorithms are the tool both use.
       </p>
 
       <figure class="viz-container" id="viz-relationship" data-viz="relationship" aria-labelledby="rel-desc">
         <div class="rel-diagram-wrapper">
-          <svg class="rel-svg" id="rel-svg" viewBox="0 0 600 400" aria-hidden="false" role="img" aria-label="Concentric circles showing AI, ML, dan Algoritma">
-            <title>Algoritma ⊂ ML ⊂ AI (dengan Symbolic AI sebagai AI tanpa ML)</title>
-            <!-- Lingkaran akan di-inject via JS -->
+          <svg class="rel-svg" id="rel-svg" viewBox="0 0 600 400" aria-hidden="false" role="img" data-i18n-aria="st.s4.rel.svgAria" aria-label="Concentric circles showing AI, ML, and Algorithms">
+            <title data-i18n="st.s4.rel.svgTitle">Algorithms ⊂ ML ⊂ AI (with Symbolic AI as AI without ML)</title>
+            <!-- Circles injected via JS -->
           </svg>
           <div class="rel-info-panel" id="rel-info-panel">
-            <h4 id="rel-info-title">Pilih salah satu lingkaran</h4>
-            <p id="rel-info-desc">Klik AI, ML, atau Algoritma untuk lihat detail.</p>
+            <h4 id="rel-info-title" data-i18n="st.s4.rel.title">Pick a circle</h4>
+            <p id="rel-info-desc" data-i18n="st.s4.rel.desc">Click AI, ML, or Algorithms to see details.</p>
           </div>
         </div>
-        <figcaption id="rel-desc" class="viz-caption">
-          <strong>Diagram:</strong> AI = lingkaran terluar (paling luas). ML = di dalam AI
-          (subset). Algoritma = di dalam ML (alat). Symbolic AI = di dalam AI tapi di luar ML
-          (AI tanpa ML — rule-based).
+        <figcaption id="rel-desc" class="viz-caption" data-i18n="st.s4.rel.caption" data-i18n-html>
+          <strong>Diagram:</strong> AI = outer circle (widest). ML = inside AI (subset).
+          Algorithms = inside ML (the tool). Symbolic AI = inside AI but outside ML
+          (AI without ML — rule-based).
         </figcaption>
       </figure>
 
-      <h3>📊 Tabel Perbandingan</h3>
+      <h3 data-i18n="st.s4.cmp.title">📊 Comparison Table</h3>
       <div class="comparison-table-wrapper">
         <table class="comparison-table">
           <thead>
             <tr>
-              <th>Aspek</th>
-              <th>Algoritma</th>
-              <th>Machine Learning</th>
-              <th>AI</th>
+              <th data-i18n="st.s4.cmp.h.aspect">Aspect</th>
+              <th data-i18n="st.s4.cmp.h.algo">Algorithms</th>
+              <th data-i18n="st.s4.cmp.h.ml">Machine Learning</th>
+              <th data-i18n="st.s4.cmp.h.ai">AI</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Apa?</strong></td>
-              <td>Langkah-langkah pasti</td>
-              <td>Belajar dari data</td>
-              <td>Mesin bertindak "cerdas"</td>
+              <td data-i18n="st.s4.cmp.what" data-i18n-html><strong>What?</strong></td>
+              <td data-i18n="st.s4.cmp.what.a">Definite steps</td>
+              <td data-i18n="st.s4.cmp.what.m">Learn from data</td>
+              <td data-i18n="st.s4.cmp.what.i">Machines acting "intelligently"</td>
             </tr>
             <tr>
-              <td><strong>Tujuan</strong></td>
-              <td>Selesaikan masalah</td>
-              <td>Temukan pola</td>
-              <td>Perilaku cerdas</td>
+              <td data-i18n="st.s4.cmp.goal" data-i18n-html><strong>Goal</strong></td>
+              <td data-i18n="st.s4.cmp.goal.a">Solve a problem</td>
+              <td data-i18n="st.s4.cmp.goal.m">Find patterns</td>
+              <td data-i18n="st.s4.cmp.goal.i">Intelligent behavior</td>
             </tr>
             <tr>
-              <td><strong>Contoh</strong></td>
-              <td>Sortir array</td>
-              <td>Filter spam</td>
-              <td>Self-driving car</td>
+              <td data-i18n="st.s4.cmp.ex" data-i18n-html><strong>Example</strong></td>
+              <td data-i18n="st.s4.cmp.ex.a">Sorting an array</td>
+              <td data-i18n="st.s4.cmp.ex.m">Spam filter</td>
+              <td data-i18n="st.s4.cmp.ex.i">Self-driving car</td>
             </tr>
             <tr>
-              <td><strong>Tahun mulai</strong></td>
-              <td>300 SM (Euclid)</td>
-              <td>1950-an</td>
-              <td>1950-an</td>
+              <td data-i18n="st.s4.cmp.year" data-i18n-html><strong>Since</strong></td>
+              <td data-i18n="st.s4.cmp.year.a">300 BC (Euclid)</td>
+              <td data-i18n="st.s4.cmp.year.m">1950s</td>
+              <td data-i18n="st.s4.cmp.year.i">1950s</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="callout-box">
-        <h4>💡 Satu Kalimat untuk Diingat</h4>
-        <p>
-          <strong>AI = tujuan, ML = salah satu cara, Algoritma = alat yang dipakai keduanya.</strong>
+        <h4 data-i18n="st.s4.callout.title">💡 One Sentence to Remember</h4>
+        <p data-i18n="st.s4.callout.text" data-i18n-html>
+          <strong>AI = the goal, ML = one of the ways, Algorithms = the tool both use.</strong>
         </p>
       </div>
 
       <div class="learn-more">
-        <a href="../docs/04-hubungan-ketiganya.md" class="btn btn-secondary">📖 Baca penjelasan lengkap →</a>
+        <a href="../docs/04-hubungan-ketiganya.md" class="btn btn-secondary" data-i18n="st.s4.learn">📖 Read the full explanation →</a>
       </div>
     </section>
   </main>
 
   <footer class="website-footer">
-    <p>
-      Dibuat oleh <a href="https://github.com/ibam28"><strong>@ibam28</strong></a> ·
+    <p data-i18n="st.footer" data-i18n-html>
+      Built by <a href="https://github.com/ibam28"><strong>@ibam28</strong></a> ·
       Full Stack Developer &amp; AI Engineer ·
-      <a href="../index.html">← Kembali ke landing</a>
+      <a href="../index.html">← Back to landing</a>
     </p>
-    <p class="footer-tech">
-      Dibangun dengan vanilla JS, HTML, CSS · Zero framework · Source terbuka (MIT)
+    <p class="footer-tech" data-i18n="st.footer.tech">
+      Built with vanilla JS, HTML, CSS · Zero framework · Open source (MIT)
     </p>
   </footer>
 
+  <!-- i18n engine (must load before app.js) -->
+  <script src="js/i18n.js"></script>
   <!-- Main SPA controller -->
   <script type="module" src="js/app.js"></script>
 </body>

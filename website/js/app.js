@@ -9,6 +9,9 @@
 // ---------- Cache untuk lazy-loaded modules ----------
 const moduleCache = {};
 
+// ---------- i18n helper (fallback ke raw key) ----------
+const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : key);
+
 // ---------- D3 lazy loader ----------
 function loadD3() {
   if (!moduleCache.d3) {
@@ -117,9 +120,9 @@ function showVizError(container, vizName, err) {
     placeholder.innerHTML = `
       <div class="viz-placeholder-icon">⚠️</div>
       <p class="viz-placeholder-text">
-        Visualisasi "${vizName}" gagal dimuat.
+        ${t('app.viz.failed', { name: vizName })}
       </p>
-      <button class="btn viz-retry-btn">Coba Lagi</button>
+      <button class="btn viz-retry-btn">${t('app.viz.retry')}</button>
       <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.6;">
         ${err.message || 'Unknown error'}
       </p>

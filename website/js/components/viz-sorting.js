@@ -8,6 +8,9 @@
 
 let state = null;
 
+// i18n helper (falls back to raw key if engine not loaded yet)
+const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : key);
+
 /**
  * Initialize sorting visualizer.
  * @param {HTMLElement} container - The figure element with id="viz-sorting"
@@ -147,7 +150,7 @@ export function initSorting(container) {
         highlights.indices = [j, j + 1];
         highlights.color = '#ffb84d'; // comparing
         comparisons++;
-        setStatus(`Bubble sort: membandingkan index ${j} dan ${j + 1} (nilai ${array[j]} vs ${array[j + 1]})`);
+        setStatus(t('sort.status.bubbleCompare', { i: j, j: j + 1, a: array[j], b: array[j + 1] }));
         updateStats();
         draw();
         await stepDelay();
@@ -157,20 +160,20 @@ export function initSorting(container) {
           [array[j], array[j + 1]] = [array[j + 1], array[j]];
           swaps++;
           swapped = true;
-          setStatus(`Bubble sort: menukar index ${j} dan ${j + 1}`);
+          setStatus(t('sort.status.bubbleSwap', { i: j, j: j + 1 }));
           updateStats();
           draw();
           await stepDelay();
         }
       }
       if (!swapped) {
-        setStatus('Bubble sort: tidak ada pertukaran — array sudah terurut!');
+        setStatus(t('sort.status.bubbleNoSwap'));
         break;
       }
     }
     highlights.indices = [];
     draw();
-    setStatus(`Selesai! ${comparisons.toLocaleString()} perbandingan, ${swaps.toLocaleString()} pertukaran.`);
+    setStatus(t('sort.status.done', { c: comparisons.toLocaleString(), s: swaps.toLocaleString() }));
   }
 
   // ---------- Merge Sort ----------
@@ -191,7 +194,7 @@ export function initSorting(container) {
       highlights.indices = [i, j];
       highlights.color = '#ffb84d';
       comparisons++;
-      setStatus(`Merge sort: membandingkan index ${i} (${array[i]}) dan ${j} (${array[j]})`);
+      setStatus(t('sort.status.mergeCompare', { i, j, a: array[i], b: array[j] }));
       updateStats();
       draw();
       await stepDelay();
@@ -238,11 +241,11 @@ export function initSorting(container) {
     isPaused = false;
     startBtn.disabled = true;
     pauseBtn.disabled = false;
-    pauseBtn.textContent = '⏸ Pause';
+    pauseBtn.textContent = t('sort.btn.pause');
     algoSelect.disabled = true;
     shuffleBtn.disabled = true;
     sizeInput.disabled = true;
-    setStatus(`Memulai ${algo} sort...`);
+    setStatus(t('sort.status.start', { algo: t('sort.algo.' + algo) }));
 
     (async () => {
       try {
@@ -269,8 +272,8 @@ export function initSorting(container) {
   function pauseSort() {
     if (!isRunning) return;
     isPaused = !isPaused;
-    pauseBtn.textContent = isPaused ? '▶ Lanjut' : '⏸ Pause';
-    setStatus(isPaused ? 'Dijeda.' : 'Dilanjutkan.');
+    pauseBtn.textContent = t(isPaused ? 'sort.btn.resume' : 'sort.btn.pause');
+    setStatus(t(isPaused ? 'sort.status.paused' : 'sort.status.resumed'));
   }
 
   function resetSort() {
@@ -282,18 +285,18 @@ export function initSorting(container) {
     highlights.indices = [];
     startBtn.disabled = false;
     pauseBtn.disabled = true;
-    pauseBtn.textContent = '⏸ Pause';
+    pauseBtn.textContent = t('sort.btn.pause');
     algoSelect.disabled = false;
     shuffleBtn.disabled = false;
     sizeInput.disabled = false;
-    setStatus('Reset. Klik Start untuk memulai lagi.');
+    setStatus(t('sort.status.reset'));
     draw();
   }
 
   function shuffleArray() {
     if (isRunning) return;
     generateArray(parseInt(sizeInput.value));
-    setStatus('Array di-shuffle. Klik Start untuk memulai.');
+    setStatus(t('sort.status.shuffled'));
     draw();
   }
 
@@ -317,12 +320,33 @@ export function initSorting(container) {
 
   algoSelect?.addEventListener('change', () => {
     if (!isRunning) {
-      setStatus(`Algoritma diganti ke ${algoSelect.value === 'bubble' ? 'Bubble Sort' : 'Merge Sort'}. Klik Start.`);
+      setStatus(t('sort.status.changed', { algo: t('sort.algo.' + algoSelect.value) }));
     }
   });
 
   window.addEventListener('resize', () => {
     setupCanvas();
+  });
+
+  // Re-render status + button labels when language changes (no restart needed)
+  window.addEventListener('i18n:change', () => {
+    pauseBtn.textContent = t(isPaused ? 'sort.btn.resume' : 'sort.btn.pause');
+    // Re-run current status in the new language (safe: no side effects)
+    if (isRunning) {
+      if (algoSelect.value === 'bubble' && highlights.indices.length >= 2) {
+        // Keep last compare message generic to avoid stale indices
+        setStatus(t('sort.status.bubbleCompare', {
+          i: highlights.indices[0] ?? 0,
+          j: highlights.indices[1] ?? 1,
+          a: array[highlights.indices[0]] ?? '?',
+          b: array[highlights.indices[1]] ?? '?',
+        }));
+      } else {
+        setStatus(t('sort.status.start', { algo: t('sort.algo.' + algoSelect.value) }));
+      }
+    } else {
+      setStatus(t('sort.status.reset'));
+    }
   });
 
   // ---------- Init ----------

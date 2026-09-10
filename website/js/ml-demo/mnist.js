@@ -20,6 +20,9 @@ const state = {
   presetSamples: null, // [{digit: 0, pixels: Float32Array(784)}, ...]
 };
 
+// i18n helper (falls back to raw key if engine not loaded yet)
+const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : key);
+
 // =====================================================
 //  TF.JS LOADER (lazy, with loading overlay)
 // =====================================================
@@ -32,14 +35,14 @@ async function loadTFJS() {
   overlay.hidden = false;
 
   try {
-    message.textContent = 'Memuat TensorFlow.js...';
+    message.textContent = t('mn.tfjs.loading');
     const tf = await import('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');
-    message.textContent = 'TensorFlow.js siap!';
+    message.textContent = t('mn.tfjs.ready');
     overlay.hidden = true;
     console.info('[mnist] TF.js loaded, version:', tf.version.tfjs);
     return tf;
   } catch (err) {
-    message.textContent = 'Gagal memuat TensorFlow.js';
+    message.textContent = t('mn.tfjs.failed');
     message.style.color = '#ff6b6b';
     throw err;
   }
@@ -154,7 +157,7 @@ async function loadFromCDN(tf, numTrain, numTest) {
     testXs: testXTensor,
     testYs: testYTensor,
     presetSamples,
-    source: 'CDN (Google TF.js storage)',
+    sourceKey: 'mn.source.cdn',
   };
 }
 
@@ -211,7 +214,7 @@ function generateSyntheticData(tf, numTrain, numTest) {
     testXs: testXTensor,
     testYs: testYTensor,
     presetSamples: [],
-    source: 'Synthetic fallback (CDN unavailable)',
+    sourceKey: 'mn.source.synthetic',
   };
 }
 
@@ -273,7 +276,7 @@ async function trainModel(tf, epochs = 3) {
   progressWrapper.hidden = false;
   document.getElementById('training-stats').hidden = false;
   logEl.innerHTML = '';
-  statusEl.textContent = 'Memulai training...';
+  statusEl.textContent = t('mn.training.start');
   epochTotal.textContent = epochs;
 
   const startTime = performance.now();
@@ -302,9 +305,7 @@ async function trainModel(tf, epochs = 3) {
         epochCurrent.textContent = epoch + 1;
         lossEl.textContent = logs.loss.toFixed(4);
         accEl.textContent = (logs.acc * 100).toFixed(1) + '%';
-        const valAcc = logs.val_acc ? ` | val_acc: ${(logs.val_acc * 100).toFixed(1)}%` : '';
-        const valLoss = logs.val_loss ? `, val_loss: ${logs.val_loss.toFixed(4)}` : '';
-        addLog(`Epoch ${epoch + 1}/${epochs} — loss: ${logs.loss.toFixed(4)}${valLoss}, acc: ${(logs.acc * 100).toFixed(1)}%${valAcc}`, 'epoch-end');
+        addLog(t('mn.log.epoch', { epoch: epoch + 1, total: epochs, loss: logs.loss.toFixed(4), valLoss: logs.val_loss ? `, val_loss: ${logs.val_loss.toFixed(4)}` : '', acc: (logs.acc * 100).toFixed(1), valAcc: logs.val_acc ? ` | val_acc: ${(logs.val_acc * 100).toFixed(1)}%` : '' }), 'epoch-end');
       },
     },
   });
@@ -313,15 +314,15 @@ async function trainModel(tf, epochs = 3) {
   state.isTraining = false;
   state.isModelTrained = true;
   trainBtn.disabled = false;
-  trainBtn.textContent = '↻ Retrain';
-  statusEl.textContent = `Selesai dalam ${((performance.now() - startTime) / 1000).toFixed(1)}s`;
+  trainBtn.textContent = t('mn.train.retrain');
+  statusEl.textContent = t('mn.training.time', { s: ((performance.now() - startTime) / 1000).toFixed(1) });
   progressBar.style.width = '100%';
   progressLabel.textContent = '100%';
-  addLog(`✓ Training complete! Model siap untuk prediksi.`, 'training-complete');
+  addLog(t('mn.log.complete'), 'training-complete');
 
   // Enable predict button
   predictBtn.disabled = false;
-  predictionStatus.textContent = 'Model siap! Gambar angka lalu klik Prediksi.';
+  predictionStatus.textContent = t('mn.training.done');
 }
 
 function addLog(text, className = '') {
@@ -411,7 +412,7 @@ function setupCanvas() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     document.getElementById('prediction-result').hidden = true;
     document.getElementById('prediction-status').textContent =
-      'Klik Prediksi untuk melihat hasil.';
+      t('mn.predict.hint');
   });
 
   // Brush size
@@ -428,7 +429,7 @@ function setupCanvas() {
 // =====================================================
 async function predictFromCanvas() {
   if (!state.isModelTrained) {
-    alert('Latih model dulu!');
+    alert(t('mn.predict.notrained'));
     return;
   }
 
@@ -441,7 +442,7 @@ async function predictFromCanvas() {
   const previewCanvas = document.getElementById('preview-canvas');
   const statusEl = document.getElementById('prediction-status');
 
-  statusEl.textContent = 'Memprediksi...';
+  statusEl.textContent = t('mn.predict.working');
   resultEl.hidden = false;
 
   // 1. Resize 280x280 canvas to 28x28
@@ -478,7 +479,7 @@ async function predictFromCanvas() {
   // 7. Render results
   const top = top3[0];
   digitEl.textContent = top.digit;
-  confEl.textContent = `${(top.prob * 100).toFixed(1)}% confidence`;
+  confEl.textContent = t('mn.predict.confidence', { pct: (top.prob * 100).toFixed(1) });
 
   top3El.innerHTML = '';
   top3.forEach((item, idx) => {
@@ -514,7 +515,7 @@ async function predictFromCanvas() {
   previewCtx.imageSmoothingEnabled = false;
   previewCtx.drawImage(scaledCanvas, 0, 0, 112, 112);
 
-  statusEl.textContent = 'Selesai. Coba gambar digit lain!';
+  statusEl.textContent = t('mn.predict.done');
 }
 
 // =====================================================
@@ -526,12 +527,12 @@ function setupPresetDigits() {
       const digit = parseInt(btn.dataset.digit);
       const sample = state.trainData?.presetSamples?.find((s) => s.digit === digit);
       if (!sample) {
-        alert('Preset belum tersedia (mungkin CDN gagal). Silakan gambar manual.');
+        alert(t('mn.preset.unavailable'));
         return;
       }
       renderPresetToCanvas(sample.pixels);
       document.getElementById('prediction-status').textContent =
-        `Preset digit ${digit} dimuat. Klik Prediksi.`;
+        t('mn.preset.loaded', { digit });
     });
   });
 }
@@ -576,34 +577,34 @@ async function init() {
     if (state.isTraining) return;
 
     trainBtn.disabled = true;
-    trainBtn.textContent = '⏳ Loading...';
+    trainBtn.textContent = t('mn.train.loading');
 
     try {
       const tf = await loadTFJS();
 
       // Load data if not yet loaded
       if (!state.trainData) {
-        addLog('Memuat dataset MNIST...');
+        addLog(t('mn.log.loadDataset'));
         state.trainData = await loadMnistSubset(tf, 5000, 1000);
-        addLog(`Dataset dimuat dari: ${state.trainData.source}`);
-        addLog(`Train: ${state.trainData.trainXs.shape[0]} samples | Test: ${state.trainData.testXs.shape[0]} samples`);
+        addLog(t('mn.log.datasetSource', { source: t(state.trainData.sourceKey) }));
+        addLog(t('mn.log.samples', { train: state.trainData.trainXs.shape[0], test: state.trainData.testXs.shape[0] }));
       }
 
       // Build model if not yet built
       if (!state.model) {
-        addLog('Membangun model CNN...');
+        addLog(t('mn.log.buildModel'));
         state.model = buildModel(tf);
       }
 
       // Train
-      trainBtn.textContent = '⏳ Training...';
+      trainBtn.textContent = t('mn.train.training');
       state.currentEpoch = 0;
       await trainModel(tf, 3);
     } catch (err) {
       console.error('[mnist-demo]', err);
-      addLog(`Error: ${err.message}`, 'epoch-end');
+      addLog(t('mn.log.error', { msg: err.message }), 'epoch-end');
       trainBtn.disabled = false;
-      trainBtn.textContent = '▶ Mulai Training';
+      trainBtn.textContent = t('mn.train.start');
     }
   });
 

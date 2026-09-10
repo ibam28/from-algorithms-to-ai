@@ -109,6 +109,7 @@
 - [x] **Upgrade Reveal.js** 5.1.0 → 5.2.1 (CDN terverifikasi 200 OK)
 - [x] **`.nojekyll`** — penanda GitHub Pages
 - [x] **`PHASE-7-CHECKLIST.md`** — panduan manual untuk Lighthouse, 4 browser, 6 viewport, keyboard, OG validation, publish
+- [x] **Language switcher EN/ID** — narrative EN default (SEO-friendly), toggle `[EN|ID]` di landing, SPA, slides, demo MNIST; engine `website/js/i18n.js` + persistensi localStorage (v1.0.0-Beta)
 
 ### Butuh verifikasi manual (user) ⬜
 

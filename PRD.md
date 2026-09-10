@@ -59,7 +59,7 @@ Rekruiter, hiring manager, dan orang awam **mencampuradukkan** istilah AI, ML, d
 ### 👨‍💻 Personal Goals (untuk @ibam28)
 - Posisi dilirik sebagai **Full Stack + AI Engineer**
 - Menunjukkan kemampuan: visualisasi, ML, code quality, dokumentasi
-- Bahasa: **EN untuk tech audience** (README), **ID untuk narrative content**
+- Bahasa: **narrative EN default** (SEO-friendly) + **toggle ID** (switch bahasa di landing, SPA, slides, demo)
 
 ---
 
@@ -97,7 +97,7 @@ Rekruiter, hiring manager, dan orang awam **mencampuradukkan** istilah AI, ML, d
 |---|---|---|
 | N1 | Video rekaman (Loom/OBS) | ⬜ |
 | N2 | LinkedIn carousel PDF | ⬜ |
-| N3 | Multi-language switcher (EN/ID) | ⬜ |
+| N3 | Multi-language switcher (EN/ID) | ✅ (EN default + ID toggle, v1.0.0-Beta) |
 | N4 | Comments/feedback form | ⬜ |
 | N5 | Algoritma pathfinding (A*) visualizer | ⬜ |
 | N6 | Spam classifier demo | ⬜ |
@@ -124,7 +124,7 @@ Sengaja dikecualikan untuk menjaga fokus:
 - ❌ Database (data hardcoded atau generated di browser)
 - ❌ User authentication
 - ❌ CMS untuk update konten
-- ❌ Multi-bahasa lengkap (cukup ID naratif, EN tech)
+- ❌ Multi-bahasa lengkap (cukup ID naratif, EN tech) → sekarang: **EN default + ID toggle** di web/slides/demo; docs/ tetap ID
 - ❌ Mobile native app
 - ❌ Analytics/tracking (privasi)
 - ❌ TypeScript / build tools

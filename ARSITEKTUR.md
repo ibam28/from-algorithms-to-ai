@@ -23,7 +23,7 @@ from-algorithms-to-ai/
 ├── 📄 README.md               ← GitHub landing (English)
 ├── 📄 LICENSE                 ← MIT
 ├── 📄 .gitignore
-├── 📄 index.html              ← Landing page (Bahasa Indonesia)
+├── 📄 index.html              ← Landing page (EN default + ID toggle)
 ├── 📄 slides.html             ← Reveal.js deck (single file)
 │
 ├── 🌐 website/                ← Interactive SPA
@@ -635,7 +635,7 @@ Kalau nanti ada domain sendiri:
 
 - [ ] PWA (Progressive Web App) — installable, offline-first
 - [ ] Service Worker untuk cache agresif
-- [ ] Multi-language switcher (EN/ID)
+- [x] Multi-language switcher (EN/ID) — ✅ selesai di v1.0.0-Beta: EN default, ID opt-in
 - [ ] Algoritma pathfinding (A*, Dijkstra) visualizer
 - [ ] Spam classifier (Naive Bayes) demo
 - [ ] Image classifier (Teachable Machine) demo
