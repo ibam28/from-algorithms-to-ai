@@ -118,15 +118,15 @@
 - [ ] Test keyboard navigation — §4
 - [ ] Validasi Open Graph via LinkedIn Post Inspector — §5 (butuh URL publik)
 
-### Terblokir: keputusan git ⬜
+### Terblokir: keputusan git — SELESAI ✅
 
-- [ ] **Repo git belum ada** — folder `Harness-LinkedIn` berada di dalam checkout `deepseek-harness`. `git ls-files .` = 0 (file kita belum terlacak parent), tapi juga belum ada `.git` sendiri.
-- [ ] First commit & push ke GitHub (oleh @ibam28)
-- [ ] Enable GitHub Pages
-- [ ] Test URL publik: `ibam28.github.io/from-algorithms-to-ai`
+- [x] **Repo git mandiri** — proyek dipindahkan ke `/home/alsa/projects/from-algorithms-to-ai` (keluar dari checkout deepseek-harness), `git init -b main`, commit pertama `f62c4f4` (33 file, working tree bersih)
+- [x] **Buat repo + push** — `ibam28/from-algorithms-to-ai` (PUBLIC), push sukses ke `main`
+- [x] **Enable GitHub Pages** — branch `main`, path `/`, build selesai (`status: built`)
+- [x] **Test URL publik** — 5/5 URL terverifikasi 200 OK (landing, slides, website, MNIST, OG image)
 - [ ] Share preview URL ke 1-2 teman untuk feedback
 
-**🚦 Checkpoint C5: Pre-publish**
+**🚦 Checkpoint C5: Pre-publish — SITE LIVE: `ibam28.github.io/from-algorithms-to-ai`**
 
 ---
 
@@ -228,18 +228,20 @@
 - ✅ **Phase 6 selesai**: `video/script.md` (433 baris, 3 versi: 100 detik / 45 detik / 3 menit + catatan voice-over), `video/storyboard.md` (271 baris, 10 scene + timing + catatan produksi visual), `video/README.md` (206 baris, tools + alur produksi + editing + publish LinkedIn). Rekaman fisik = opsional (N1).
 - 🚧 **Phase 7 dimulai**: OG image digenerate (`scripts/generate-og-image.py` → `website/assets/og-image.png`, 1200×630, 51 KB, terverifikasi programatik tanpa overflow/overlap). Meta tags OG + Twitter Card lengkap di 4 HTML. Reveal.js di-upgrade 5.1.0 → 5.2.1. `.nojekyll` ditambahkan. Panduan manual `PHASE-7-CHECKLIST.md` ditulis.
 - ⚠️ **Blocker git (temuan audit)**: folder ini bukan repo git mandiri — berada di dalam checkout `deepseek-harness` (remote `deepseek-ai/deepseek-harness`). `git ls-files .` = 0, jadi belum ada file kita yang masuk parent repo, tapi juga belum ada `.git` sendiri. Repo `ibam28/from-algorithms-to-ai` belum dibuat di GitHub. **Perlu keputusan user** sebelum push.
+- ✅ **Resolusi blocker + PUBLISH SELESAI (2026-09-10)**: atas persetujuan user, proyek dipindahkan ke `/home/alsa/projects/from-algorithms-to-ai` (repo mandiri, keluar dari checkout). Commit `f62c4f4` (33 file), repo `ibam28/from-algorithms-to-ai` dibuat PUBLIC, push sukses, GitHub Pages aktif. **Site live: `https://ibam28.github.io/from-algorithms-to-ai/`** — 5/5 URL terverifikasi 200 OK (landing, slides.html, website, MNIST demo, og-image.png).
+- ✅ **Phase 8 konten selesai (paralel)**: `launch/linkedin-post.md` (3 versi post + 6 hook alternatif + strategi hashtag + timing + panduan 24 jam pertama + tabel metrik + antisipasi komentar) dan `launch/carousel.md` (8 slide + catatan desain + alt text a11y + 2 cara render).
 - 🔍 **Audit pasca-Phase 6**: menemukan `video/script.md` gagal tertulis di turn sebelumnya (rujukan dari 4 file menunjuk ke file yang tidak ada) — sudah diperbaiki. Ditemukan juga duplikat baris `Checkpoint C3` di ROADMAP dan status F2–F8 di PRD yang belum di-update — keduanya sudah dibersihkan.
 
 ---
 
 ## Next Action (Segera)
 
-**Semua konten selesai (7/8 fase).** Yang tersisa adalah **aksi manual user**:
+**7/8 fase + publish selesai — site LIVE.** Yang tersisa adalah **QA manual + launch**:
 
-1. **Push ke GitHub** — repo sudah siap di `/home/alsa/projects/from-algorithms-to-ai` (git sudah di-init, commit lokal sudah dibuat). Buat repo GitHub, push, aktifkan Pages. Perintah lengkap ada di `PHASE-7-CHECKLIST.md` §6.
-2. **Jalankan `PHASE-7-CHECKLIST.md`** — Lighthouse (§1), 4 browser (§2), responsive (§3), keyboard (§4). Ini yang menentukan kesan pertama.
-3. **Validasi OG preview** — setelah URL publik aktif, cek via LinkedIn Post Inspector (`PHASE-7-CHECKLIST.md` §5).
-4. **Post ke LinkedIn** — pakai `launch/linkedin-post.md`, taruh link di komentar pertama.
+1. **Jalankan `PHASE-7-CHECKLIST.md`** — Lighthouse (§1), 4 browser (§2), responsive (§3), keyboard (§4). Semua sudah bisa dites di URL publik `ibam28.github.io/from-algorithms-to-ai`.
+2. **Validasi OG preview** — LinkedIn Post Inspector + Twitter Card Validator dengan URL publik (`PHASE-7-CHECKLIST.md` §5).
+3. **Feedback** — minta 1-2 orang mencoba dan beri saran (`PHASE-7-CHECKLIST.md` §7) sebelum post resmi.
+4. **Post ke LinkedIn** — pakai `launch/linkedin-post.md`, taruh link di komentar pertama, posting Selasa–Kamis 08.00–10.00 WIB.
 
 Catatan arsitektur yang masih berlaku:
 - Visualisasi dimuat saat scroll via IntersectionObserver (fallback eager-load kalau API tidak ada) — lihat ARSITEKTUR §6
