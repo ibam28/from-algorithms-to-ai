@@ -90,7 +90,7 @@ Rekruiter, hiring manager, dan orang awam **mencampuradukkan** istilah AI, ML, d
 | F7 | Slide deck 12 slide (Reveal.js) | ✅ |
 | F8 | Video script narasi Bahasa Indonesia | ✅ |
 | F9 | README.md profesional (English) | ✅ |
-| F10 | Deploy ke GitHub Pages otomatis | ⬜ (Phase 7) |
+| F10 | Deploy ke GitHub Pages otomatis | ✅ (live: `ibam28.github.io/from-algorithms-to-ai`) |
 
 ### Opsional (NICE TO HAVE)
 | ID | Fitur | Status |

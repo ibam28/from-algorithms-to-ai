@@ -180,13 +180,13 @@
 | 4 | ML Demo (TF.js CNN + canvas drawing + training viz) | 12–18 jam | ~6h (efficient, single-page scope) | ✅ |
 | 5 | Slide Deck (12 slide Reveal.js) | 6–10 jam | ~4h | ✅ |
 | 6 | Video Content (script + storyboard + optional record) | 8–14 jam | ~5h (script/storyboard/README; rekaman = opsional) | ✅ |
-| 7 | Polish & Publish (Lighthouse, a11y, 4 browser, responsive, GitHub Pages) | 10–16 jam | — | ⬜ |
-| 8 | LinkedIn Launch (post + carousel + engagement) | 4–6 jam | — | ⬜ |
-| **Total** | | **74–116 jam** | **~38h sejauh ini** | **6/8 selesai** |
+| 7 | Polish & Publish (Lighthouse, a11y, 4 browser, responsive, GitHub Pages) | 10–16 jam | ~3h (OG image, meta tags, .nojekyll, checklist, git+push+Pages) — sisa manual QA | 🚧 |
+| 8 | LinkedIn Launch (post + carousel + engagement) | 4–6 jam | ~2h (launch kit lengkap; posting = manual) | 🚧 |
+| **Total** | | **74–116 jam** | **~43h sejauh ini** | **7/8 fase konten+tulis; sisa QA manual + launch** |
 
 **Realistic publish timeline:** 4–8 minggu part-time (tergantung available hours).
 
-> 📌 Status per 2026-09-10: 6 dari 8 fase selesai (~38 jam). Sisa Phase 7 (polish + publish, 10–16 jam) dan Phase 8 (launch, 4–6 jam) — **estimasi 14–22 jam lagi**.
+> 📌 Status per 2026-09-10: konten semua fase selesai (~43 jam), **site live di GitHub Pages**. Sisa: QA manual (Lighthouse, 4 browser, responsive, keyboard) + validasi OG + posting LinkedIn.
 
 **Breakdown fase terberat (untuk planning fokus):**
 - **Phase 3** (Interactive Website) adalah fase **paling besar** — 3 visualisasi D3 custom + SPA + responsive.
