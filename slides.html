@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Algorithms to AI — Slide Deck</title>
+  <meta name="description" content="Slide deck 12 halaman: perjalanan visual dari Algoritma ke Machine Learning ke AI, untuk audiens non-teknis." />
+  <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
+
+  <!-- Open Graph untuk preview LinkedIn -->
+  <meta property="og:title" content="From Algorithms to AI — Slide Deck" />
+  <meta property="og:description" content="Algoritma → Machine Learning → AI, dijelaskan tanpa jargon. 12 slide untuk orang awam." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ibam28.github.io/from-algorithms-to-ai/slides.html" />
+  <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="From Algorithms to AI — slide deck 12 halaman" />
+  <meta property="og:locale" content="id_ID" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From Algorithms to AI — Slide Deck" />
+  <meta name="twitter:description" content="Algoritma → Machine Learning → AI, dijelaskan tanpa jargon. 12 slide untuk orang awam." />
+  <meta name="twitter:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css" id="theme" />
+
+  <style>
+    /* ============================================================
+       Custom theme — konsisten dengan website/css/style.css
+       ============================================================ */
+    :root {
+      --c-bg: #0f1419;
+      --c-bg-elevated: #1a1f2e;
+      --c-bg-card: #232938;
+      --c-border: #2d3548;
+      --c-text: #e6e9ef;
+      --c-muted: #9aa3b8;
+      --c-algorithm: #4f9eff;
+      --c-ml: #ffb84d;
+      --c-ai: #b56cff;
+      --c-success: #4ade80;
+
+      --r-sm: 6px;
+      --r-md: 12px;
+      --r-lg: 20px;
+
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter',
+        'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    }
+
+    .reveal {
+      font-family: var(--font-sans);
+      color: var(--c-text);
+      font-size: 28px;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides section {
+      padding: 0 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Background: subtle radial gradient seperti website */
+    .reveal-viewport {
+      background:
+        radial-gradient(ellipse at top, rgba(79, 158, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(181, 108, 255, 0.06) 0%, transparent 50%),
+        var(--c-bg);
+    }
+
+    /* ---------- Typography ---------- */
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: var(--font-sans);
+      color: var(--c-text);
+      text-transform: none;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0 0 0.5em;
+    }
+
+    .reveal h1 { font-size: 2.4em; }
+    .reveal h2 { font-size: 1.6em; }
+    .reveal h3 { font-size: 1.2em; }
+
+    .reveal p {
+      color: var(--c-text);
+      line-height: 1.6;
+      margin: 0 0 0.6em;
+    }
+
+    .reveal strong { color: var(--c-text); font-weight: 700; }
+    .reveal em { color: var(--c-muted); font-style: italic; }
+    .reveal code {
+      font-family: var(--font-mono);
+      background: var(--c-bg-card);
+      border: 1px solid var(--c-border);
+      padding: 2px 8px;
+      border-radius: var(--r-sm);
+      font-size: 0.85em;
+      color: var(--c-algorithm);
+    }
+
+    /* ---------- Eyebrow / kicker ---------- */
+    .eyebrow {
+      font-size: 0.55em;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 0.8em;
+    }
+
+    /* ---------- Gradient title ---------- */
+    .gradient-title {
+      background: linear-gradient(135deg,
+        var(--c-algorithm) 0%,
+        var(--c-ml) 50%,
+        var(--c-ai) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    /* ---------- Title slide ---------- */
+    .title-slide {
+      text-align: center;
+      align-items: center;
+    }
+
+    .title-slide h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+
+    .title-slide .journey {
+      font-size: 1.1em;
+      color: var(--c-muted);
+      margin: 0.4em 0 1em;
+      letter-spacing: 0.02em;
+    }
+
+    .title-slide .tagline {
+      font-size: 0.75em;
+      color: var(--c-muted);
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    .title-slide .byline {
+      margin-top: 2em;
+      font-size: 0.6em;
+      color: var(--c-muted);
+    }
+
+    /* ---------- Cards grid ---------- */
+    .cards-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 0.6em;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 0.6em;
+    }
+
+    .card {
+      background: var(--c-bg-elevated);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 24px;
+    }
+
+    .card.algorithm { border-left: 4px solid var(--c-algorithm); }
+    .card.ml        { border-left: 4px solid var(--c-ml); }
+    .card.ai        { border-left: 4px solid var(--c-ai); }
+
+    .card .card-icon {
+      font-size: 1.6em;
+      margin-bottom: 0.3em;
+      line-height: 1;
+    }
+
+    .card h3 {
+      font-size: 0.85em;
+      margin-bottom: 0.4em;
+    }
+
+    .card p {
+      font-size: 0.65em;
+      color: var(--c-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ---------- Callout / quote ---------- */
+    .quote-box {
+      background: var(--c-bg-elevated);
+      border-left: 4px solid var(--c-ml);
+      border-radius: var(--r-md);
+      padding: 28px 32px;
+      margin: 0.6em 0;
+    }
+
+    .quote-box p {
+      font-size: 0.9em;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .quote-box .quote-mark {
+      font-size: 1.4em;
+      color: var(--c-ml);
+      margin-right: 0.2em;
+      line-height: 0;
+    }
+
+    /* ---------- Analogy layout ---------- */
+    .analogy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .analogy-visual {
+      font-size: 4em;
+      text-align: center;
+      line-height: 1;
+    }
+
+    /* ---------- Step list ---------- */
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0.5em 0 0;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px 0;
+      font-size: 0.72em;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .steps li:last-child { border-bottom: none; }
+
+    .steps .step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--c-bg-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps .step-body { flex: 1; }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0.4em 0 0;
+      border-left: 3px solid var(--c-border);
+      padding-left: 0;
+    }
+
+    .timeline li {
+      position: relative;
+      padding: 8px 0 8px 32px;
+      font-size: 0.62em;
+      line-height: 1.5;
+    }
+
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 18px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--c-bg-card);
+      border: 3px solid var(--c-muted);
+    }
+
+    .timeline li.highlight::before { border-color: var(--c-ai); }
+    .timeline li.ml::before { border-color: var(--c-ml); }
+    .timeline li.algo::before { border-color: var(--c-algorithm); }
+
+    .timeline .year {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--c-text);
+      margin-right: 8px;
+    }
+
+    /* ---------- Concentric diagram (CSS circles) ---------- */
+    .concentric {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 0.4em;
+    }
+
+    .concentric .diagram {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      flex-shrink: 0;
+    }
+
+    .concentric .ring {
+      position: absolute;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 14px;
+      font-size: 0.55em;
+      font-weight: 700;
+      color: var(--c-text);
+    }
+
+    .ring-ai {
+      width: 300px; height: 300px;
+      background: rgba(181, 108, 255, 0.12);
+      border: 2px solid var(--c-ai);
+    }
+
+    .ring-ml {
+      width: 200px; height: 200px;
+      background: rgba(255, 184, 77, 0.16);
+      border: 2px solid var(--c-ml);
+    }
+
+    .ring-algo {
+      width: 110px; height: 110px;
+      background: rgba(79, 158, 255, 0.25);
+      border: 2px solid var(--c-algorithm);
+    }
+
+    .concentric .legend {
+      font-size: 0.6em;
+      line-height: 1.9;
+    }
+
+    .legend .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .dot-ai { background: var(--c-ai); }
+    .dot-ml { background: var(--c-ml); }
+    .dot-algo { background: var(--c-algorithm); }
+
+    /* ---------- Insight list ---------- */
+    .insights {
+      list-style: none;
+      padding: 0;
+      margin: 0.4em 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .insights li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--c-bg-elevated);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 14px 18px;
+      font-size: 0.68em;
+      line-height: 1.5;
+    }
+
+    .insights .check {
+      color: var(--c-success);
+      font-size: 1.2em;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* ---------- CTA box ---------- */
+    .cta-box {
+      background: linear-gradient(135deg,
+        rgba(79, 158, 255, 0.10) 0%,
+        rgba(255, 184, 77, 0.10) 50%,
+        rgba(181, 108, 255, 0.10) 100%);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-size: 1.3em;
+      margin-bottom: 0.3em;
+    }
+
+    .cta-box p {
+      font-size: 0.72em;
+      color: var(--c-muted);
+      max-width: 600px;
+      margin: 0 auto 1em;
+    }
+
+    .cta-box .url {
+      font-family: var(--font-mono);
+      font-size: 0.75em;
+      color: var(--c-algorithm);
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-sm);
+      padding: 10px 18px;
+      display: inline-block;
+    }
+
+    /* ---------- Counter-example table ---------- */
+    .counter-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.62em;
+      margin-top: 0.5em;
+    }
+
+    .counter-table th {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--c-border);
+      color: var(--c-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85em;
+    }
+
+    .counter-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--c-border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .counter-table tr:last-child td { border-bottom: none; }
+
+    /* ---------- Footer badge ---------- */
+    .slide-footer {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      font-size: 0.45em;
+      color: var(--c-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Progress bar & controls (override reveal) ---------- */
+    .reveal .progress {
+      color: var(--c-algorithm);
+      height: 4px;
+    }
+
+    .reveal .controls {
+      color: var(--c-algorithm);
+    }
+
+    .reveal .slide-number {
+      background: var(--c-bg-elevated);
+      color: var(--c-muted);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 4px 10px;
+      border-radius: var(--r-sm);
+    }
+
+    /* ---------- Responsive tweaks ---------- */
+    @media (max-width: 700px) {
+      .reveal { font-size: 20px; }
+      .cards-2, .cards-3, .analogy { grid-template-columns: 1fr; }
+      .concentric { flex-direction: column; gap: 24px; }
+      .reveal .slides section { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============================================================
+           SLIDE 1 — Title
+           ============================================================ -->
+      <section class="title-slide">
+        <p class="eyebrow">Portfolio Project · 2026</p>
+        <h1 class="gradient-title">From Algorithms to AI</h1>
+        <p class="journey">📐 Algoritma &nbsp;→&nbsp; 🤖 Machine Learning &nbsp;→&nbsp; ✨ AI</p>
+        <p class="tagline">
+          Penjelasan visual untuk orang awam — tanpa jargon, tanpa hype.<br />
+          Kita mulai dari yang paling familiar, lalu berjalan pelan-pelan ke AI.
+        </p>
+        <p class="byline">oleh <strong>@ibam28</strong> · Full Stack + AI Engineer</p>
+
+        <aside class="notes">
+          Buka dengan tenang. Jangan buru-buru. Tujuan slide ini: menurunkan ekspektasi
+          teknis dan mengundang rasa penasaran. Kalau presentasi live, jeda 2 detik
+          setelah judul muncul.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 2 — Hook
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Pertanyaan pembuka</p>
+        <h2>"AI", "Machine Learning", "Algoritma" — bedanya apa?</h2>
+        <p style="font-size: 0.72em; color: var(--c-muted); max-width: 900px;">
+          Tiga istilah ini sering dipakai bergantian, padahal artinya berbeda.
+          Akibatnya banyak orang bingung — dan sebagian jadi takut sama AI.
+        </p>
+
+        <div class="cards-3">
+          <div class="card algorithm">
+            <div class="card-icon">📐</div>
+            <h3>Algoritma</h3>
+            <p>Langkah-langkah pasti untuk menyelesaikan masalah.</p>
+          </div>
+          <div class="card ml">
+            <div class="card-icon">🤖</div>
+            <h3>Machine Learning</h3>
+            <p>Cara komputer <em>belajar dari data</em> alih-alih diberi aturan.</p>
+          </div>
+          <div class="card ai">
+            <div class="card-icon">✨</div>
+            <h3>AI</h3>
+            <p>Payung paling luas: mesin yang bertindak "cerdas".</p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.65em; color: var(--c-muted); margin-top: 0.8em;">
+          Kita akan jelajahi satu per satu — mulai dari yang paling akrab.
+        </p>
+
+        <aside class="notes">
+          Slide ini adalah "peta". Jangan jelaskan ketiganya sekarang — cukup tunjukkan
+          bahwa ada tiga hal berbeda. Tujuan: audiens tahu ke mana kita akan pergi.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 3 — Algoritma = Resep
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 1 · Algoritma</p>
+        <h2>Algoritma itu seperti resep masakan</h2>
+
+        <div class="analogy">
+          <div>
+            <div class="quote-box">
+              <p>
+                <span class="quote-mark">"</span>
+                Langkah-langkah pasti: <strong>aduk 5 menit</strong>,
+                <strong>panggang 180°C</strong>, <strong>tunggu 20 menit</strong>.
+                Ikuti urutannya, hasilnya bisa diprediksi.
+              </p>
+            </div>
+            <ul class="steps">
+              <li><span class="step-num">1</span><div class="step-body">Input: bahan-bahan</div></li>
+              <li><span class="step-num">2</span><div class="step-body">Proses: langkah yang jelas dan berurutan</div></li>
+              <li><span class="step-num">3</span><div class="step-body">Output: makanan yang bisa diprediksi</div></li>
+            </ul>
+          </div>
+          <div class="analogy-visual">📐 ➜ 🍳</div>
+        </div>
+
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
+          <strong>Poin kunci:</strong> algoritma bukan cuma untuk komputer. Resep, rute perjalanan,
+          cara menghitung kembalian — semuanya algoritma.
+        </p>
+
+        <aside class="notes">
+          Analogi dapur adalah anchor utama. Semua orang pernah masak atau makan.
+          Tekankan: "langkah pasti" = tidak ada improvisasi. Ini yang membedakan
+          algoritma dari ML nanti.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 4 — Algoritma di sekitar kita
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 1 · Algoritma</p>
+        <h2>Kamu pakai algoritma setiap hari</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);">
+          Tanpa sadar, algoritma mengatur banyak hal di hidupmu.
+        </p>
+
+        <div class="cards-2">
+          <div class="card algorithm">
+            <div class="card-icon">📱</div>
+            <h3>TikTok / Instagram</h3>
+            <p>Algoritma ranking memilih video apa yang muncul di feed-mu.</p>
+          </div>
+          <div class="card algorithm">
+            <div class="card-icon">🗺️</div>
+            <h3>Google Maps</h3>
+            <p>Menghitung rute tercepat lewat ribuan kemungkinan jalan.</p>
+          </div>
+          <div class="card algorithm">
+            <div class="card-icon">🎵</div>
+            <h3>Spotify</h3>
+            <p>Mengacak lagu (shuffle) dengan aturan yang adil.</p>
+          </div>
+          <div class="card algorithm">
+            <div class="card-icon">🏦</div>
+            <h3>Bank</h3>
+            <p>Mengurutkan transaksi, menghitung bunga, mendeteksi anomali.</p>
+          </div>
+        </div>
+
+        <aside class="notes">
+          Slide ini membuat audiens merasa "oh, aku sudah pakai ini". Tujuannya
+          membangun rasa percaya: mereka sudah akrab dengan algoritma, hanya
+          belum menyebutnya begitu.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 5 — ML: koki yang belajar
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 2 · Machine Learning</p>
+        <h2>ML itu koki yang belajar dari 10.000 percobaan</h2>
+
+        <div class="quote-box" style="border-left-color: var(--c-ml);">
+          <p>
+            <span class="quote-mark">"</span>
+            Koki ini <strong>tidak membaca resep</strong>. Dia memasak,
+            mencoba, gagal, memperbaiki — ribuan kali. Lama-lama dia tahu
+            sendiri: "kalau adonannya begini, harus dipanggang segini".
+          </p>
+        </div>
+
+        <div class="cards-2" style="margin-top: 0.4em;">
+          <div class="card">
+            <h3 style="color: var(--c-muted);">Algoritma biasa</h3>
+            <p>Diberi <strong>aturan</strong> → mengikuti aturan → hasil.</p>
+          </div>
+          <div class="card ml">
+            <h3 style="color: var(--c-ml);">Machine Learning</h3>
+            <p>Diberi <strong>data + jawaban</strong> → menemukan aturannya sendiri → hasil.</p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
+          <strong>Inilah pembeda utamanya:</strong> aturan vs data.
+        </p>
+
+        <aside class="notes">
+          Ini adalah slide paling penting. Pembeda "aturan vs data" adalah inti
+          dari machine learning. Kalau audiens paham ini, sisanya jadi mudah.
+          Gunakan gerakan tangan: satu tangan menunjuk "aturan ditulis manusia",
+          tangan lain menunjuk "aturan ditemukan mesin".
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 6 — ML di kehidupan sehari-hari
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 2 · Machine Learning</p>
+        <h2>Kamu juga sudah pakai ML setiap hari</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);">
+          Bedanya dengan algoritma biasa: ML <em>belajar</em> dari pola, bukan dari aturan tetap.
+        </p>
+
+        <div class="cards-2">
+          <div class="card ml">
+            <div class="card-icon">📧</div>
+            <h3>Filter spam email</h3>
+            <p>Belajar dari jutaan email: mana yang spam, mana yang bukan.</p>
+          </div>
+          <div class="card ml">
+            <div class="card-icon">🎬</div>
+            <h3>Rekomendasi film</h3>
+            <p>Belajar dari tontonanmu dan orang lain yang mirip kamu.</p>
+          </div>
+          <div class="card ml">
+            <div class="card-icon">💳</div>
+            <h3>Deteksi fraud</h3>
+            <p>Belajar pola transaksi normal, lalu menandai yang mencurigakan.</p>
+          </div>
+          <div class="card ml">
+            <div class="card-icon">🏠</div>
+            <h3>Prediksi harga rumah</h3>
+            <p>Belajar dari ribuan transaksi: lokasi, luas, tahun, harga.</p>
+          </div>
+        </div>
+
+        <aside class="notes">
+          Empat contoh ini dipilih karena semua orang pernah mengalaminya.
+          Tekankan kata "belajar" setiap kali. Tujuannya agar audiens merasa
+          ML bukan hal asing — mereka berinteraksi dengannya tiap hari.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 7 — AI: restoran pintar
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 3 · AI</p>
+        <h2>AI itu restoran pintar</h2>
+
+        <div class="analogy">
+          <div>
+            <div class="quote-box" style="border-left-color: var(--c-ai);">
+              <p>
+                <span class="quote-mark">"</span>
+                Kalau ML adalah <strong>koki</strong> yang belajar memasak,
+                AI adalah <strong>seluruh restoran</strong>: koki + pelayan yang paham
+                pesanan + kasir yang kenali wajah + manajer yang atur jadwal.
+              </p>
+            </div>
+          </div>
+          <div class="analogy-visual">🍽️</div>
+        </div>
+
+        <div class="cards-3" style="margin-top: 0.4em;">
+          <div class="card ml">
+            <h3>🤖 Koki</h3>
+            <p>ML — belajar dari data</p>
+          </div>
+          <div class="card ai">
+            <h3>💬 Pelayan</h3>
+            <p>NLP — paham bahasa manusia</p>
+          </div>
+          <div class="card ai">
+            <h3>👁️ Kasir</h3>
+            <p>Computer Vision — kenali gambar</p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
+          <strong>AI = payung paling luas.</strong> ML adalah salah satu cara untuk mencapai AI — bukan satu-satunya.
+        </p>
+
+        <aside class="notes">
+          Analogi restoran menyatukan semuanya. AI bukan hanya ML: ada NLP,
+          computer vision, planning, robotics. ML hanyalah salah satu pintu
+          masuk ke AI. Ini yang membuat hubungan ketiganya jadi jelas nanti.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 8 — Timeline AI
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 3 · AI</p>
+        <h2>AI bukan hal baru — sudah 70+ tahun</h2>
+
+        <ul class="timeline">
+          <li class="algo">
+            <span class="year">1950</span> Alan Turing mengusulkan "Turing Test" — bisakah mesin menipu manusia?
+          </li>
+          <li class="algo">
+            <span class="year">1956</span> Konferensi Dartmouth — istilah "Artificial Intelligence" resmi lahir.
+          </li>
+          <li class="algo">
+            <span class="year">1997</span> Deep Blue (IBM) mengalahkan juara catur dunia Garry Kasparov.
+          </li>
+          <li class="ml">
+            <span class="year">2012</span> AlexNet menang besar di kompetisi ImageNet — era <em>deep learning</em> dimulai.
+          </li>
+          <li class="ml">
+            <span class="year">2017</span> Arsitektur <em>Transformer</em> diperkenalkan — fondasi model bahasa modern.
+          </li>
+          <li class="highlight">
+            <span class="year">2022</span> ChatGPT membawa AI generatif ke jutaan orang awam dalam hitungan minggu.
+          </li>
+        </ul>
+
+        <aside class="notes">
+          Timeline ini menunjukkan AI bukan tren sesaat. Sudah puluhan tahun.
+          Warna titik menandakan era: biru = AI klasik, oranye = ML bangkit,
+          ungu = AI generatif. Kalau ditanya soal tahun-tahun spesifik, jawab
+          dengan tenang: ini milestone besar, bukan daftar lengkap.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 9 — Hubungan ketiganya
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 4 · Hubungan</p>
+        <h2>Jadi, bagaimana ketiganya berhubungan?</h2>
+
+        <div class="concentric">
+          <div class="diagram">
+            <div class="ring ring-ai">AI</div>
+            <div class="ring ring-ml">ML</div>
+            <div class="ring ring-algo">Algoritma</div>
+          </div>
+          <div class="legend">
+            <div><span class="dot dot-ai"></span><strong>AI</strong> — paling luas: mesin bertindak "cerdas"</div>
+            <div><span class="dot dot-ml"></span><strong>Machine Learning</strong> — subset AI: belajar dari data</div>
+            <div><span class="dot dot-algo"></span><strong>Algoritma</strong> — alat yang dipakai ML untuk bekerja</div>
+            <div style="margin-top: 12px; color: var(--c-muted);">
+              <strong style="color: var(--c-success);">Symbolic AI</strong> — di dalam AI, tapi di luar ML (aturan if-then buatan manusia).
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.62em; color: var(--c-muted); margin-top: 0.6em;">
+          <strong>Bukan garis lurus — tapi hirarki:</strong> Algoritma ⊂ ML ⊂ AI.
+        </p>
+
+        <aside class="notes">
+          Diagram konsentris adalah jawaban visual utama. Kunci: tidak semua AI
+          adalah ML (ada symbolic AI). Tidak semua algoritma dipakai untuk AI.
+          Kalau audiens hanya mengingat satu slide, ini yang harus mereka ingat.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 10 — Nuance / counter-examples
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Bagian 4 · Hubungan</p>
+        <h2>Supaya tidak salah paham</h2>
+        <p style="font-size: 0.7em; color: var(--c-muted);">
+          Tiga counter-example yang menunjukkan kita tidak menyederhanakan berlebihan.
+        </p>
+
+        <table class="counter-table">
+          <thead>
+            <tr>
+              <th>Contoh</th>
+              <th>Membuktikan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Symbolic AI</strong> (expert system, rule-based)</td>
+              <td>AI <strong>bisa tanpa ML</strong> — aturan ditulis manusia, bukan dipelajari.</td>
+            </tr>
+            <tr>
+              <td><strong>Algoritma kuantum</strong> (Shor's algorithm)</td>
+              <td>Algoritma <strong>bisa tanpa AI</strong> — alat murni matematika.</td>
+            </tr>
+            <tr>
+              <td><strong>Linear regression</strong> klasik</td>
+              <td>Algoritma statistik yang <strong>dipakai ML</strong>, tapi ML bukan cuma itu.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size: 0.6em; color: var(--c-muted); margin-top: 0.6em;">
+          Ini alasan kita pakai <strong>hirarki</strong>, bukan sekadar daftar.
+        </p>
+
+        <aside class="notes">
+          Slide ini untuk audiens kritis — terutama hiring manager atau orang
+          teknis. Menunjukkan kita paham nuansa, bukan sekadar hafal definisi.
+          Kalau audiens awam, boleh dilewati cepat atau di-skip.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 11 — Demo
+           ============================================================ -->
+      <section>
+        <div class="cta-box">
+          <p class="eyebrow" style="margin-bottom: 0.6em;">Coba sendiri</p>
+          <h2 class="gradient-title">Semua ini berjalan di browser-mu</h2>
+          <p>
+            Tidak ada server. Tidak ada API rahasia. Kamu bisa latih model ML asli
+            langsung dari HP atau laptop — dan lihat sendiri hasilnya.
+          </p>
+          <p style="margin-bottom: 1.2em;">
+            <strong style="color: var(--c-ml);">Demo MNIST:</strong> latih CNN pengenal angka,
+            lalu gambar angka apa pun dan lihat prediksinya.
+          </p>
+          <span class="url">ibam28.github.io/from-algorithms-to-ai</span>
+        </div>
+
+        <aside class="notes">
+          Slide transisi dari teori ke bukti. Kalau presentasi live: buka website
+          dan demokan. Kalau slide statis untuk LinkedIn: ini ajakan klik.
+          Tekankan "berjalan di browser-mu" karena itu berbeda dari demo biasa
+          yang ada server di baliknya.
+        </aside>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 12 — Penutup
+           ============================================================ -->
+      <section>
+        <p class="eyebrow">Penutup</p>
+        <h2>Empat hal untuk dibawa pulang</h2>
+
+        <ul class="insights">
+          <li><span class="check">✓</span><div><strong>AI = tujuan, ML = salah satu cara, Algoritma = alat.</strong></div></li>
+          <li><span class="check">✓</span><div><strong>ML belajar dari data</strong> — bukan dari aturan yang ditulis manusia.</div></li>
+          <li><span class="check">✓</span><div><strong>Algoritma bukan cuma untuk komputer</strong> — resep masakan pun algoritma.</div></li>
+          <li><span class="check">✓</span><div><strong>ML bukan magic</strong> — di baliknya ada matematika, statistik, dan data.</div></li>
+        </ul>
+
+        <p style="font-size: 0.7em; color: var(--c-muted); text-align: center; margin-top: 1.2em;">
+          Terima kasih.<br />
+          <strong>Bambang Saputra Jaya</strong> · @ibam28 · Full Stack + AI Engineer
+        </p>
+        <p style="font-size: 0.55em; color: var(--c-muted); text-align: center;">
+          Repo: <code>github.com/ibam28/from-algorithms-to-ai</code>
+        </p>
+
+        <aside class="notes">
+          Tutup dengan empat insight ini. Kalau audiens hanya mengingat satu
+          hal, biarlah itu: "AI = tujuan, ML = cara, Algoritma = alat".
+          Jangan lupa ajakan follow atau kontak di akhir.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      controlsLayout: 'bottom-right',
+      progress: true,
+      center: false,
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      keyboard: true,
+      overview: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      fragments: true,
+      embedded: false,
+      help: true,
+      showNotes: false,
+      autoSlide: 0,
+      mouseWheel: false,
+      plugins: [RevealNotes],
+    });
+  </script>
+</body>
+</html>
