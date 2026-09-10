@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>04. Hubungan Algoritma × ML × AI — From Algorithms to AI</title>
+  <meta name="description" content="Bagaimana ketiganya saling terkait, di mana mereka berbeda, dan kapan satu bukan bagian dari yang lain." />
+  <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
+  <meta property="og:title" content="04. Hubungan Algoritma × ML × AI — From Algorithms to AI" />
+  <meta property="og:description" content="Bagaimana ketiganya saling terkait, di mana mereka berbeda, dan kapan satu bukan bagian dari yang lain." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body class="doc-page">
+  <a href="#main" class="skip-link">Lewati ke konten utama</a>
+
+  <nav class="doc-nav" aria-label="Navigasi halaman">
+    <div class="doc-nav-inner">
+      <a href="../index.html" class="doc-nav-brand">🧠 From Algorithms to AI</a>
+      <a href="index.html" class="doc-nav-back">← Kembali ke beranda</a>
+    </div>
+  </nav>
+
+  <main id="main" class="doc-main">
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Daftar isi">
+        <p class="doc-toc-title">Daftar Isi</p>
+        <a class="toc-l2" href="#intinya-tldr">📌 Intinya (TL;DR)</a>
+        <a class="toc-l2" href="#visualisasi-hubungan">🎯 Visualisasi Hubungan</a>
+        <a class="toc-l3" href="#diagram-konsentris-cara-paling-umum">Diagram Konsentris (Cara Paling Umum)</a>
+        <a class="toc-l3" href="#diagram-venn-cara-alternatif">Diagram Venn (Cara Alternatif)</a>
+        <a class="toc-l2" href="#restoran-pintar-recall">🍳 Restoran Pintar (Recall)</a>
+        <a class="toc-l2" href="#definisi-formal">🔬 Definisi Formal</a>
+        <a class="toc-l3" href="#algoritma">Algoritma</a>
+        <a class="toc-l3" href="#machine-learning">Machine Learning</a>
+        <a class="toc-l3" href="#artificial-intelligence">Artificial Intelligence</a>
+        <a class="toc-l2" href="#tabel-perbandingan">📊 Tabel Perbandingan</a>
+        <a class="toc-l2" href="#counter-examples-penting">⚠️ Counter-Examples (Penting!)</a>
+        <a class="toc-l3" href="#1-symbolic-ai-ml-tapi-dua-duanya-ai">1. Symbolic AI ≠ ML (Tapi Dua-duanya AI)</a>
+        <a class="toc-l3" href="#2-algoritma-kuantum-ai">2. Algoritma Kuantum ≠ AI</a>
+        <a class="toc-l3" href="#3-statistik-klasik-ml">3. Statistik Klasik ≠ ML</a>
+        <a class="toc-l3" href="#4-algoritma-sorting-tradisional-vs-ml-sorting">4. Algoritma Sorting Tradisional vs ML Sorting?</a>
+        <a class="toc-l3" href="#5-game-ai-selalu-ml">5. Game AI ≠ selalu ML</a>
+        <a class="toc-l2" href="#cara-membedakan-dengan-tepat">🎯 Cara Membedakan dengan Tepat</a>
+        <a class="toc-l3" href="#algoritma-atau-ml">Algoritma atau ML?</a>
+        <a class="toc-l3" href="#ml-atau-symbolic-ai">ML atau Symbolic AI?</a>
+        <a class="toc-l3" href="#ml-atau-ai">ML atau AI?</a>
+        <a class="toc-l2" href="#hierarki-yang-lebih-dalam">📈 Hierarki yang Lebih Dalam</a>
+        <a class="toc-l2" href="#contoh-konkret-satu-use-case-tiga-layer">🌍 Contoh Konkret: Satu Use Case, Tiga Layer</a>
+        <a class="toc-l2" href="#miskonsepsi-umum">⚠️ Miskonsepsi Umum</a>
+        <a class="toc-l2" href="#peta-karir-di-bidang-ini">🧭 Peta Karir di Bidang Ini</a>
+        <a class="toc-l2" href="#ringkasan-satu-kalimat-tiap-konsep">🎓 Ringkasan Satu Kalimat Tiap Konsep</a>
+        <a class="toc-l2" href="#faq-final">❓ FAQ Final</a>
+        <a class="toc-l2" href="#rangkai-series">📖 Rangkai Series</a>
+        <a class="toc-l2" href="#referensi-tambahan">📚 Referensi Tambahan</a>
+      </aside>
+
+      <article class="doc-body">
+<h1 id="04-hubungan-algoritma-ml-ai">04. Hubungan Algoritma × ML × AI</h1>
+<blockquote>
+<p>Bagaimana ketiganya saling terkait, di mana mereka berbeda, dan kapan satu bukan bagian dari yang lain.</p>
+</blockquote>
+<p>📚 <strong>Bagian dari seri:</strong> <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">00. Beranda</a> → <a href="01-algoritma.html">01. Algoritma</a> → <a href="02-machine-learning.html">02. Machine Learning</a> → <a href="03-artificial-intelligence.html">03. Artificial Intelligence</a> → <strong>04. Hubungan Ketiganya</strong></p>
+<hr />
+<h2 id="intinya-tldr">📌 Intinya (TL;DR)</h2>
+<div class="highlight"><pre><span></span><code>AI = tujuan besar (&quot;mesin bertindak cerdas&quot;)
+ML = salah satu cara mencapai AI (&quot;belajar dari data&quot;)
+Algoritma = alat dasar yang dipakai keduanya (&quot;resep/langkah-langkah&quot;)
+</code></pre></div>
+
+<p><strong>Rumus penting (sebagian, tidak absolut):</strong></p>
+<div class="highlight"><pre><span></span><code>Machine Learning ⊂ Artificial Intelligence
+Algoritma ∩ ML = banyak (ML pakai banyak algoritma)
+Algoritma ∩ AI = banyak tapi tidak semua
+ML ∩ Symbolic AI = ∅ (tidak overlap — beda pendekatan)
+</code></pre></div>
+
+<hr />
+<h2 id="visualisasi-hubungan">🎯 Visualisasi Hubungan</h2>
+<h3 id="diagram-konsentris-cara-paling-umum">Diagram Konsentris (Cara Paling Umum)</h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│                                                     │
+│           🤖 Artificial Intelligence               │
+│              (paling luas / payung)                 │
+│                                                     │
+│      ┌──────────────────────────────────────┐      │
+│      │                                      │      │
+│      │      🧠 Machine Learning             │      │
+│      │         (subset dari AI)             │      │
+│      │                                      │      │
+│      │      ┌──────────────────────┐        │      │
+│      │      │   📐 Algoritma       │        │      │
+│      │      │   (alat utama)       │        │      │
+│      │      └──────────────────────┘        │      │
+│      │                                      │      │
+│      └──────────────────────────────────────┘      │
+│                                                     │
+│      🔧 Symbolic AI (rule-based) ← juga AI, BUKAN ML│
+│                                                     │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>Cara baca:</strong>
+- AI = lingkaran paling luar (paling luas)
+- ML = di dalam AI (subset)
+- Algoritma = di dalam ML (ML pakai algoritma)
+- Symbolic AI = di dalam AI tapi <strong>di luar</strong> ML (AI tanpa ML)</p>
+<h3 id="diagram-venn-cara-alternatif">Diagram Venn (Cara Alternatif)</h3>
+<div class="highlight"><pre><span></span><code>        ┌──────────────┐
+        │  Algoritma   │
+        │  (banyak)    │
+        └──────┬───────┘
+               │ ∩ (irisan dengan ML)
+        ┌──────▼───────┐
+        │     ML       │─────── bukan Algoritma
+        │  (subset AI) │       (mungkin), tapi ML
+        └──────┬───────┘       selalu pakai algoritma
+               │
+        ┌──────▼───────┐
+        │     AI       │
+        │  (paling     │
+        │   luas)      │
+        └──────────────┘
+</code></pre></div>
+
+<p><strong>Cara baca:</strong> Algoritma &amp; ML overlap banyak. ML ⊂ AI. Tidak semua algoritma adalah ML, tapi ML selalu pakai algoritma.</p>
+<hr />
+<h2 id="restoran-pintar-recall">🍳 Restoran Pintar (Recall)</h2>
+<p>Kita pakai analogi yang sama dari section sebelumnya:</p>
+<table>
+<thead>
+<tr>
+<th>Konsep</th>
+<th>Analogi Restoran</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI</strong></td>
+<td>Restoran pintar <strong>sebagai keseluruhan</strong> (koki + pelayan + kasir + manajer)</td>
+</tr>
+<tr>
+<td><strong>ML</strong></td>
+<td><strong>Koki</strong> yang belajar dari 10.000 percobaan</td>
+</tr>
+<tr>
+<td><strong>Algoritma</strong></td>
+<td><strong>Resep</strong> — langkah-langkah yang dijalankan koki</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hubungan:</strong></p>
+<ul>
+<li>Restoran pintar (AI) <strong>pasti punya koki</strong> (ML)? — Tidak, bisa juga ada restoran yang koki-nya cuma masak dari resep (algoritma biasa). Tapi restoran modern cenderung punya koki yang adaptif.</li>
+<li>Koki (ML) <strong>pasti pakai resep</strong> (algoritma)? — Ya, ML = banyak algoritma yang bekerja sama.</li>
+<li>Restoran (AI) <strong>pasti punya koki</strong> (ML)? — Tidak juga. Bisa juga ada restoran dengan <strong>chef berpengalaman yang masak dari ingatan</strong> (symbolic AI / rule-based).</li>
+</ul>
+<hr />
+<h2 id="definisi-formal">🔬 Definisi Formal</h2>
+<h3 id="algoritma">Algoritma</h3>
+<blockquote>
+<p>Urutan langkah-langkah terdefinisi-eksplisit untuk menyelesaikan masalah atau komputasi.</p>
+</blockquote>
+<ul>
+<li><strong>Karakteristik:</strong> well-defined, finite, effective</li>
+<li><strong>Contoh:</strong> bubble sort, binary search, Dijkstra</li>
+<li><strong>Bidang:</strong> ilmu komputer dasar, matematika</li>
+</ul>
+<h3 id="machine-learning">Machine Learning</h3>
+<blockquote>
+<p>Sub-bidang AI yang fokus pada sistem yang belajar dari data, bukan dari aturan eksplisit.</p>
+</blockquote>
+<ul>
+<li><strong>Karakteristik:</strong> generalization dari pola, prediksi probabilistik</li>
+<li><strong>Contoh:</strong> neural network, decision tree, linear regression</li>
+<li><strong>Bidang:</strong> statistik + ilmu komputer</li>
+</ul>
+<h3 id="artificial-intelligence">Artificial Intelligence</h3>
+<blockquote>
+<p>Bidang riset yang bertujuan membuat sistem yang melakukan tugas yang biasanya butuh kecerdasan manusia.</p>
+</blockquote>
+<ul>
+<li><strong>Karakteristik:</strong> persepsi, reasoning, learning, planning</li>
+<li><strong>Contoh:</strong> self-driving car, medical diagnosis AI, game-playing AI</li>
+<li><strong>Bidang:</strong> computer science + cognitive science + philosophy + neuroscience</li>
+</ul>
+<hr />
+<h2 id="tabel-perbandingan">📊 Tabel Perbandingan</h2>
+<table>
+<thead>
+<tr>
+<th>Aspek</th>
+<th>Algoritma</th>
+<th>Machine Learning</th>
+<th>Artificial Intelligence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Apa?</strong></td>
+<td>Langkah-langkah pasti</td>
+<td>Belajar dari data</td>
+<td>Mesin bertindak "cerdas"</td>
+</tr>
+<tr>
+<td><strong>Tujuan</strong></td>
+<td>Solve masalah spesifik</td>
+<td>Temukan pola di data</td>
+<td>Capai perilaku cerdas</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Data + aturan</td>
+<td>Data + label (supervised)</td>
+<td>Bervariasi</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Hasil sesuai aturan</td>
+<td>Model prediksi</td>
+<td>Aksi / keputusan</td>
+</tr>
+<tr>
+<td><strong>Contoh</strong></td>
+<td>Sortir array</td>
+<td>Filter spam</td>
+<td>Mobil self-driving</td>
+</tr>
+<tr>
+<td><strong>Tahun mulai</strong></td>
+<td>300 SM (Euclid)</td>
+<td>1950-an (Samuel)</td>
+<td>1950-an (Turing)</td>
+</tr>
+<tr>
+<td><strong>Bidang</strong></td>
+<td>CS dasar</td>
+<td>AI + statistik</td>
+<td>Multi-disiplin</td>
+</tr>
+<tr>
+<td><strong>Ukuran sukses</strong></td>
+<td>Correctness, efficiency</td>
+<td>Accuracy, generalization</td>
+<td>Behavior quality</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="counter-examples-penting">⚠️ Counter-Examples (Penting!)</h2>
+<p>Bagian ini menunjukkan <strong>mengapa diagram sederhana tidak selalu benar</strong>. Kalau kamu paham ini, kamu pahami nuansa yang banyak orang miss.</p>
+<h3 id="1-symbolic-ai-ml-tapi-dua-duanya-ai">1. Symbolic AI ≠ ML (Tapi Dua-duanya AI)</h3>
+<p><strong>Symbolic AI</strong> (1950-1990an): pakai <strong>aturan if-then</strong> yang ditulis tangan, bukan belajar dari data.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Symbolic AI — aturan ditulis manual, BUKAN ML</span>
+<span class="k">def</span> <span class="nf">diagnose</span><span class="p">(</span><span class="n">fever</span><span class="p">,</span> <span class="n">cough</span><span class="p">,</span> <span class="n">fatigue</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">fever</span> <span class="ow">and</span> <span class="n">cough</span> <span class="ow">and</span> <span class="n">fatigue</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Possible flu&quot;</span>
+    <span class="k">elif</span> <span class="n">fever</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cough</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Possible infection&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Need more data&quot;</span>
+</code></pre></div>
+
+<p><strong>Ini AI tanpa ML.</strong> Mengerti bahasa? Tidak. Reasoning pakai aturan? Ya. Tapi tidak belajar dari data.</p>
+<p><strong>Pelajaran:</strong> AI ⊃ ML, dan AI juga ⊃ Symbolic AI. ML bukan satu-satunya cara.</p>
+<h3 id="2-algoritma-kuantum-ai">2. Algoritma Kuantum ≠ AI</h3>
+<p><strong>Shor's algorithm</strong> (1994): algoritma untuk factoring bilangan besar. Sangat powerful, tapi bukan AI.</p>
+<p><strong>Quantum sorting algorithms</strong>: ada, juga bukan AI.</p>
+<p><strong>Pelajaran:</strong> Algoritma ∩ AI = banyak, tapi tidak semua algoritma dipakai untuk AI.</p>
+<h3 id="3-statistik-klasik-ml">3. Statistik Klasik ≠ ML</h3>
+<p><strong>Linear regression</strong> dipakai di statistik sejak abad ke-19. Tapi <strong>ML modern</strong> juga pakai linear regression.</p>
+<p>Apakah linear regression = ML? <strong>Tergantung konteks:</strong>
+- Kalau kamu <em>train</em> di data → bisa dianggap ML
+- Kalau kamu <em>fit</em> manual dengan rumus → statistik klasik</p>
+<p><strong>Pelajaran:</strong> Batas ML dan statistik klasik itu blurry. Bukan discrete, lebih ke spektrum.</p>
+<h3 id="4-algoritma-sorting-tradisional-vs-ml-sorting">4. Algoritma Sorting Tradisional vs ML Sorting?</h3>
+<p>Sorting angka <strong>tidak butuh ML</strong>. Algoritma tradisional (quick sort, merge sort) jauh lebih cepat &amp; akurat.</p>
+<p>Tapi ML <em>bisa</em> dipakai untuk sorting yang lebih kompleks (mis. mengurutkan foto berdasarkan "keindahan") — karena gak ada rumus pasti untuk "keindahan".</p>
+<p><strong>Pelajaran:</strong> ML bukan selalu solusi terbaik. Untuk masalah dengan aturan jelas, algoritma biasa menang.</p>
+<h3 id="5-game-ai-selalu-ml">5. Game AI ≠ selalu ML</h3>
+<p>AI di game catur klasik (1997 Deep Blue) pakai <strong>search algorithms + rules</strong>, bukan ML. Baru akhir-akhir ini AlphaZero pakai <strong>reinforcement learning</strong> (ML).</p>
+<p><strong>Pelajaran:</strong> "AI" di game belum tentu ML.</p>
+<hr />
+<h2 id="cara-membedakan-dengan-tepat">🎯 Cara Membedakan dengan Tepat</h2>
+<h3 id="algoritma-atau-ml">Algoritma atau ML?</h3>
+<div class="highlight"><pre><span></span><code>Ada aturan eksplisit yang bisa ditulis tangan?
+├── Ya → Algoritma
+└── Tidak, harus belajar dari data → ML
+</code></pre></div>
+
+<h3 id="ml-atau-symbolic-ai">ML atau Symbolic AI?</h3>
+<div class="highlight"><pre><span></span><code>Sistem belajar dari contoh atau trial-error?
+├── Ya → ML
+└── Tidak, semua aturan hardcoded → Symbolic AI (masih AI!)
+</code></pre></div>
+
+<h3 id="ml-atau-ai">ML atau AI?</h3>
+<div class="highlight"><pre><span></span><code>Tugas yang dilakukan butuh &quot;kecerdasan&quot; mirip manusia?
+├── Ya, tapi hanya satu tugas sempit (klasifikasi, prediksi) → ML
+└── Ya, multiple tasks kompleks (planning + vision + language) → AI
+    (mungkin pakai ML sebagai komponen)
+</code></pre></div>
+
+<hr />
+<h2 id="hierarki-yang-lebih-dalam">📈 Hierarki yang Lebih Dalam</h2>
+<p>Kalau kamu ingin lebih detail, ini hierarki lengkap:</p>
+<div class="highlight"><pre><span></span><code>Artificial Intelligence
+├── Machine Learning
+│   ├── Supervised Learning
+│   │   ├── Classification
+│   │   └── Regression
+│   ├── Unsupervised Learning
+│   │   ├── Clustering
+│   │   └── Dimensionality Reduction
+│   ├── Reinforcement Learning
+│   └── Self-Supervised Learning
+│       └── Foundation Models (LLM, vision-language models)
+├── Deep Learning (subset ML yang pakai deep neural networks)
+│   ├── CNN (Convolutional) — untuk gambar
+│   ├── RNN / LSTM — untuk sequence
+│   ├── Transformer — untuk bahasa (LLM, multimodal models)
+│   └── GAN — untuk generate (gambar, musik)
+├── Symbolic AI / GOFAI
+│   ├── Expert Systems
+│   ├── Logic Programming
+│   └── Planning Systems
+├── Search &amp; Optimization
+│   ├── A*, Dijkstra
+│   └── Genetic Algorithms
+└── Robotics &amp; Control Systems
+</code></pre></div>
+
+<p><strong>Yang sering bikin bingung:</strong>
+- <strong>Deep Learning ⊂ Machine Learning</strong> (bukan di luar)
+- <strong>Foundation Models / LLM ⊂ Self-Supervised Learning ⊂ ML</strong>
+- <strong>Symbolic AI ⊂ AI</strong> (tapi ⊄ ML)</p>
+<hr />
+<h2 id="contoh-konkret-satu-use-case-tiga-layer">🌍 Contoh Konkret: Satu Use Case, Tiga Layer</h2>
+<p><strong>Sistem rekomendasi Netflix:</strong></p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│  LAYER 3: AI (sistem rekomendasi secara keseluruhan)│
+│                                                     │
+│  • Homepage yang personalized                       │
+│  • Mixed: content-based + collaborative            │
+│  • A/B testing terus-menerus                        │
+│  • Cold start handling                              │
+└─────────────────────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│  LAYER 2: ML (model prediksi)                        │
+│                                                     │
+│  • Matrix factorization (apa yang user X suka)      │
+│  • Neural network untuk content embedding           │
+│  • Deep learning untuk thumbnail selection          │
+└─────────────────────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│  LAYER 1: Algoritma (infrastruktur komputasi)        │
+│                                                     │
+│  • Sorting untuk ranking hasil                      │
+│  • Graph algorithms untuk &quot;teman juga suka&quot;         │
+│  • Hashing untuk fast lookup                        │
+│  • Database query optimization                     │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>Pelajaran:</strong> AI modern = ML + algoritma + integrasi sistem. Bukan salah satu saja.</p>
+<hr />
+<h2 id="miskonsepsi-umum">⚠️ Miskonsepsi Umum</h2>
+<table>
+<thead>
+<tr>
+<th>Miskonsepsi</th>
+<th>Faktanya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"AI = ML"</td>
+<td>Tidak. ML subset AI. Symbolic AI juga AI.</td>
+</tr>
+<tr>
+<td>"ML = deep learning"</td>
+<td>Tidak. DL subset ML. Ada banyak ML klasik (SVM, Random Forest).</td>
+</tr>
+<tr>
+<td>"Algoritma = AI"</td>
+<td>Tidak. Algoritma lebih fundamental, dipakai banyak hal.</td>
+</tr>
+<tr>
+<td>"AI selalu robot"</td>
+<td>Tidak. AI bisa software murni (ChatGPT, filter spam).</td>
+</tr>
+<tr>
+<td>"AI akan sadar besok"</td>
+<td>Tidak. Narrow AI sangat jauh dari general AI (AGI).</td>
+</tr>
+<tr>
+<td>"ML pasti akurat"</td>
+<td>Tidak. Tergantung data. Bisa bias dan salah.</td>
+</tr>
+<tr>
+<td>"Algoritma = kode program"</td>
+<td>Tidak. Algoritma = konsep, kode = ekspresi.</td>
+</tr>
+<tr>
+<td>"ML baru"</td>
+<td>Tidak. Sudah dari 1950-an. Yang baru: skala data &amp; komputasi.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="peta-karir-di-bidang-ini">🧭 Peta Karir di Bidang Ini</h2>
+<p>Kalau kamu mau masuk ke salah satu bidang:</p>
+<table>
+<thead>
+<tr>
+<th>Minat</th>
+<th>Mulai Belajar</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Algoritma</strong></td>
+<td>Struktur data, algoritma dasar, kompleksitas</td>
+<td>Python, C++, LeetCode</td>
+</tr>
+<tr>
+<td><strong>ML Engineering</strong></td>
+<td>scikit-learn, TensorFlow, deployment</td>
+<td>Python, TF/PyTorch, Docker</td>
+</tr>
+<tr>
+<td><strong>AI Research</strong></td>
+<td>Matematika, deep learning, paper reading</td>
+<td>PyTorch, JAX, paper repo</td>
+</tr>
+<tr>
+<td><strong>AI Product</strong></td>
+<td>Domain expertise + pakai AI tools</td>
+<td>LLM API, no-code ML</td>
+</tr>
+<tr>
+<td><strong>Data Science</strong></td>
+<td>Statistik, SQL, ML dasar</td>
+<td>Python, R, SQL, Tableau</td>
+</tr>
+<tr>
+<td><strong>MLOps</strong></td>
+<td>Deployment, monitoring, infrastructure</td>
+<td>Kubernetes, MLflow, AWS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight:</strong> Banyak jalan masuk. Tidak harus PhD.</p>
+<hr />
+<h2 id="ringkasan-satu-kalimat-tiap-konsep">🎓 Ringkasan Satu Kalimat Tiap Konsep</h2>
+<table>
+<thead>
+<tr>
+<th>Konsep</th>
+<th>Definisi 1 Kalimat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Algoritma</strong></td>
+<td>Langkah-langkah pasti untuk menyelesaikan masalah, ibarat resep masakan.</td>
+</tr>
+<tr>
+<td><strong>Machine Learning</strong></td>
+<td>Program yang belajar dari contoh, bukan dari aturan, ibarat koki yang belajar dari ribuan percobaan.</td>
+</tr>
+<tr>
+<td><strong>Artificial Intelligence</strong></td>
+<td>Mesin yang bertindak "cerdas", ibarat restoran pintar yang punya koki adaptif, pelayan paham bahasa, kasir kenal wajah, dan manajer yang optimal.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hubungan:</strong></p>
+<div class="highlight"><pre><span></span><code>Algoritma → fondasi (dipakai banyak hal)
+ML → pakai algoritma untuk belajar dari data
+AI → mungkin pakai ML (atau symbolic) untuk bertindak cerdas
+</code></pre></div>
+
+<hr />
+<h2 id="faq-final">❓ FAQ Final</h2>
+<p><strong>Q: Kalau saya hanya ingat satu hal, ingat apa?</strong>
+A: <strong>AI = tujuan, ML = salah satu cara, Algoritma = alat yang dipakai keduanya.</strong></p>
+<p><strong>Q: Mana yang paling penting untuk dipelajari dulu?</strong>
+A: <strong>Algoritma</strong>. Semua ML &amp; AI dibangun di atas algoritma. Paham algoritma = paham fondasi.</p>
+<p><strong>Q: Apakah AI/ML akan gantikan software engineering?</strong>
+A: Tools AI akan <em>menggantikan</em> beberapa tugas (boilerplate code, testing), tapi <em>membuat</em> software engineer <strong>lebih produktif</strong>. Permintaan engineer mungkin bergeser, bukan hilang.</p>
+<p><strong>Q: Kenapa diagram "AI ⊃ ML ⊃ Algoritma" tidak 100% akurat?</strong>
+A: Karena (a) Algoritma tidak <em>hanya</em> untuk ML — banyak algoritma di luar ML, dan (b) AI juga pakai Symbolic AI yang bukan ML. Diagram itu berguna untuk first-glance understanding, tapi counter-examples perlu diingat untuk akurasi.</p>
+<p><strong>Q: Deep Learning = AI?</strong>
+A: Deep Learning ⊂ ML ⊂ AI. Deep Learning adalah subset khusus yang pakai neural network berlapis banyak. Sangat cocok untuk data tidak terstruktur (gambar, teks, audio).</p>
+<hr />
+<h2 id="rangkai-series">📖 Rangkai Series</h2>
+<p>Kamu sudah baca semua 4 bagian! 🎉</p>
+<ol>
+<li><strong><a href="01-algoritma.html">01. Algoritma</a></strong> — fondasi</li>
+<li><strong><a href="02-machine-learning.html">02. Machine Learning</a></strong> — belajar dari data</li>
+<li><strong><a href="03-artificial-intelligence.html">03. Artificial Intelligence</a></strong> — bertindak cerdas</li>
+<li><strong><a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya</a></strong> — gimana semuanya nyambung</li>
+</ol>
+<p><strong>Langkah selanjutnya:</strong>
+- 🌐 <strong>Lihat visualisasi interaktif di <a href="../website/index.html">website</a></strong>
+- 🎞️ <strong>Lihat <a href="../slides.html">slide deck</a> untuk presentasi</strong>
+- 🎬 <strong>Atau rekam <a href="../video/">video</a> untuk konten LinkedIn</strong></p>
+<hr />
+<h2 id="referensi-tambahan">📚 Referensi Tambahan</h2>
+<ul>
+<li><a href="https://www.deeplearning.ai/courses/ai-for-everyone/">DeepLearning.AI — AI for Everyone</a> — kursus Andrew Ng untuk non-technical</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course">Google — Machine Learning Crash Course</a></li>
+<li><a href="https://distill.pub/">Distill.pub</a> — visualisasi ML yang indah &amp; akurat</li>
+<li><em>The Hundred-Page Machine Learning Book</em> — Andriy Burkov. Ringkas tapi komprehensif.</li>
+<li><em>AI Superpowers</em> — Kai-Fu Lee. Perspektif AI dari Asia.</li>
+</ul>
+<hr />
+<p><em>Dibuat oleh <a href="https://github.com/ibam28">@ibam28</a> · Konten ini bagian dari proyek <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">From Algorithms to AI</a> · Lisensi MIT</em></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="doc-footer">
+    <p>
+      <a href="https://github.com/ibam28/from-algorithms-to-ai"><strong>From Algorithms to AI</strong></a>
+      · oleh <a href="https://github.com/ibam28">@ibam28</a>
+      · <a href="../index.html">Beranda</a>
+    </p>
+  </footer>
+</body>
+</html>

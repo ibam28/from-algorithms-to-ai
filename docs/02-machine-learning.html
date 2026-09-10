@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02. Machine Learning — From Algorithms to AI</title>
+  <meta name="description" content="Mesin yang belajar dari data, bukan dari aturan yang ditulis tangan — &quot;koki yang belajar dari 10.000 percobaan&quot;." />
+  <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
+  <meta property="og:title" content="02. Machine Learning — From Algorithms to AI" />
+  <meta property="og:description" content="Mesin yang belajar dari data, bukan dari aturan yang ditulis tangan — &quot;koki yang belajar dari 10.000 percobaan&quot;." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body class="doc-page">
+  <a href="#main" class="skip-link">Lewati ke konten utama</a>
+
+  <nav class="doc-nav" aria-label="Navigasi halaman">
+    <div class="doc-nav-inner">
+      <a href="../index.html" class="doc-nav-brand">🧠 From Algorithms to AI</a>
+      <a href="index.html" class="doc-nav-back">← Kembali ke beranda</a>
+    </div>
+  </nav>
+
+  <main id="main" class="doc-main">
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Daftar isi">
+        <p class="doc-toc-title">Daftar Isi</p>
+        <a class="toc-l2" href="#intinya-tldr">📌 Intinya (TL;DR)</a>
+        <a class="toc-l2" href="#apa-itu-machine-learning">🤔 Apa Itu Machine Learning?</a>
+        <a class="toc-l3" href="#definisi-sederhana">Definisi Sederhana</a>
+        <a class="toc-l3" href="#definisi-teknis">Definisi Teknis</a>
+        <a class="toc-l3" href="#ml-vs-programming-tradisional">ML vs Programming Tradisional</a>
+        <a class="toc-l2" href="#analogi-koki-yang-belajar-dari-10000-percobaan">🍳 Analogi: Koki yang Belajar dari 10.000 Percobaan</a>
+        <a class="toc-l3" href="#koki-programmer-algoritma-biasa">Koki Programmer (Algoritma Biasa)</a>
+        <a class="toc-l3" href="#koki-ml-belajar-dari-data">Koki ML (Belajar dari Data)</a>
+        <a class="toc-l2" href="#cara-kerja-ml-simplified">🔄 Cara Kerja ML (Simplified)</a>
+        <a class="toc-l2" href="#3-tipe-utama-machine-learning">📚 3 Tipe Utama Machine Learning</a>
+        <a class="toc-l3" href="#1-supervised-learning-belajar-terarah">1. Supervised Learning (Belajar Terarah)</a>
+        <a class="toc-l3" href="#2-unsupervised-learning-belajar-sendiri">2. Unsupervised Learning (Belajar Sendiri)</a>
+        <a class="toc-l3" href="#3-reinforcement-learning-rl-tipe-lanjutan">3. Reinforcement Learning (RL) — Tipe Lanjutan</a>
+        <a class="toc-l3" href="#mana-yang-paling-populer">Mana yang Paling Populer?</a>
+        <a class="toc-l2" href="#ml-di-kehidupan-sehari-hari">🌍 ML di Kehidupan Sehari-hari</a>
+        <a class="toc-l2" href="#contoh-ml-dalam-kode-sederhana">💻 Contoh ML dalam Kode (Sederhana)</a>
+        <a class="toc-l3" href="#prediksi-harga-rumah-dengan-linear-regression">Prediksi Harga Rumah dengan Linear Regression</a>
+        <a class="toc-l3" href="#real-implementation-tensorflowjs-di-browser">Real Implementation (TensorFlow.js — di Browser!)</a>
+        <a class="toc-l2" href="#istilah-istilah-ml-yang-perlu-kamu-tahu">🧪 Istilah-istilah ML yang Perlu Kamu Tahu</a>
+        <a class="toc-l2" href="#keterbatasan-machine-learning">⚠️ Keterbatasan Machine Learning</a>
+        <a class="toc-l2" href="#fakta-menarik">🧠 Fakta Menarik</a>
+        <a class="toc-l3" href="#1-bahasa-bukan-machine-learning-untuk-hal-yang-sama">1. Bahasa bukan &quot;machine learning&quot; untuk hal yang sama</a>
+        <a class="toc-l3" href="#2-ml-tertua-1950-an">2. ML tertua: 1950-an</a>
+        <a class="toc-l3" href="#3-ml-semua-tentang-neural-network">3. ML ≠ semua tentang Neural Network</a>
+        <a class="toc-l3" href="#4-data-lebih-penting-dari-algoritma">4. Data lebih penting dari algoritma</a>
+        <a class="toc-l2" href="#pertanyaan-yang-sering-ditanya">❓ Pertanyaan yang Sering Ditanya</a>
+        <a class="toc-l2" href="#baca-juga">📖 Baca Juga</a>
+        <a class="toc-l2" href="#referensi">📚 Referensi</a>
+      </aside>
+
+      <article class="doc-body">
+<h1 id="02-machine-learning">02. Machine Learning</h1>
+<blockquote>
+<p>Mesin yang belajar dari data, bukan dari aturan yang ditulis tangan — "koki yang belajar dari 10.000 percobaan".</p>
+</blockquote>
+<p>📚 <strong>Bagian dari seri:</strong> <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">00. Beranda</a> → <a href="01-algoritma.html">01. Algoritma</a> → <strong>02. Machine Learning</strong> → <a href="03-artificial-intelligence.html">03. Artificial Intelligence</a> → <a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya</a></p>
+<hr />
+<h2 id="intinya-tldr">📌 Intinya (TL;DR)</h2>
+<table>
+<thead>
+<tr>
+<th>Pertanyaan</th>
+<th>Jawaban Singkat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apa itu Machine Learning?</td>
+<td>Sub-bidang AI di mana mesin <em>belajar</em> dari data, bukan dari aturan</td>
+</tr>
+<tr>
+<td>Bedanya dengan algoritma biasa?</td>
+<td>Algoritma biasa = aturan ditulis manual. ML = aturan <em>ditemukan sendiri</em> dari data</td>
+</tr>
+<tr>
+<td>ML = AI?</td>
+<td>Tidak. ML adalah <em>salah satu cara</em> mencapai AI. Masih ada cara lain</td>
+</tr>
+<tr>
+<td>Butuh data banyak?</td>
+<td>Ya, ML butuh data untuk belajar — makin banyak (yang berkualitas), makin bagus</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="apa-itu-machine-learning">🤔 Apa Itu Machine Learning?</h2>
+<h3 id="definisi-sederhana">Definisi Sederhana</h3>
+<blockquote>
+<p><strong>Machine Learning = program yang belajar dari contoh, bukan dari instruksi.</strong></p>
+</blockquote>
+<p>Kamu kasih banyak contoh, mesin cari polanya sendiri. Habis itu, dia bisa menebak pola baru yang mirip.</p>
+<h3 id="definisi-teknis">Definisi Teknis</h3>
+<blockquote>
+<p><em>"A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E."</em></p>
+<p>— <strong>Tom Mitchell</strong> (1997, <em>Machine Learning</em>, McGraw-Hill)</p>
+</blockquote>
+<p>Artinya: program ML adalah program yang <strong>kinerjanya meningkat</strong> seiring makin banyak <em>pengalaman</em> (data) yang dia dapat, dalam <em>tugas</em> tertentu, diukur dengan <em>metrik</em> tertentu.</p>
+<h3 id="ml-vs-programming-tradisional">ML vs Programming Tradisional</h3>
+<table>
+<thead>
+<tr>
+<th>Aspek</th>
+<th>Programming Tradisional</th>
+<th>Machine Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>Data + Aturan</td>
+<td>Data + Jawaban yang benar</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Jawaban</td>
+<td>Aturan (model)</td>
+</tr>
+<tr>
+<td><strong>Siapa yang cari pola?</strong></td>
+<td>Programmer</td>
+<td>Algoritma ML</td>
+</tr>
+<tr>
+<td><strong>Update aturan</strong></td>
+<td>Edit kode manual</td>
+<td>Training ulang dengan data baru</td>
+</tr>
+<tr>
+<td><strong>Contoh</strong></td>
+<td>"Kalau email ada kata 'gratis', tandai spam"</td>
+<td>"Ini 10.000 email, 5.000 spam, 5.000 bukan. Cari polanya."</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Perbedaan kunci:</strong> programmer <em>menulis</em> aturan vs algoritma ML <em>menemukan</em> aturan.</p>
+<hr />
+<h2 id="analogi-koki-yang-belajar-dari-10000-percobaan">🍳 Analogi: Koki yang Belajar dari 10.000 Percobaan</h2>
+<p>Bayangkan dua cara bikin koki:</p>
+<h3 id="koki-programmer-algoritma-biasa">Koki Programmer (Algoritma Biasa)</h3>
+<p>Kamu kasih <strong>resep detail</strong>:</p>
+<div class="highlight"><pre><span></span><code>IF air mendidih:
+  Masukkan mie
+  Tunggu 3 menit
+  Tiriskan
+  Sajikan
+</code></pre></div>
+
+<p>Koki cuma bisa masak mie. Kalau disuruh masak pasta, dia <strong>gagal</strong> karena gak ada resepnya.</p>
+<h3 id="koki-ml-belajar-dari-data">Koki ML (Belajar dari Data)</h3>
+<p>Kamu kasih <strong>contoh hasil masak orang lain</strong> + rating-nya:
+- Resep A → rasa 2/5
+- Resep B → rasa 8/5
+- Resep C → rasa 9/5
+- ... (10.000 contoh)</p>
+<p>Koki <strong>belajar sendiri</strong> pola "resep enak" dari data. Habis itu, dia bisa bikin <strong>resep baru</strong> yang belum pernah ada di training, dan masih mungkin enak.</p>
+<p><strong>Analogi ini menjelaskan 3 sifat utama ML:</strong></p>
+<ol>
+<li><strong>Butuh banyak data</strong> — kayak koki perlu 10.000 percobaan</li>
+<li><strong>Generalisasi</strong> — bisa apply ke situasi baru yang mirip</li>
+<li><strong>Bisa salah</strong> — kalau datanya jelek, hasilnya jelek (Garbage In, Garbage Out)</li>
+</ol>
+<hr />
+<h2 id="cara-kerja-ml-simplified">🔄 Cara Kerja ML (Simplified)</h2>
+<div class="highlight"><pre><span></span><code>┌──────────────┐
+│  Data        │  ← Email spam/non-spam, foto kucing, harga rumah
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ Preprocessing│  ← Bersih-bersih, normalisasi, label
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│  Training    │  ← Algoritma ML cari pola dari data
+│ (belajar)    │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│   Model      │  ← &quot;Otak&quot; yang sudah belajar
+│ (hasil)      │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│  Inference   │  ← Pakai model untuk prediksi data baru
+│ (pakai)      │
+└──────────────┘
+</code></pre></div>
+
+<p><strong>Training = sekolah. Inference = ujian.</strong></p>
+<p>Training butuh waktu &amp; data banyak. Inference biasanya cepat &amp; murah.</p>
+<hr />
+<h2 id="3-tipe-utama-machine-learning">📚 3 Tipe Utama Machine Learning</h2>
+<h3 id="1-supervised-learning-belajar-terarah">1. Supervised Learning (Belajar Terarah)</h3>
+<div class="highlight"><pre><span></span><code>Data: [Input] + [Label/Jawaban yang benar]
+Tujuan: Model belajar mapping Input → Label
+</code></pre></div>
+
+<p><strong>Contoh:</strong>
+- Email + label spam/not-spam → model bisa filter spam
+- Foto + label kucing/anjing → model bisa klasifikasi
+- Data rumah + harga → model bisa prediksi harga</p>
+<p><strong>Algoritma populer:</strong> Linear Regression, Logistic Regression, Decision Tree, Random Forest, Neural Network, SVM</p>
+<p><strong>Analogi:</strong> Belajar dengan <strong>guru yang kasih kunci jawaban</strong>.</p>
+<h3 id="2-unsupervised-learning-belajar-sendiri">2. Unsupervised Learning (Belajar Sendiri)</h3>
+<div class="highlight"><pre><span></span><code>Data: [Input] saja (tanpa label)
+Tujuan: Model cari struktur/pola sendiri
+</code></pre></div>
+
+<p><strong>Contoh:</strong>
+- Data customer → segmentasi (kelompokin customer mirip)
+- Artikel berita → topik-topik yang muncul
+- Anomali deteksi → cari yang "aneh"</p>
+<p><strong>Algoritma populer:</strong> K-Means, DBSCAN, PCA, Autoencoder</p>
+<p><strong>Analogi:</strong> Belajar <strong>tanpa guru</strong> — kamu sendiri yang cari pengelompokan.</p>
+<h3 id="3-reinforcement-learning-rl-tipe-lanjutan">3. Reinforcement Learning (RL) — Tipe Lanjutan</h3>
+<blockquote>
+<p><strong>Catatan:</strong> RL dibahas singkat di sini karena bisa overwhelming untuk first contact. Untuk deep-dive (AlphaGo, robotics, game AI), lihat sumber bacaan di akhir dokumen.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>Data: Aksi → Hasil (reward atau punishment)
+Tujuan: Model belajar policy yang maximize reward
+</code></pre></div>
+
+<p><strong>Singkatnya:</strong> agent belajar dengan coba-coba — aksi yang menghasilkan reward diulang, yang menghasilkan punishment dihindari. Analogi: anak kecil belajar naik sepeda (jatuh = belajar, jalan = belajar terus). Contoh terkenal: AlphaGo (game), self-driving car (salah satu tekniknya).</p>
+<p><strong>Kenapa tidak dibahas mendalam di sini:</strong> RL adalah topik besar sendiri — beda mindset dari supervised/unsupervised, butuh konteks <em>environment</em> dan <em>reward function</em> yang kompleks. Untuk audiens yang baru kenal ML, <strong>dua tipe sebelumnya sudah cukup untuk ~80% pemahaman</strong>.</p>
+<h3 id="mana-yang-paling-populer">Mana yang Paling Populer?</h3>
+<p>Sebagian besar aplikasi dunia nyata = <strong>Supervised Learning</strong> (karena paling matang dan paling bisa dijelaskan).</p>
+<hr />
+<h2 id="ml-di-kehidupan-sehari-hari">🌍 ML di Kehidupan Sehari-hari</h2>
+<table>
+<thead>
+<tr>
+<th>Situasi</th>
+<th>ML yang Bekerja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gmail filter spam</td>
+<td>Supervised (dari contoh spam/not-spam)</td>
+</tr>
+<tr>
+<td>Netflix/YouTube rekomendasi</td>
+<td>Supervised (dari riwayat tontonan + rating)</td>
+</tr>
+<tr>
+<td>Google Maps prediksi macet</td>
+<td>Time series + supervised</td>
+</tr>
+<tr>
+<td>Face ID di iPhone</td>
+<td>Supervised (dari foto wajah kamu, repeatedly)</td>
+</tr>
+<tr>
+<td>Google Translate</td>
+<td>Neural machine translation</td>
+</tr>
+<tr>
+<td>ChatGPT</td>
+<td>Large language model (supervised + RLHF)</td>
+</tr>
+<tr>
+<td>Tesla Autopilot</td>
+<td>Computer vision + reinforcement learning</td>
+</tr>
+<tr>
+<td>Spotify Discover Weekly</td>
+<td>Collaborative filtering (unsupervised + supervised)</td>
+</tr>
+<tr>
+<td>Bank fraud detection</td>
+<td>Anomaly detection (unsupervised) + supervised</td>
+</tr>
+<tr>
+<td>Prediksi harga rumah</td>
+<td>Supervised regression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight:</strong> Kalau kamu pakai smartphone, <strong>ML jalan setiap menit</strong>.</p>
+<hr />
+<h2 id="contoh-ml-dalam-kode-sederhana">💻 Contoh ML dalam Kode (Sederhana)</h2>
+<h3 id="prediksi-harga-rumah-dengan-linear-regression">Prediksi Harga Rumah dengan Linear Regression</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># pip install scikit-learn</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Data: [luas rumah (m²), harga (juta)]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">120</span><span class="p">],</span> <span class="p">[</span><span class="mi">150</span><span class="p">]]</span>  <span class="c1"># Luas</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">]</span>        <span class="c1"># Harga</span>
+
+<span class="c1"># Training</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Inference</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">90</span><span class="p">]])</span>  <span class="c1"># Rumah 90 m²</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediksi harga rumah 90 m²: Rp </span><span class="si">{</span><span class="n">predicted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> juta&quot;</span><span class="p">)</span>
+<span class="c1"># Output: Prediksi harga rumah 90 m²: Rp 900 juta</span>
+</code></pre></div>
+
+<h3 id="real-implementation-tensorflowjs-di-browser">Real Implementation (TensorFlow.js — di Browser!)</h3>
+<p>Lihat di <a href="../website/js/ml-demo/mnist.html">🌐 website ML Demo →</a> — gambar angka, model TF.js yang dilatih di browser akan menebak.</p>
+<hr />
+<h2 id="istilah-istilah-ml-yang-perlu-kamu-tahu">🧪 Istilah-istilah ML yang Perlu Kamu Tahu</h2>
+<table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Artinya</th>
+<th>Analogi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training</strong></td>
+<td>Proses model belajar dari data</td>
+<td>Sekolah</td>
+</tr>
+<tr>
+<td><strong>Inference</strong></td>
+<td>Pakai model yang sudah jadi untuk prediksi</td>
+<td>Ujian</td>
+</tr>
+<tr>
+<td><strong>Model</strong></td>
+<td>Hasil training — "otak" yang sudah pintar</td>
+<td>Lulusan sekolah</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td>Variabel input yang dipakai model</td>
+<td>Bahan masakan</td>
+</tr>
+<tr>
+<td><strong>Labels</strong></td>
+<td>Jawaban benar (untuk supervised)</td>
+<td>Kunci jawaban</td>
+</tr>
+<tr>
+<td><strong>Dataset</strong></td>
+<td>Kumpulan data</td>
+<td>Buku pelajaran</td>
+</tr>
+<tr>
+<td><strong>Epoch</strong></td>
+<td>1 putaran training (lihat semua data 1x)</td>
+<td>1 tahun ajaran</td>
+</tr>
+<tr>
+<td><strong>Overfitting</strong></td>
+<td>Model terlalu hafal data training, gagal di data baru</td>
+<td>Anak yang bisa jawab soal latihan tapi gagal ujian</td>
+</tr>
+<tr>
+<td><strong>Underfitting</strong></td>
+<td>Model terlalu simpel, gak belajar pola</td>
+<td>Anak yang gak belajar sama sekali</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>Persentase prediksi benar</td>
+<td>Nilai ujian</td>
+</tr>
+<tr>
+<td><strong>Loss</strong></td>
+<td>Seberapa salah prediksi model</td>
+<td>"Denda" tiap salah jawab</td>
+</tr>
+<tr>
+<td><strong>Neural Network</strong></td>
+<td>Model terinspirasi dari otak manusia</td>
+<td>Jaringan neuron tiruan</td>
+</tr>
+<tr>
+<td><strong>Deep Learning</strong></td>
+<td>Neural network dengan banyak layer</td>
+<td>Otak dengan banyak lapisan</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="keterbatasan-machine-learning">⚠️ Keterbatasan Machine Learning</h2>
+<p>ML <strong>tidak bisa</strong>:</p>
+<ul>
+<li>❌ <strong>Bekerja tanpa data</strong> — kualitas &amp; kuantitas data menentukan hasil</li>
+<li>❌ <strong>Menjamin akurasi 100%</strong> — selalu ada error rate</li>
+<li>❌ <strong>Jujur kalau dataset bias</strong> — model akan belajar biasnya (contoh: facial recognition bias ke warna kulit tertentu)</li>
+<li>❌ <strong>Jelaskan kenapa</strong> mengambil keputusan tertentu (untuk beberapa model — <em>black box</em>)</li>
+<li>❌ <strong>Bekerja kalau data distribution berubah drastis</strong> — mis. COVID mengubah pola belanja, model lama jadi kacau</li>
+</ul>
+<p><strong>ML itu powerful, tapi bukan sulap.</strong></p>
+<hr />
+<h2 id="fakta-menarik">🧠 Fakta Menarik</h2>
+<h3 id="1-bahasa-bukan-machine-learning-untuk-hal-yang-sama">1. Bahasa bukan "machine learning" untuk hal yang sama</h3>
+<p>Yang kita sebut "ML" di Barat, di China disebut dalam bahasa Mandarin dengan terjemahan literal "mesin belajar" (pinyin: <em>jīqī xuéxí</em>) — artinya sama: mesin belajar.</p>
+<h3 id="2-ml-tertua-1950-an">2. ML tertua: 1950-an</h3>
+<p><strong>Arthur Samuel</strong> bikin program <em>checkers</em> tahun <strong>1952</strong> yang belajar dari bermain sendiri. Istilah <strong>"machine learning"</strong> ia perkenalkan secara resmi dalam paper-nya tahun <strong>1959</strong> — <em>"Some Studies in Machine Learning Using the Game of Checkers"</em> (IBM Journal).</p>
+<h3 id="3-ml-semua-tentang-neural-network">3. ML ≠ semua tentang Neural Network</h3>
+<p>Sebelum deep learning naik (2012+), ML didominasi oleh algoritma klasik (SVM, Random Forest). Untuk data kecil-sedang, <strong>algoritma klasik masih sering lebih bagus</strong> daripada deep learning.</p>
+<h3 id="4-data-lebih-penting-dari-algoritma">4. Data lebih penting dari algoritma</h3>
+<blockquote>
+<p>"Better data beats better algorithms."</p>
+<p>— sering dikutip dari banyak ML practitioners</p>
+</blockquote>
+<p>Model bagus dengan data jelek = hasil jelek. Model simpel dengan data bagus = hasil bagus.</p>
+<hr />
+<h2 id="pertanyaan-yang-sering-ditanya">❓ Pertanyaan yang Sering Ditanya</h2>
+<p><strong>Q: ML sama dengan AI?</strong>
+A: Tidak. ML <em>subset</em> dari AI. AI adalah <em>tujuan</em>, ML adalah <em>salah satu cara</em>. Lihat <a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya</a>.</p>
+<p><strong>Q: ML sama dengan Deep Learning?</strong>
+A: Deep Learning <em>subset</em> dari ML. DL pakai neural network berlapis banyak (deep). Lihat <a href="03-artificial-intelligence.html">03. Artificial Intelligence</a>.</p>
+<p><strong>Q: Saya perlu jago matematika buat belajar ML?</strong>
+A: Tergantung level. Buat <em>pakai</em> ML yang sudah jadi (scikit-learn, TF.js) → tidak harus jago matematika. Buat <em>membuat</em> algoritma ML baru atau riset → perlu linear algebra, calculus, statistics.</p>
+<p><strong>Q: ML bisa bikin saya jadi miliarder?</strong>
+A: Bisa, tapi bukan karena ML-nya — karena <strong>masalah yang kamu solve</strong>. ML itu alat. Alat secanggih apapun gak berguna kalau gak solve masalah nyata.</p>
+<p><strong>Q: ML akan ganti programmer?</strong>
+A: Sampai 2026, ML bantu programmer tapi belum bisa replace. Kode yang kompleks, architectural decisions, dan pemahaman konteks masih butuh manusia. Yang berubah: programmer pakai ML sebagai "pair programmer" (mis. Copilot, Claude Code).</p>
+<p><strong>Q: ML butuh internet?</strong>
+A: Untuk training di cloud biasanya ya. Untuk inference bisa jalan offline (mis. di HP, embedded device). ML demo di website ini berjalan <strong>100% di browser tanpa server</strong>.</p>
+<hr />
+<h2 id="baca-juga">📖 Baca Juga</h2>
+<ul>
+<li><strong><a href="01-algoritma.html">01. Algoritma ←</a></strong> — konsep dasar langkah-langkah yang dipakai ML juga</li>
+<li><strong><a href="03-artificial-intelligence.html">03. Artificial Intelligence →</a></strong> — konteks lebih luas</li>
+<li><strong><a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya →</a></strong> — gimana ML + Algoritma + AI saling terkait</li>
+<li><strong><a href="../website/js/ml-demo/mnist.html">🌐 Lihat ML Demo Interaktif →</a></strong> — gambar angka, model tebak</li>
+</ul>
+<hr />
+<h2 id="referensi">📚 Referensi</h2>
+<ul>
+<li><em>Hands-On Machine Learning</em> — Aurélien Géron (paling recommended buat praktisi)</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course">Google Machine Learning Crash Course</a> — gratis, dengan visualisasi</li>
+<li><a href="https://www.coursera.org/specializations/machine-learning-introduction">Andrew Ng — Machine Learning Specialization</a> — kursus paling legendaris</li>
+<li><em>Pattern Recognition and Machine Learning</em> — Christopher Bishop (advanced, teoritis)</li>
+<li><a href="https://www.tensorflow.org/js">TensorFlow.js docs</a> — untuk ML di browser</li>
+<li><a href="https://scikit-learn.org/">Scikit-learn</a> — library ML paling populer di Python</li>
+</ul>
+<hr />
+<p><em>Dibuat oleh <a href="https://github.com/ibam28">@ibam28</a> · Konten ini bagian dari proyek <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">From Algorithms to AI</a> · Lisensi MIT</em></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="doc-footer">
+    <p>
+      <a href="https://github.com/ibam28/from-algorithms-to-ai"><strong>From Algorithms to AI</strong></a>
+      · oleh <a href="https://github.com/ibam28">@ibam28</a>
+      · <a href="../index.html">Beranda</a>
+    </p>
+  </footer>
+</body>
+</html>

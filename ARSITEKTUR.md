@@ -43,16 +43,30 @@ from-algorithms-to-ai/
 │       ├── diagrams/
 │       └── screenshots/
 │
-├── 📚 docs/                   ← Konten tertulis (Markdown, ID)
-│   ├── 01-algoritma.md
-│   ├── 02-machine-learning.md
-│   ├── 03-artificial-intelligence.md
-│   └── 04-hubungan-ketiganya.md
+├── 📚 docs/                   ← Deep-dive tertulis (sumber Markdown ID + HTML hasil render)
+│   ├── docs.css               ← Stylesheet bersama untuk halaman docs/ & video/
+│   ├── index.html             ← Hub (dibuat oleh scripts/build-docs.py)
+│   ├── 01-algoritma.md        ← Sumber
+│   ├── 01-algoritma.html      ← Hasil render (dibaca manusia)
+│   ├── 02-machine-learning.md / .html
+│   ├── 03-artificial-intelligence.md / .html
+│   └── 04-hubungan-ketiganya.md / .html
 │
-└── 🎬 video/                  ← Video content (opsional)
-    ├── script.md              ← Naskah narasi
-    ├── storyboard.md          ← Visual per scene
-    └── README.md              ← Cara record & publish
+└── 🎬 video/                  ← Video content (opsional; pola render sama)
+    ├── index.html             ← Hub (dibuat oleh scripts/build-docs.py)
+    ├── script.md / .html      ← Naskah narasi
+    ├── storyboard.md / .html  ← Visual per scene
+    └── README.md / .html      ← Cara record & publish
+```
+
+### Kenapa docs/ & video/ punya versi .html?
+
+`.nojekyll` mematikan Jekyll, sehingga GitHub Pages menyajikan `.md` sebagai `text/markdown` mentah — pengunjung melihat tanda `#` dan `**`, bukan halaman terbaca. Selain itu, tautan direktori (`href="docs/"`) mengembalikan **404** karena tidak ada `index.html`.
+
+Solusi: `scripts/build-docs.py` merender setiap `.md` di `docs/` dan `video/` menjadi `.html` bergaya (tema gelap, daftar isi otomatis, tabel, blok kode dengan syntax highlight), menulis `index.html` hub untuk tiap direktori, dan menulis ulang tautan antar-dokumen dari `.md` ke `.html`. Jalankan ulang setelah mengubah berkas Markdown:
+
+```bash
+python3 scripts/build-docs.py    # butuh python-markdown (+ pygments opsional)
 ```
 
 ### Penamaan File Convention

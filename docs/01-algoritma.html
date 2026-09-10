@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01. Algoritma — From Algorithms to AI</title>
+  <meta name="description" content="Langkah-langkah pasti untuk menyelesaikan masalah — &quot;resep masakan&quot; dunia komputasi." />
+  <meta name="author" content="Bambang Saputra Jaya (@ibam28)" />
+  <meta property="og:title" content="01. Algoritma — From Algorithms to AI" />
+  <meta property="og:description" content="Langkah-langkah pasti untuk menyelesaikan masalah — &quot;resep masakan&quot; dunia komputasi." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://ibam28.github.io/from-algorithms-to-ai/website/assets/og-image.png" />
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body class="doc-page">
+  <a href="#main" class="skip-link">Lewati ke konten utama</a>
+
+  <nav class="doc-nav" aria-label="Navigasi halaman">
+    <div class="doc-nav-inner">
+      <a href="../index.html" class="doc-nav-brand">🧠 From Algorithms to AI</a>
+      <a href="index.html" class="doc-nav-back">← Kembali ke beranda</a>
+    </div>
+  </nav>
+
+  <main id="main" class="doc-main">
+    <div class="doc-layout">
+      <aside class="doc-toc" aria-label="Daftar isi">
+        <p class="doc-toc-title">Daftar Isi</p>
+        <a class="toc-l2" href="#intinya-tldr">📌 Intinya (TL;DR)</a>
+        <a class="toc-l2" href="#apa-itu-algoritma">🤔 Apa Itu Algoritma?</a>
+        <a class="toc-l3" href="#definisi-sederhana">Definisi Sederhana</a>
+        <a class="toc-l3" href="#definisi-teknis">Definisi Teknis</a>
+        <a class="toc-l3" href="#algoritma-bukan-ini">Algoritma Bukan Ini</a>
+        <a class="toc-l2" href="#analogi-resep-masakan">🍳 Analogi: Resep Masakan</a>
+        <a class="toc-l3" href="#kenapa-ini-algorithms">Kenapa Ini Algorithms?</a>
+        <a class="toc-l3" href="#yang-bukan-algoritma">Yang BUKAN Algoritma</a>
+        <a class="toc-l2" href="#5-sifat-algoritma-yang-baik">🔍 5 Sifat Algoritma yang Baik</a>
+        <a class="toc-l3" href="#1-input-ada-data-awal">1. Input — Ada data awal</a>
+        <a class="toc-l3" href="#2-output-menghasilkan-sesuatu">2. Output — Menghasilkan sesuatu</a>
+        <a class="toc-l3" href="#3-definite-deterministic-tidak-ambigu">3. Definite (Deterministic) — Tidak ambigu</a>
+        <a class="toc-l3" href="#4-finite-pasti-berhenti">4. Finite — Pasti berhenti</a>
+        <a class="toc-l3" href="#5-effective-bisa-dijalankan">5. Effective — Bisa dijalankan</a>
+        <a class="toc-l2" href="#jenis-jenis-algoritma-populer">📚 Jenis-jenis Algoritma Populer</a>
+        <a class="toc-l3" href="#sorting-algorithms-mengurutkan-data">🔢 Sorting Algorithms (Mengurutkan Data)</a>
+        <a class="toc-l3" href="#searching-algorithms-mencari-data">🔎 Searching Algorithms (Mencari Data)</a>
+        <a class="toc-l3" href="#graph-algorithms-jaringan">🕸️ Graph Algorithms (Jaringan)</a>
+        <a class="toc-l3" href="#dynamic-programming">🧠 Dynamic Programming</a>
+        <a class="toc-l3" href="#greedy">🦘 Greedy</a>
+        <a class="toc-l3" href="#recursive">🔁 Recursive</a>
+        <a class="toc-l2" href="#algoritma-di-kehidupan-sehari-hari">🌍 Algoritma di Kehidupan Sehari-hari</a>
+        <a class="toc-l2" href="#algoritma-programming">💻 Algoritma &amp;amp; Programming</a>
+        <a class="toc-l3" href="#pseudocode-cari-angka-terbesar">Pseudocode: Cari Angka Terbesar</a>
+        <a class="toc-l3" href="#implementasi-javascript">Implementasi JavaScript</a>
+        <a class="toc-l3" href="#implementasi-python">Implementasi Python</a>
+        <a class="toc-l2" href="#fakta-menarik">🧪 Fakta Menarik</a>
+        <a class="toc-l3" href="#1-algoritma-sudah-ada-2300-tahun">1. Algoritma sudah ada 2.300+ tahun</a>
+        <a class="toc-l3" href="#2-sorting-1-juta-angka-perbedaan-dramatis">2. Sorting 1 juta angka: perbedaan dramatis</a>
+        <a class="toc-l3" href="#3-tidak-ada-algoritma-terbaik-untuk-semua">3. Tidak ada algoritma &quot;terbaik untuk semua&quot;</a>
+        <a class="toc-l2" href="#algoritma-punya-batasan">⚠️ Algoritma Punya Batasan</a>
+        <a class="toc-l2" href="#pertanyaan-yang-sering-ditanya">❓ Pertanyaan yang Sering Ditanya</a>
+        <a class="toc-l2" href="#baca-juga">📖 Baca Juga</a>
+        <a class="toc-l2" href="#referensi">📚 Referensi</a>
+      </aside>
+
+      <article class="doc-body">
+<h1 id="01-algoritma">01. Algoritma</h1>
+<blockquote>
+<p>Langkah-langkah pasti untuk menyelesaikan masalah — "resep masakan" dunia komputasi.</p>
+</blockquote>
+<p>📚 <strong>Bagian dari seri:</strong> <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">00. Beranda</a> → <strong>01. Algoritma</strong> → <a href="02-machine-learning.html">02. Machine Learning</a> → <a href="03-artificial-intelligence.html">03. Artificial Intelligence</a> → <a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya</a></p>
+<hr />
+<h2 id="intinya-tldr">📌 Intinya (TL;DR)</h2>
+<table>
+<thead>
+<tr>
+<th>Pertanyaan</th>
+<th>Jawaban Singkat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apa itu algoritma?</td>
+<td>Langkah-langkah pasti untuk menyelesaikan masalah</td>
+</tr>
+<tr>
+<td>Algoritma sama dengan koding?</td>
+<td>Tidak. Koding adalah cara <em>menulis</em> algoritma</td>
+</tr>
+<tr>
+<td>Algoritma hanya untuk komputer?</td>
+<td>Tidak. Resep masakan, prosedur medis, semuanya algoritma</td>
+</tr>
+<tr>
+<td>Algoritma bagian dari AI?</td>
+<td>Algoritma adalah <em>alat</em> yang dipakai AI (dan banyak hal lain)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="apa-itu-algoritma">🤔 Apa Itu Algoritma?</h2>
+<h3 id="definisi-sederhana">Definisi Sederhana</h3>
+<blockquote>
+<p><strong>Algoritma adalah urutan langkah-langkah yang jelas dan pasti untuk mencapai tujuan tertentu.</strong></p>
+</blockquote>
+<p>Analoginya: <strong>resep masakan</strong>.</p>
+<h3 id="definisi-teknis">Definisi Teknis</h3>
+<p>Dalam ilmu komputer, algoritma adalah:</p>
+<ol>
+<li><strong>Well-defined</strong> — setiap langkah tidak ambigu</li>
+<li><strong>Finite</strong> — pasti berhenti (bukan loop tanpa akhir)</li>
+<li><strong>Effective</strong> — bisa dieksekusi dengan sumber daya yang masuk akal</li>
+<li><strong>Output-producing</strong> — menghasilkan sesuatu dari input yang diberikan</li>
+</ol>
+<p><strong>Formal:</strong> sebuah algoritma adalah fungsi <code>f: Input → Output</code> yang untuk setiap input valid, menghasilkan output yang benar dalam waktu terbatas.</p>
+<h3 id="algoritma-bukan-ini">Algoritma Bukan Ini</h3>
+<ul>
+<li>❌ Bukan kode program (kode adalah <em>ekspresi</em> algoritma dalam bahasa tertentu)</li>
+<li>❌ Bukan flowchart saja (flowchart bisa <em>menggambarkan</em> algoritma)</li>
+<li>❌ Bukan hanya untuk komputer (prosedur medis, resep, instruksi IKEA juga algoritma)</li>
+<li>❌ Bukan hal baru (algoritma sudah ada sejak Euclid, 300 SM)</li>
+</ul>
+<hr />
+<h2 id="analogi-resep-masakan">🍳 Analogi: Resep Masakan</h2>
+<p>Bayangkan kamu mau bikin nasi goreng:</p>
+<div class="highlight"><pre><span></span><code>Resep Nasi Goreng (Algoritma):
+1. Panaskan minyak di wajan
+2. Tumis bawang putih sampai harum (2 menit)
+3. Masukkan nasi, aduk rata
+4. Tambahkan kecap, garam, merica
+5. Aduk 3 menit
+6. Selesai → hidangkan
+</code></pre></div>
+
+<h3 id="kenapa-ini-algorithms">Kenapa Ini Algorithms?</h3>
+<table>
+<thead>
+<tr>
+<th>Sifat Resep</th>
+<th>Sifat Algoritma</th>
+<th>Sama?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Langkah jelas (2 menit, 3 menit)</td>
+<td>Langkah jelas &amp; terukur</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Urutan penting (bawang dulu, nasi kemudian)</td>
+<td>Urutan menentukan hasil</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Pasti selesai</td>
+<td>Finite (berakhir)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Bisa diulang dengan hasil sama</td>
+<td>Deterministic</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Gagal kalau langkah salah</td>
+<td>Error kalau input salah</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yang-bukan-algoritma">Yang BUKAN Algoritma</h3>
+<p>❌ "Masak sampai enak" — terlalu ambigu (enak = ? berapa lama ?)</p>
+<p>✅ "Masak 3 menit dengan api sedang, aduk tiap 30 detik" — terukur, pasti selesai</p>
+<p><strong>Pelajaran:</strong> algoritma yang baik punya langkah <em>presisi</em>, bukan <em>intuisi</em>.</p>
+<hr />
+<h2 id="5-sifat-algoritma-yang-baik">🔍 5 Sifat Algoritma yang Baik</h2>
+<h3 id="1-input-ada-data-awal">1. <strong>Input</strong> — Ada data awal</h3>
+<div class="highlight"><pre><span></span><code>Resep: butuh nasi, bawang, kecap → input
+Algoritma: butuh array angka, file, request → input
+</code></pre></div>
+
+<h3 id="2-output-menghasilkan-sesuatu">2. <strong>Output</strong> — Menghasilkan sesuatu</h3>
+<div class="highlight"><pre><span></span><code>Resep: nasi goreng jadi
+Algoritma: array terurut, jalur terpendek, hasil klasifikasi
+</code></pre></div>
+
+<h3 id="3-definite-deterministic-tidak-ambigu">3. <strong>Definite (Deterministic)</strong> — Tidak ambigu</h3>
+<div class="highlight"><pre><span></span><code>❌ &quot;Tambahkan garam secukupnya&quot;
+✅ &quot;Tambahkan 1 sendok teh garam&quot;
+</code></pre></div>
+
+<h3 id="4-finite-pasti-berhenti">4. <strong>Finite</strong> — Pasti berhenti</h3>
+<div class="highlight"><pre><span></span><code>❌ &quot;Aduk terus sampai berhenti&quot;
+✅ &quot;Aduk selama 3 menit&quot;
+</code></pre></div>
+
+<h3 id="5-effective-bisa-dijalankan">5. <strong>Effective</strong> — Bisa dijalankan</h3>
+<div class="highlight"><pre><span></span><code>❌ &quot;Bikin nasi goreng dari nol&quot;
+✅ &quot;Panaskan minyak, masukkan bahan, dst.&quot;
+</code></pre></div>
+
+<hr />
+<h2 id="jenis-jenis-algoritma-populer">📚 Jenis-jenis Algoritma Populer</h2>
+<h3 id="sorting-algorithms-mengurutkan-data">🔢 Sorting Algorithms (Mengurutkan Data)</h3>
+<table>
+<thead>
+<tr>
+<th>Algoritma</th>
+<th>Cara Kerja</th>
+<th>Cepat?</th>
+<th>Cocok Untuk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bubble Sort</strong></td>
+<td>Bandingkan 2 angka bersebelahan, tukar kalau salah urut</td>
+<td>Lambat</td>
+<td>Belajar, dataset kecil</td>
+</tr>
+<tr>
+<td><strong>Merge Sort</strong></td>
+<td>Bagi data jadi 2, urutkan masing-masing, gabung</td>
+<td>Cepat</td>
+<td>Dataset besar</td>
+</tr>
+<tr>
+<td><strong>Quick Sort</strong></td>
+<td>Pilih "pivot", pisahkan data lebih besar/kecil</td>
+<td>Sangat cepat</td>
+<td>General purpose</td>
+</tr>
+<tr>
+<td><strong>Heap Sort</strong></td>
+<td>Pakai struktur tree khusus</td>
+<td>Cepat</td>
+<td>Sistem real-time</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lihat visualisasinya di <a href="../website/index.html#section-algorithms">website → Section Algoritma</a>.</strong></p>
+<h3 id="searching-algorithms-mencari-data">🔎 Searching Algorithms (Mencari Data)</h3>
+<table>
+<thead>
+<tr>
+<th>Algoritma</th>
+<th>Cara Kerja</th>
+<th>Cepat?</th>
+<th>Perlu Data Terurut?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear Search</strong></td>
+<td>Cek satu per satu dari awal</td>
+<td>Lambat untuk data besar</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td><strong>Binary Search</strong></td>
+<td>Bagi 2, cari di separuh yang relevan</td>
+<td>Sangat cepat</td>
+<td>Ya</td>
+</tr>
+</tbody>
+</table>
+<h3 id="graph-algorithms-jaringan">🕸️ Graph Algorithms (Jaringan)</h3>
+<ul>
+<li><strong>Dijkstra</strong> — rute terpendek (dipakai Google Maps)</li>
+<li><strong>BFS / DFS</strong> — telusuri graf (breadth/depth-first search)</li>
+<li><strong>A</strong>* — pathfinding (dipake game, robot)</li>
+</ul>
+<h3 id="dynamic-programming">🧠 Dynamic Programming</h3>
+<ul>
+<li>Bagi masalah besar jadi sub-masalah kecil</li>
+<li>Simpan hasil sub-masalah supaya tidak hitung ulang</li>
+<li>Contoh: Fibonacci, longest common subsequence</li>
+</ul>
+<h3 id="greedy">🦘 Greedy</h3>
+<ul>
+<li>Ambil keputusan terbaik <em>saat ini</em>, tanpa mikir ke depan</li>
+<li>Cepat tapi tidak selalu optimal</li>
+<li>Contoh: coin change, Huffman coding</li>
+</ul>
+<h3 id="recursive">🔁 Recursive</h3>
+<ul>
+<li>Fungsi yang memanggil dirinya sendiri</li>
+<li>Powerful untuk masalah tree &amp; divide-and-conquer</li>
+<li>Contoh: traversal folder, factorial</li>
+</ul>
+<hr />
+<h2 id="algoritma-di-kehidupan-sehari-hari">🌍 Algoritma di Kehidupan Sehari-hari</h2>
+<p>Kamu mungkin tidak sadar, algoritma bekerja di belakang layar <strong>setiap hari</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Situasi</th>
+<th>Algoritma yang Bekerja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buka Google Maps, cari rute</td>
+<td>Dijkstra / A* untuk rute terpendek</td>
+</tr>
+<tr>
+<td>Scroll TikTok / Instagram</td>
+<td>Recommendation algorithm (tapi ada ML juga)</td>
+</tr>
+<tr>
+<td>Google Search</td>
+<td>PageRank + ratusan algoritma ranking</td>
+</tr>
+<tr>
+<td>Auto-correct di HP</td>
+<td>Edit distance algorithm</td>
+</tr>
+<tr>
+<td>Spotify "Discover Weekly"</td>
+<td>Collaborative filtering (campuran ML + algoritma — lihat <a href="02-machine-learning.html">02. ML</a>)</td>
+</tr>
+<tr>
+<td>Antrean di bank</td>
+<td>Queue algorithm</td>
+</tr>
+<tr>
+<td>Microwave timer</td>
+<td>Algoritma sederhana (hitung mundur)</td>
+</tr>
+<tr>
+<td>Navigasi GPS</td>
+<td>Graph algorithm real-time</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight:</strong> Algoritma itu <strong>bukan hal futuristik</strong> — itu bagian dari infrastruktur modern.</p>
+<hr />
+<h2 id="algoritma-programming">💻 Algoritma &amp; Programming</h2>
+<h3 id="pseudocode-cari-angka-terbesar">Pseudocode: Cari Angka Terbesar</h3>
+<div class="highlight"><pre><span></span><code>ALGORITHM findMax(array):
+  IF array is empty:
+    RETURN null
+
+  max ← array[0]
+  FOR each element in array:
+    IF element &gt; max:
+      max ← element
+
+  RETURN max
+</code></pre></div>
+
+<h3 id="implementasi-javascript">Implementasi JavaScript</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">findMax</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">element</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">element</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">findMax</span><span class="p">([</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">]));</span><span class="w"> </span><span class="c1">// 9</span>
+</code></pre></div>
+
+<h3 id="implementasi-python">Implementasi Python</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">element</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="n">element</span>
+    <span class="k">return</span> <span class="n">max_val</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">find_max</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]))</span>  <span class="c1"># 9</span>
+</code></pre></div>
+
+<p><strong>Perhatikan:</strong> algoritma-nya <strong>sama</strong>. Yang beda cuma <strong>bahasa</strong>. Algoritma = konsep, bahasa = cara mengekspresikan.</p>
+<hr />
+<h2 id="fakta-menarik">🧪 Fakta Menarik</h2>
+<h3 id="1-algoritma-sudah-ada-2300-tahun">1. Algoritma sudah ada 2.300+ tahun</h3>
+<p><strong>Euclidean Algorithm</strong> (cari FPB dua angka) ditemukan tahun <strong>300 SM</strong> oleh Euclid. Masih dipakai sampai sekarang di mana-mana (kriptografi, misalnya).</p>
+<h3 id="2-sorting-1-juta-angka-perbedaan-dramatis">2. Sorting 1 juta angka: perbedaan dramatis</h3>
+<table>
+<thead>
+<tr>
+<th>Algoritma</th>
+<th>Waktu (perkiraan di laptop modern)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble Sort</td>
+<td>~2 jam</td>
+</tr>
+<tr>
+<td>Merge Sort</td>
+<td>~0.5 detik</td>
+</tr>
+<tr>
+<td>Quick Sort</td>
+<td>~0.3 detik</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Asumsi: laptop 100 juta operasi/detik)</em></p>
+<p>Pemilihan algoritma yang tepat bisa <strong>ribuan kali lebih cepat</strong>.</p>
+<h3 id="3-tidak-ada-algoritma-terbaik-untuk-semua">3. Tidak ada algoritma "terbaik untuk semua"</h3>
+<p>Disebut <strong>"No Free Lunch Theorem"</strong> — tidak ada algoritma yang terbaik untuk semua jenis masalah. Yang ada: <strong>algoritma yang tepat untuk masalah tertentu</strong>.</p>
+<hr />
+<h2 id="algoritma-punya-batasan">⚠️ Algoritma Punya Batasan</h2>
+<p>Algoritma <strong>tidak bisa</strong>:</p>
+<ul>
+<li>❌ Belajar dari data baru (untuk itu perlu ML)</li>
+<li>❌ Menangani situasi yang tidak pernah diprogram sebelumnya</li>
+<li>❌ Beradaptasi sendiri kalau dunia berubah</li>
+</ul>
+<p>Misalnya: algoritma filter spam lama akan <strong>gagal</strong> kalau pola spam berubah, karena dia hanya tahu pola yang sudah ditulis di kode. Solusinya? <a href="02-machine-learning.html">Machine Learning</a>.</p>
+<hr />
+<h2 id="pertanyaan-yang-sering-ditanya">❓ Pertanyaan yang Sering Ditanya</h2>
+<p><strong>Q: Algoritma sama dengan AI?</strong>
+A: Tidak. Algoritma adalah <em>alat</em>, AI adalah <em>tujuan</em>. AI <em>memakai</em> algoritma, tapi tidak semua algoritma adalah AI.</p>
+<p><strong>Q: Algoritma sama dengan coding?</strong>
+A: Tidak juga. Algoritma = <em>ide/langkah</em>. Coding = <em>cara menulis</em> ide itu dalam bahasa pemrograman.</p>
+<p><strong>Q: Saya bukan programmer, perlu tahu algoritma?</strong>
+A: Ya, minimal paham konsepnya. Kamu pakai algoritma setiap hari (Maps, Search, Social Media). Paham cara kerjanya bikin kamu jadi <em>pengguna teknologi yang lebih cerdas</em>.</p>
+<p><strong>Q: Algoritma tertua yang masih dipakai?</strong>
+A: Euclidean Algorithm (300 SM) untuk cari FPB. Masih dipakai di cryptography dan computer algebra systems.</p>
+<p><strong>Q: Bedanya algoritma dengan formula matematika?</strong>
+A: Formula = <em>ekspresi</em> hubungan (mis. <code>a² + b² = c²</code>). Algoritma = <em>prosedur</em> langkah demi langkah. Pythagoras menemukan formula, Euclid menemukan algoritma.</p>
+<hr />
+<h2 id="baca-juga">📖 Baca Juga</h2>
+<ul>
+<li><strong><a href="02-machine-learning.html">02. Machine Learning →</a></strong> — bagaimana mesin <em>belajar</em> dari data (bukan cuma dijalankan dari aturan)</li>
+<li><strong><a href="03-artificial-intelligence.html">03. Artificial Intelligence →</a></strong> — tujuan besar yang dicapai sebagian lewat ML</li>
+<li><strong><a href="04-hubungan-ketiganya.html">04. Hubungan Ketiganya →</a></strong> — gimana ketiganya saling terkait</li>
+<li><strong><a href="../website/index.html#section-algorithms">🌐 Lihat Visualisasi Interaktif →</a></strong> — sorting visualizer di browser</li>
+</ul>
+<hr />
+<h2 id="referensi">📚 Referensi</h2>
+<ul>
+<li><em>Introduction to Algorithms</em> — Cormen, Leiserson, Rivest, Stein (CLRS). Textbook klasik.</li>
+<li><a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">MIT 6.0001 — Intro to CS</a> — kursus gratis dari MIT</li>
+<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms">Khan Academy — Algorithms</a> — visualisasi interaktif gratis</li>
+<li><em>The Art of Computer Programming</em> — Donald Knuth. Referensi definitif (advanced).</li>
+</ul>
+<hr />
+<p><em>Dibuat oleh <a href="https://github.com/ibam28">@ibam28</a> · Konten ini bagian dari proyek <a href="https://github.com/ibam28/from-algorithms-to-ai#readme">From Algorithms to AI</a> · Lisensi MIT</em></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="doc-footer">
+    <p>
+      <a href="https://github.com/ibam28/from-algorithms-to-ai"><strong>From Algorithms to AI</strong></a>
+      · oleh <a href="https://github.com/ibam28">@ibam28</a>
+      · <a href="../index.html">Beranda</a>
+    </p>
+  </footer>
+</body>
+</html>
